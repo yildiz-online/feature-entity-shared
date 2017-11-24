@@ -23,7 +23,7 @@
  */
 
 /**
- * Contains classes to manage different be.yildizgames.engine.feature.entity.data, like version....
+ * Contains classes to manage different data, like version....
  *
  * @author Grégory Van den Borre
  */

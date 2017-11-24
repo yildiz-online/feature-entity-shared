@@ -27,57 +27,28 @@ package be.yildizgames.engine.feature.entity;
 import be.yildiz.common.BoundedValue;
 import be.yildiz.common.collections.Lists;
 import be.yildiz.common.collections.Sets;
-import be.yildiz.common.gameobject.Movable;
 import be.yildiz.common.id.ActionId;
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.id.PlayerId;
 import be.yildiz.common.vector.Point3D;
-import be.yildizgames.engine.feature.entity.action.AbstractAttack;
 import be.yildizgames.engine.feature.entity.action.Action;
-import be.yildizgames.engine.feature.entity.action.ProtectInvincible;
-import be.yildizgames.engine.feature.entity.action.materialization.EmptyProtectMaterialization;
+import be.yildizgames.engine.feature.entity.action.NoAction;
 import be.yildizgames.engine.feature.entity.data.EntityType;
 import be.yildizgames.engine.feature.entity.data.State;
-import be.yildizgames.engine.feature.entity.data.ViewDistance;
-import be.yildizgames.engine.feature.entity.fields.AttackHitResult;
 import be.yildizgames.engine.feature.entity.fields.SharedPosition;
 import be.yildizgames.engine.feature.entity.fields.StateHolder;
 import be.yildizgames.engine.feature.entity.fields.Target;
-import be.yildizgames.engine.feature.entity.module.EmptyModule;
-import be.yildizgames.engine.feature.entity.module.EntityModules;
-import be.yildizgames.engine.feature.entity.module.Module;
-import be.yildizgames.engine.feature.entity.module.ModuleGroup;
-import be.yildizgames.engine.feature.entity.module.detector.BlindDetector;
-import be.yildizgames.engine.feature.entity.module.energy.NoEnergyGenerator;
-import be.yildizgames.engine.feature.entity.module.hull.InvincibleTemplate;
-import be.yildizgames.engine.feature.entity.module.interaction.NoWeaponModule;
-import be.yildizgames.engine.feature.entity.module.move.StaticModule;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
 /**
- * The entity is the logical be.yildizgames.engine.feature.entity.data for every usable game object.
+ * The entity is the logical data for every usable game object.
  *
  * @author Grégory Van den Borre
  */
-public final class BaseEntity implements Entity, Target {
-
-    /**
-     * This Entity represent the world, it is used to represent an empty or non existing entity.
-     */
-    public static final BaseEntity WORLD = new BaseEntity(
-            EntityInConstruction.WORLD, new EntityModules(
-            new InvincibleTemplate()
-            .materialize(new ProtectInvincible(EntityId.WORLD, InvincibleTemplate.MODULE, new EmptyProtectMaterialization(EntityId.WORLD))),
-            new NoEnergyGenerator(EntityId.WORLD),
-            new BlindDetector(EntityId.WORLD),
-            new NoWeaponModule(EntityId.WORLD),
-            new StaticModule(EntityId.WORLD),
-            new EmptyModule(EntityId.WORLD),
-            new EmptyModule(EntityId.WORLD),
-            new EmptyModule(EntityId.WORLD)));
+public abstract class BaseEntity implements Entity, Target {
 
     private static final State destroyed = new State("destroyed");
 
@@ -105,80 +76,21 @@ public final class BaseEntity implements Entity, Target {
 
     private final EntityType type;
 
-    private final EntityModules modules;
-
     private String name;
 
     private PlayerId owner;
-
 
     private List<Action> actionRunning = Lists.newList();
 
     private List<Action> actionComplete = Lists.newList();
 
-    private Optional<Action> actionToPrepare = Optional.empty();
+    private Action actionToPrepare;
 
-    /**
-     * Create a new Entity.
-     * @param e Entity metadata.
-     * @param entityModules Modules.
-     */
-    public BaseEntity(EntityInConstruction e, EntityModules entityModules) {
-        this(e, e.getName(), entityModules);
-        this.hp.setValue(e.getHp());
-        this.energy.setValue(e.getEnergy());
-    }
-
-    /**
-     * Create a new Entity.
-     * @param e Entity metadata.
-     * @param entityModules Modules
-     */
-    public BaseEntity(DefaultEntityInConstruction e, EntityModules entityModules) {
-        this(e, e.getType().name, entityModules);
-        this.hp.setValue(entityModules.getHull().getMaxHp());
-        this.energy.setValue(entityModules.getEnergyGenerator().getEnergyMax());
-    }
-
-    private BaseEntity(
-            DefaultEntityInConstruction e,
-            String name,
-            EntityModules entityModules) {
+    public BaseEntity(EntityId id, EntityType type) {
         super();
-        this.type = e.getType();
-        this.name = name;
-        this.owner = e.getOwner();
-        this.id = e.getId();
-        this.position.setPosition(e.getPosition());
-        this.position.setDirection(e.getDirection());
-        this.modules = entityModules;
-        this.completeModule(this.modules.getWeapon());
-        this.completeModule(this.modules.getMoveEngine());
-        this.completeModule(this.modules.getHull());
-        this.completeModule(this.modules.getEnergyGenerator());
-        this.completeModule(this.modules.getDetector());
-        this.completeModule(this.modules.getAdditional1());
-        this.completeModule(this.modules.getAdditional2());
-        this.completeModule(this.modules.getAdditional3());
-        this.hp.setMax(this.modules.getHull().getMaxHp());
-        this.energy.setMax(this.modules.getEnergyGenerator().getEnergyMax());
-    }
-
-    /**
-     * Fill a module with all this entity shared variable.
-     *
-     * @param module Module to fill.
-     */
-    //@requires module != null
-    //@ensures module.position == this.position
-    //@ensures module.hp == this.hp
-    //@ensures module.energy == this.energy
-    //@ensures module.states == this.states
-    private void completeModule(Module<? extends Action> module) {
-        module.setSharedPosition(this.position);
-        module.setEnergy(this.energy);
-        module.setStates(this.states);
-        module.setHp(this.hp);
+        this.id = id;
+        this.type = type;
+        this.actionToPrepare = new NoAction(this.id, ActionId.WORLD);
     }
 
     @Override
@@ -200,28 +112,6 @@ public final class BaseEntity implements Entity, Target {
     }
 
     @Override
-    public Action move(final Point3D destination) {
-        Action move = this.modules.getMoveEngine().getAction();
-        move.setDestination(destination);
-        move.init();
-        if(!move.isRunning()) {
-            this.actionRunning.add(move);
-        }
-        return move;
-    }
-
-    @Override
-    public Action attack(final Target target) {
-        Action attack = this.modules.getWeapon().getAction();
-        attack.setTarget(target);
-        if(!attack.isRunning()) {
-            attack.init();
-            this.actionRunning.add(attack);
-        }
-        return attack;
-    }
-
-    @Override
     public void lookAt(final Point3D destination) {
         this.position.lookAt(destination);
     }
@@ -229,11 +119,6 @@ public final class BaseEntity implements Entity, Target {
     @Override
     public void addState(final State state) {
         this.states.addState(state);
-    }
-
-    @Override
-    public void hit(final AttackHitResult result) {
-        this.modules.getHull().getAction().addHitResult(result);
     }
 
     @Override
@@ -276,16 +161,6 @@ public final class BaseEntity implements Entity, Target {
     }
 
     @Override
-    public Action getAction(final ActionId actionId) {
-        return this.modules.getAction(actionId);
-    }
-
-    @Override
-    public void delete() {
-        this.modules.delete();
-    }
-
-    @Override
     public boolean isDeleted() {
         return this.hasState(destroyed);
     }
@@ -315,43 +190,6 @@ public final class BaseEntity implements Entity, Target {
     @Override
     public void setDirection(Point3D direction) {
         this.position.setDirection(direction);
-    }
-
-    @Override
-    public void startAction(ActionId action, Target target, Point3D pos) {
-        if (this.modules.getMoveEngine().getId().equals(action)) {
-            this.move(pos);
-        } else if (this.modules.getWeapon().getId().equals(action)) {
-            this.attack(target);
-        } else if (this.modules.getAdditional1().getId().equals(action)) {
-            Action a = this.modules.getAdditional1().getAction();
-            a.setTarget(target);
-            a.setDestination(pos);
-            a.init();
-            this.actionRunning.add(a);
-        } else if (this.modules.getAdditional2().getId().equals(action)) {
-            Action a = this.modules.getAdditional2().getAction();
-            a.setTarget(target);
-            a.setDestination(pos);
-            a.init();
-            this.actionRunning.add(a);
-        } else if (this.modules.getAdditional3().getId().equals(action)) {
-            Action a = this.modules.getAdditional3().getAction();
-            a.setTarget(target);
-            a.setDestination(pos);
-            a.init();
-            this.actionRunning.add(a);
-        }
-    }
-
-    @Override
-    public void startAction(Action a) {
-        a.init();
-        if(a.id == this.modules.getMoveEngine().getId() && !this.modules.getMoveEngine().getAction().isRunning()
-                ||
-                a.id == this.modules.getWeapon().getId() && !this.modules.getWeapon().getAction().isRunning()) {
-            this.actionRunning.add(a);
-        }
     }
 
     @Override
@@ -396,19 +234,8 @@ public final class BaseEntity implements Entity, Target {
     }
 
     @Override
-    public void stopAttack() {
-        this.actionRunning.remove(this.modules.getWeapon().getAction());
-        this.actionComplete.add(this.modules.getWeapon().getAction());
-    }
-
-    @Override
     public List<Action> getActions() {
         return this.actionRunning;
-    }
-
-    @Override
-    public ViewDistance getLineOfSight() {
-        return this.modules.getDetector().getLineOfSight();
     }
 
     @Override
@@ -422,53 +249,13 @@ public final class BaseEntity implements Entity, Target {
     }
 
     @Override
-    public boolean isAttacking() {
-        return this.modules.getWeapon().getAction().isRunning();
-    }
-
-    @Override
-    public AbstractAttack getAttackAction() {
-        return this.modules.getWeapon().getAction();
-    }
-
-    @Override
-    public Action getProtectAction() {
-        return this.modules.getHull().getAction();
-    }
-
-    @Override
-    public Action getGenerateEnergyAction() {
-        return this.modules.getEnergyGenerator().getAction();
-    }
-
-    @Override
-    public ModuleGroup getModules() {
-        return this.modules.getGroup();
-    }
-
-    @Override
     public boolean hasSameOwnerAs(final Entity e) {
         return this.owner.equals(e.getOwner());
     }
 
     @Override
     public void prepareAction(Optional<ActionId> action) {
-        this.actionToPrepare = action.map(this::getAction);
-    }
-
-    @Override
-    public void setTarget(final Target t) {
-        this.actionToPrepare.orElse(this.modules.getWeapon().getAction()).setTarget(t);
-    }
-
-    @Override
-    public Movable getMaterialization() {
-        return this.modules.getHull().getAction().getMaterialization().getObject();
-    }
-
-    @Override
-    public void setDestination(final Point3D p) {
-        this.actionToPrepare.orElse(this.modules.getMoveEngine().getAction()).setDestination(p);
+        this.actionToPrepare = action.map(this::getAction).orElse(new NoAction(this.id, ActionId.WORLD));
     }
 
     @Override
@@ -479,12 +266,7 @@ public final class BaseEntity implements Entity, Target {
 
     @Override
     public void startPreparedAction() {
-        this.actionToPrepare.ifPresent(this::startAction);
-    }
-
-    @Override
-    public Action getPreparedAction() {
-        return this.actionToPrepare.orElse(this.modules.getMoveEngine().getAction());
+        this.startAction(this.actionToPrepare);
     }
 
     public Set<Entity> getVisibleEntities() {
@@ -518,21 +300,6 @@ public final class BaseEntity implements Entity, Target {
     @Override
     public EntityId getId() {
         return id;
-    }
-
-    @Override
-    public Module getAdditional1() {
-        return modules.getAdditional1();
-    }
-
-    @Override
-    public Module getAdditional2() {
-        return modules.getAdditional2();
-    }
-
-    @Override
-    public Module getAdditional3() {
-        return modules.getAdditional3();
     }
 
     @Override

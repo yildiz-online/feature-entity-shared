@@ -24,19 +24,14 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildiz.common.id.ActionId;
 import be.yildiz.common.util.Checker;
 import be.yildizgames.engine.feature.entity.data.EntityType;
-import be.yildizgames.engine.feature.entity.module.DefaultModuleProvider;
-import be.yildizgames.engine.feature.entity.module.ModuleGroup;
-import be.yildizgames.engine.feature.entity.module.ModulesAllowed;
-import be.yildizgames.engine.feature.entity.module.WorldModuleProvider;
 import be.yildizgames.engine.feature.resource.ResourceValue;
 
 import java.time.Duration;
 
 /**
- * Contains all the be.yildizgames.engine.feature.entity.data proper to an Entity type.
+ * Contains all the data proper to an Entity type.
  * Immutable class.
  *
  * @author Grégory Van den Borre
@@ -48,30 +43,9 @@ import java.time.Duration;
 public class GameEntityData implements EntityData {
 
     /**
-     * Constant for world be.yildizgames.engine.feature.entity.data.
-     */
-    public static final GameEntityData WORLD = new GameEntityData(
-            EntityType.WORLD,
-            1000,
-            Instance.UNIQUE,
-            Level.ZERO,
-            new WorldModuleProvider(),
-            new ModulesAllowed(),
-            new ResourceValue(new float[]{}),
-            Duration.ZERO,
-            false);
-
-    /**
      * Entity size, must be > 0
      */
     private final int size;
-
-    /**
-     * List of modules allowed to be used.
-     */
-    private final ModulesAllowed modulesAllowed;
-
-    private final DefaultModuleProvider defaultModuleProvider;
 
     /**
      * Flag to tell if the entity can be built by the player.
@@ -95,18 +69,14 @@ public class GameEntityData implements EntityData {
      * @param size      Object size.
      * @param instances Number of units of that type allowed.
      * @param level     Level required to build this object.
-     * @param defaultModuleProvider     Contains the default build with no customization.
-     * @param modulesAllowed Configuration allowed.
      * @param price Price to build.
      * @param timeToBuild Time to build.
      * @param buildable Flag to tell if the entity can be built by the player.
      */
-    protected GameEntityData(final EntityType type, final int size, final Instance instances,
-                             final Level level, final DefaultModuleProvider defaultModuleProvider, final ModulesAllowed modulesAllowed, final ResourceValue price,
+    public GameEntityData(final EntityType type, final int size, final Instance instances,
+                             final Level level, final ResourceValue price,
                              final Duration timeToBuild, final boolean buildable) {
         super();
-        assert defaultModuleProvider != null;
-        assert modulesAllowed != null;
         assert price != null;
         assert timeToBuild != null;
         Checker.exceptionNotGreaterThanZero(size);
@@ -114,73 +84,39 @@ public class GameEntityData implements EntityData {
         this.maxInstance = instances;
         this.level = level;
         this.size = size;
-        this.modulesAllowed = modulesAllowed;
-        this.defaultModuleProvider = defaultModuleProvider;
         this.buildable = buildable;
         this.price = price;
         this.timeToBuild = timeToBuild;
     }
 
-    public boolean isMoveAllowed(ActionId move) {
-        return this.modulesAllowed.isMoveAllowed(move);
+    @Override
+    public final int getSize() {
+        return this.size;
     }
 
-    public boolean isWeaponAllowed(ActionId weapon) {
-        return this.modulesAllowed.isWeaponAllowed(weapon);
+    public final boolean isBuildable() {
+        return this.buildable;
     }
 
-    public boolean isHullAllowed(ActionId hull) {
-        return this.modulesAllowed.isHullAllowed(hull);
+    public final ResourceValue getPrice() {
+        return this.price;
     }
 
-    public boolean isEnergyAllowed(ActionId energy) {
-        return this.modulesAllowed.isEnergyAllowed(energy);
-    }
-
-    public boolean isDetectorAllowed(ActionId detector) {
-        return this.modulesAllowed.isDetectorAllowed(detector);
-    }
-
-    public boolean isOtherAllowed(ActionId module) {
-        return this.modulesAllowed.isOtherAllowed(module);
-    }
-
-    public final ModuleGroup getDefaultModules() {
-        return this.defaultModuleProvider.getModules();
+    public final Duration getTimeToBuild() {
+        return this.timeToBuild;
     }
 
     @Override
-    public int getSize() {
-        return size;
+    public final EntityType getType() {
+        return this.type;
     }
 
-    public ModulesAllowed getModulesAllowed() {
-        return modulesAllowed;
+    public final Instance getMaxInstances() {
+        return this.maxInstance;
     }
 
-    public boolean isBuildable() {
-        return buildable;
-    }
-
-    public ResourceValue getPrice() {
-        return price;
-    }
-
-    public Duration getTimeToBuild() {
-        return timeToBuild;
-    }
-
-    @Override
-    public EntityType getType() {
-        return type;
-    }
-
-    public Instance getMaxInstances() {
-        return maxInstance;
-    }
-
-    public Level getRequiredLevel() {
-        return level;
+    public final Level getRequiredLevel() {
+        return this.level;
     }
 
 }

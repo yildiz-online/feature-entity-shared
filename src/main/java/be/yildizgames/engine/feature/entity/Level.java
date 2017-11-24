@@ -24,21 +24,52 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.id.PlayerId;
-import be.yildiz.common.vector.Point3D;
-import be.yildizgames.engine.feature.entity.data.EntityType;
+import be.yildiz.common.ValueObject;
+import be.yildiz.common.util.Checker;
 
 /**
+ * Simple wrapper class to represent level.
+ * Immutable class.
+ *
  * @author Grégory Van den Borre
  */
-public interface EntityInConstructionFactory {
+public final class Level extends ValueObject {
 
-    EntityInConstruction build(EntityType type, EntityId id, String name, PlayerId owner, Point3D pos, Point3D dir, int hp, int energy);
+    /**
+     * Constant for 0.
+     */
+    public static final Level ZERO = new Level(0);
 
-    DefaultEntityInConstruction build(EntityType type, EntityId id, PlayerId owner, Point3D pos, Point3D dir);
+    /**
+     * Constant for 1.
+     */
+    public static final Level ONE = new Level(1);
 
-    default DefaultEntityInConstruction build(EntityId id,  EntityToCreate etc) {
-        return this.build(etc.getType(), id, etc.getOwner(), etc.getPosition(), etc.getDirection());
+    /**
+     * Full constructor.
+     *
+     * @param level Level value.
+     */
+    private Level(final int level) {
+        super(level);
+        Checker.exceptionNotPositive(level);
+    }
+
+    public static Level valueOf(int level) {
+        return new Level(level);
+    }
+
+    /**
+     * Create a new Level base on the result of this one added to a value.
+     *
+     * @param toAdd Value to add to this level to get the new one.
+     * @return A new Level resulting of the sum.
+     */
+    public Level add(final int toAdd) {
+        return new Level(this.value + toAdd);
+    }
+
+    public boolean isNotZero() {
+        return this.value > 0;
     }
 }

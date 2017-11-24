@@ -24,23 +24,20 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildiz.common.id.ActionId;
 import be.yildizgames.engine.feature.entity.data.EntityType;
-import be.yildizgames.engine.feature.entity.module.DataModule;
 
 import java.util.Map;
 
 /**
- * Register EntityType with their matching be.yildizgames.engine.feature.entity.data, and Modules be.yildizgames.engine.feature.entity.data.
+ * Register EntityType with their matching data.
  *
- * @param <T> Entity implementation.
  * @param <D> EntityData implementation.
  * @author Grégory Van den Borre
  */
-public interface EntityTypeFactory<T extends Entity, D extends EntityData> {
+public interface EntityTypeFactory<D extends EntityData> {
 
     /**
-     * @return The map containing all registered types, the key is the type, the value is the be.yildizgames.engine.feature.entity.data.
+     * @return The map containing all registered types, the key is the type, the value is the data.
      */
     //@Ensures result != null.
     Map<EntityType, D> getRegisteredData();
@@ -48,22 +45,22 @@ public interface EntityTypeFactory<T extends Entity, D extends EntityData> {
     /**
      * Provide an EntityData from a given EntityType.
      *
-     * @param type Type to get the matching be.yildizgames.engine.feature.entity.data.
-     * @return The be.yildizgames.engine.feature.entity.data matching the type.
-     * @throws IllegalArgumentException if no be.yildizgames.engine.feature.entity.data matches the type.
+     * @param type Type to get the matching data.
+     * @return The data matching the type.
+     * @throws IllegalArgumentException if no data matches the type.
      */
     //@Ensures result != null.
     //@Ensures result == this.types.get(type)
     D getByType(EntityType type);
 
-    /**
+    /*/**
      * Provide a ModuleData from a given ActionId.
      *
-     * @param type Type to get the matching be.yildizgames.engine.feature.entity.data.
-     * @return The be.yildizgames.engine.feature.entity.data matching the type.
-     * @throws IllegalArgumentException if no be.yildizgames.engine.feature.entity.data matches the type.
+     * @param type Type to get the matching data.
+     * @return The data matching the type.
+     * @throws IllegalArgumentException if no data matches the type.
      */
     //@Ensures result != null.
     //@Ensures result == this.types.get(type)
-    DataModule getByType(ActionId type);
+   // DataModule getByType(ActionId type);*/
 }

@@ -27,7 +27,6 @@ package be.yildizgames.engine.feature.entity;
 import be.yildiz.common.id.PlayerId;
 import be.yildiz.common.vector.Point3D;
 import be.yildizgames.engine.feature.entity.data.EntityType;
-import be.yildizgames.engine.feature.entity.module.ModuleGroup;
 
 /**
  * @author Grégory Van den Borre
@@ -36,39 +35,32 @@ public class EntityToCreate {
 
     private final EntityType type;
 
-    private final ModuleGroup modules;
-
     private final Point3D position;
 
     private final Point3D direction;
 
     private final PlayerId owner;
 
-    public EntityToCreate(EntityType type, ModuleGroup modules, Point3D position, Point3D direction, PlayerId owner) {
+    public EntityToCreate(EntityType type, Point3D position, Point3D direction, PlayerId owner) {
         this.type = type;
-        this.modules = modules;
         this.position = position;
         this.direction = direction;
         this.owner = owner;
     }
 
-    public EntityType getType() {
+    public final EntityType getType() {
         return type;
     }
 
-    public ModuleGroup getModules() {
-        return modules;
-    }
-
-    public Point3D getPosition() {
+    public final Point3D getPosition() {
         return position;
     }
 
-    public Point3D getDirection() {
+    public final Point3D getDirection() {
         return direction;
     }
 
-    public PlayerId getOwner() {
+    public final PlayerId getOwner() {
         return owner;
     }
 }

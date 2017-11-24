@@ -34,8 +34,6 @@ import be.yildizgames.engine.feature.entity.data.EntityType;
 import be.yildizgames.engine.feature.entity.data.State;
 import be.yildizgames.engine.feature.entity.data.ViewDistance;
 import be.yildizgames.engine.feature.entity.fields.Target;
-import be.yildizgames.engine.feature.entity.module.Module;
-import be.yildizgames.engine.feature.entity.module.ModuleGroup;
 
 import java.util.List;
 import java.util.Optional;
@@ -218,8 +216,6 @@ public interface Entity extends Target {
 
     Action getGenerateEnergyAction();
 
-    ModuleGroup getModules();
-
     Set<PlayerId> getSeenBy();
 
     boolean hasSameOwnerAs(Entity e);
@@ -265,10 +261,4 @@ public interface Entity extends Target {
     void startPreparedAction();
 
     Action getPreparedAction();
-
-    Module getAdditional1();
-
-    Module getAdditional2();
-
-    Module getAdditional3();
 }

@@ -24,13 +24,11 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildiz.common.id.ActionId;
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.id.PlayerId;
 import be.yildiz.common.util.Checker;
 import be.yildiz.common.vector.Point3D;
 import be.yildizgames.engine.feature.entity.data.EntityType;
-import be.yildizgames.engine.feature.entity.module.ModuleGroup;
 
 /**
  * This extends the entity in construction to provide additional information for a previously built entity.
@@ -40,7 +38,7 @@ import be.yildizgames.engine.feature.entity.module.ModuleGroup;
  */
 public class EntityInConstruction extends DefaultEntityInConstruction {
 
-    public static final EntityInConstruction WORLD = new EntityInConstruction(EntityType.WORLD, EntityId.WORLD, PlayerId.WORLD, "World",
+    /*public static final EntityInConstruction WORLD = new EntityInConstruction(EntityType.WORLD, EntityId.WORLD, PlayerId.WORLD, "World",
             new ModuleGroup.ModuleGroupBuilder()
                     .withMove(ActionId.valueOf(0))
                     .withInteraction(ActionId.valueOf(1))
@@ -48,7 +46,7 @@ public class EntityInConstruction extends DefaultEntityInConstruction {
                     .withHull(ActionId.valueOf(9))
                     .withEnergy(ActionId.valueOf(13))
                     .withNoAdditional()
-                    .build(), Point3D.ZERO, Point3D.INVERT_Z, 0, 0);
+                    .build(), Point3D.ZERO, Point3D.INVERT_Z, 0, 0);*/
 
     /**
      * Name of the entity.
@@ -80,8 +78,8 @@ public class EntityInConstruction extends DefaultEntityInConstruction {
      * @throws NullPointerException     if any parameter is null.
      * @throws IllegalArgumentException If hp or energy is not a positive value.
      */
-    public EntityInConstruction(EntityType type, EntityId id, PlayerId owner, String name, ModuleGroup modules, Point3D position, Point3D direction, int hp, int energy) {
-        super(type, id, owner, modules, position, direction);
+    public EntityInConstruction(EntityType type, EntityId id, PlayerId owner, String name, Point3D position, Point3D direction, int hp, int energy) {
+        super(type, id, owner, position, direction);
         Checker.exceptionNotPositive(hp);
         Checker.exceptionNotPositive(energy);
         assert name != null;

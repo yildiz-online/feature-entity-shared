@@ -24,21 +24,58 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.id.PlayerId;
-import be.yildiz.common.vector.Point3D;
-import be.yildizgames.engine.feature.entity.data.EntityType;
+import be.yildiz.common.util.Checker;
 
 /**
+ * Maximum number of instances for a given entity.
+ * Immutable class.
+ *
  * @author Grégory Van den Borre
  */
-public interface EntityInConstructionFactory {
+public final class Instance {
 
-    EntityInConstruction build(EntityType type, EntityId id, String name, PlayerId owner, Point3D pos, Point3D dir, int hp, int energy);
+    /**
+     * Unique instance, maximum is 1.
+     */
+    public static final Instance UNIQUE = new Instance(1);
 
-    DefaultEntityInConstruction build(EntityType type, EntityId id, PlayerId owner, Point3D pos, Point3D dir);
+    /**
+     * No limit.
+     */
+    public static final Instance NO_LIMIT = new Instance(Integer.MAX_VALUE);
 
-    default DefaultEntityInConstruction build(EntityId id,  EntityToCreate etc) {
-        return this.build(etc.getType(), id, etc.getOwner(), etc.getPosition(), etc.getDirection());
+    /**
+     * Number of allowed instances.
+     */
+    public final int number;
+
+    /**
+     * Full constructor.
+     *
+     * @param instanceNumber Number of allowed instances.
+     */
+    public Instance(final int instanceNumber) {
+        super();
+        Checker.exceptionNotGreaterThanZero(instanceNumber);
+        this.number = instanceNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Instance instance = (Instance) o;
+
+        return number == instance.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return number;
     }
 }
