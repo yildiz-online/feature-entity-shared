@@ -70,7 +70,6 @@ public class EntityInConstruction extends DefaultEntityInConstruction {
      * @param id Entity id.
      * @param owner Owner of the entity.
      * @param name      Name of the entity.
-     * @param modules Modules composing this entity.
      * @param position Position when built.
      * @param direction Direction when built.
      * @param hp        Entity hit points when built.
