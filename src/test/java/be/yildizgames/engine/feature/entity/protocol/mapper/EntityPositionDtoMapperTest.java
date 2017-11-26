@@ -22,36 +22,23 @@
  *
  */
 
-package be.yildizgames.engine.feature.entity.protocol;
+package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildiz.common.BaseTest;
-import be.yildiz.common.id.ActionId;
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.vector.Point3D;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import be.yildizgames.engine.feature.entity.protocol.EntityPositionDto;
+import be.yildizgames.common.mapping.BaseMapperTest;
 
 /**
  * @author Grégory Van den Borre
  */
-class ActionDtoTest {
+public class EntityPositionDtoMapperTest extends BaseMapperTest<EntityPositionDto> {
 
-    @Nested
-    class Equals {
-
-        @Disabled
-        @Test
-        void test() {
-            ActionDto base = new ActionDto(ActionId.valueOf(5), EntityId.valueOf(12L), Point3D.valueOf(4), EntityId.valueOf(7));
-            ActionDto same = new ActionDto(ActionId.valueOf(5), EntityId.valueOf(12L), Point3D.valueOf(4), EntityId.valueOf(7));
-            ActionDto different = new ActionDto(ActionId.valueOf(6), EntityId.valueOf(12L), Point3D.valueOf(4), EntityId.valueOf(7));
-            BaseTest<ActionDto> baseTest = new BaseTest<>(base, same, different);
-            baseTest.equalsSame();
-            baseTest.equalsDifferent();
-            baseTest.equalsDifferentType();
-            baseTest.equalsSameInstance();
-            baseTest.equalsNull();
-        }
+    public EntityPositionDtoMapperTest() {
+        super(EntityPositionDtoMapper.getInstance(), new EntityPositionDto(
+                EntityId.valueOf(7),
+                Point3D.valueOf(4,5,6),
+                Point3D.valueOf(1,2,3)
+        ));
     }
 }

@@ -22,36 +22,40 @@
  *
  */
 
-package be.yildizgames.engine.feature.entity.protocol;
+package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildiz.common.BaseTest;
-import be.yildiz.common.id.ActionId;
 import be.yildiz.common.id.EntityId;
+import be.yildiz.common.id.PlayerId;
 import be.yildiz.common.vector.Point3D;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import be.yildiz.helper.Helper;
+import be.yildiz.shared.protocol.EntityDto;
+import be.yildizgames.common.mapping.BaseMapperTest;
+import be.yildizgames.engine.feature.entity.data.EntityType;
+import org.junit.jupiter.api.BeforeAll;
 
 /**
  * @author Grégory Van den Borre
  */
-class ActionDtoTest {
+class EntityDtoMapperTest extends BaseMapperTest<EntityDto> {
 
-    @Nested
-    class Equals {
+    @BeforeAll
+    static void init() {
+        new EntityType(145, "test");
+    }
 
-        @Disabled
-        @Test
-        void test() {
-            ActionDto base = new ActionDto(ActionId.valueOf(5), EntityId.valueOf(12L), Point3D.valueOf(4), EntityId.valueOf(7));
-            ActionDto same = new ActionDto(ActionId.valueOf(5), EntityId.valueOf(12L), Point3D.valueOf(4), EntityId.valueOf(7));
-            ActionDto different = new ActionDto(ActionId.valueOf(6), EntityId.valueOf(12L), Point3D.valueOf(4), EntityId.valueOf(7));
-            BaseTest<ActionDto> baseTest = new BaseTest<>(base, same, different);
-            baseTest.equalsSame();
-            baseTest.equalsDifferent();
-            baseTest.equalsDifferentType();
-            baseTest.equalsSameInstance();
-            baseTest.equalsNull();
-        }
+    EntityDtoMapperTest() {
+        super(new EntityDtoMapper(), new EntityDto(
+                EntityId.valueOf(2),
+                "aName",
+                EntityType.valueOf(145),
+                PlayerId.valueOf(4),
+                Point3D.valueOf(1,2,3),
+                Point3D.valueOf(4,5,6),
+                5,
+                10,
+                Helper.givenAModuleGroup(),
+                EntityId.valueOf(7),
+                17
+        ));
     }
 }

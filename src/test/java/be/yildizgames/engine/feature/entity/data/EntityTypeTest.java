@@ -24,7 +24,6 @@
 
 package be.yildizgames.engine.feature.entity.data;
 
-import be.yildiz.helper.Helper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -36,6 +35,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  */
 @SuppressWarnings({"null", "boxing"})
 final class EntityTypeTest {
+
+    public static final EntityType TYPE_OK = new EntityType(4, "test");
 
     @BeforeEach
     void enableAssert() {
@@ -61,7 +62,7 @@ final class EntityTypeTest {
 
     @Test
     void testEntityTypeDuplicate() {
-        EntityType e = Helper.TYPE_OK;
+        EntityType e = TYPE_OK;
         assertThrows(AssertionError.class, () -> new EntityType(4, "test2"));
     }
 
