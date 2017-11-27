@@ -26,36 +26,15 @@ package be.yildizgames.engine.feature.entity.protocol.mapper;
 
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.id.PlayerId;
-import be.yildiz.common.vector.Point3D;
-import be.yildiz.helper.Helper;
-import be.yildiz.shared.protocol.EntityDto;
 import be.yildizgames.common.mapping.BaseMapperTest;
-import be.yildizgames.engine.feature.entity.data.EntityType;
-import org.junit.jupiter.api.BeforeAll;
+import be.yildizgames.engine.feature.entity.protocol.ChangeOwnerDto;
 
 /**
  * @author Grégory Van den Borre
  */
-class EntityDtoMapperTest extends BaseMapperTest<EntityDto> {
+public class ChangeOwnerDtoMapperTest extends BaseMapperTest<ChangeOwnerDto> {
 
-    @BeforeAll
-    static void init() {
-        new EntityType(145, "test");
-    }
-
-    EntityDtoMapperTest() {
-        super(new EntityDtoMapper(), new EntityDto(
-                EntityId.valueOf(2),
-                "aName",
-                EntityType.valueOf(145),
-                PlayerId.valueOf(4),
-                Point3D.valueOf(1,2,3),
-                Point3D.valueOf(4,5,6),
-                5,
-                10,
-                Helper.givenAModuleGroup(),
-                EntityId.valueOf(7),
-                17
-        ));
+    public ChangeOwnerDtoMapperTest() {
+        super(ChangeOwnerDtoMapper.getInstance(), new ChangeOwnerDto(EntityId.valueOf(3), PlayerId.valueOf(2)));
     }
 }
