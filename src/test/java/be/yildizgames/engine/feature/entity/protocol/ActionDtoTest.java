@@ -24,10 +24,10 @@
 
 package be.yildizgames.engine.feature.entity.protocol;
 
-import be.yildiz.common.BaseTest;
 import be.yildiz.common.id.ActionId;
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.shared.test.BaseTest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
