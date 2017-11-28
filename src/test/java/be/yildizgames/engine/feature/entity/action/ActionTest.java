@@ -94,7 +94,7 @@ class ActionTest {
         Action c = new ActionMock();
         assertEquals(a, c);
         assertNotEquals(a, null);
-        assertNotEquals(a, new ActionMock(EntityId.valueOf(5)));
+        assertNotEquals(a, new ActionMock(EntityId.valueOf(6)));
     }
 
     /**
@@ -235,7 +235,7 @@ class ActionTest {
 
     @Test
     void testActionNullEntity() {
-        assertThrows(NullPointerException.class, () -> new ActionMock(null));
+        assertThrows(AssertionError.class, () -> new ActionMock(null));
     }
 
     @Test
