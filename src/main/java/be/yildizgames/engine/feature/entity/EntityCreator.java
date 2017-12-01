@@ -24,11 +24,13 @@
 
 package be.yildizgames.engine.feature.entity;
 
+import be.yildiz.common.id.EntityId;
+
 /**
  * @author Grégory Van den Borre
  */
 @FunctionalInterface
-public interface EntityCreator<T extends Entity> {
+public interface EntityCreator {
 
-    T create(EntityToCreate e);
+    EntityId create(EntityToCreate e);
 }
