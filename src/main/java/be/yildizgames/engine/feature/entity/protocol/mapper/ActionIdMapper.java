@@ -31,7 +31,7 @@ import be.yildizgames.common.mapping.ObjectMapper;
 /**
  * @author Grégory Van den Borre
  */
-class ActionIdMapper implements ObjectMapper<ActionId> {
+public class ActionIdMapper implements ObjectMapper<ActionId> {
 
     private static final ActionIdMapper INSTANCE = new ActionIdMapper();
 

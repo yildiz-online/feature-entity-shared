@@ -86,11 +86,13 @@ public abstract class BaseEntity implements Entity, Target {
 
     private Action actionToPrepare;
 
-    public BaseEntity(EntityId id, EntityType type) {
+    protected BaseEntity(EntityId id, EntityType type, int hp, int ep) {
         super();
         this.id = id;
         this.type = type;
         this.actionToPrepare = new NoAction(this.id, ActionId.WORLD);
+        this.hp.setValue(hp);
+        this.energy.setValue(ep);
     }
 
     @Override
@@ -274,36 +276,40 @@ public abstract class BaseEntity implements Entity, Target {
     }
 
     @Override
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
     @Override
-    public PlayerId getOwner() {
+    public final PlayerId getOwner() {
         return owner;
     }
 
     @Override
-    public List<Action> getActionRunning() {
+    public final List<Action> getActionRunning() {
         return actionRunning;
     }
 
-    public List<Action> getActionComplete() {
+    public final List<Action> getActionComplete() {
         return actionComplete;
     }
 
     @Override
-    public Set<PlayerId> getSeenBy() {
+    public final Set<PlayerId> getSeenBy() {
         return seenBy;
     }
 
     @Override
-    public EntityId getId() {
+    public final EntityId getId() {
         return id;
     }
 
     @Override
-    public void setName(String name) {
+    public final void setName(String name) {
         this.name = name;
+    }
+
+    protected final void addRunningAction(final Action a) {
+        this.actionRunning.add(a);
     }
 }
