@@ -77,7 +77,15 @@ public class EntityInConstruction extends DefaultEntityInConstruction {
      * @throws NullPointerException     if any parameter is null.
      * @throws IllegalArgumentException If hp or energy is not a positive value.
      */
-    public EntityInConstruction(EntityType type, EntityId id, PlayerId owner, String name, Point3D position, Point3D direction, int hp, int energy) {
+    public EntityInConstruction(
+            EntityType type,
+            EntityId id,
+            PlayerId owner,
+            String name,
+            Point3D position,
+            Point3D direction,
+            int hp,
+            int energy) {
         super(type, id, owner, position, direction);
         Checker.exceptionNotPositive(hp);
         Checker.exceptionNotPositive(energy);

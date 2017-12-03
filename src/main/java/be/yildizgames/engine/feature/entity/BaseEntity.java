@@ -95,6 +95,15 @@ public abstract class BaseEntity implements Entity, Target {
         this.energy.setValue(ep);
     }
 
+    protected BaseEntity(EntityInConstruction e) {
+        super();
+        this.id = e.getId();
+        this.type = e.getType();
+        this.actionToPrepare = new NoAction(this.id, ActionId.WORLD);
+        this.hp.setValue(e.getHp());
+        this.energy.setValue(e.getEnergy());
+    }
+
     @Override
     public void doActions(final long time) {
         this.actionComplete.clear();
