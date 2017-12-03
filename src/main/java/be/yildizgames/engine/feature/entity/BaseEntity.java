@@ -84,7 +84,7 @@ public abstract class BaseEntity implements Entity, Target {
 
     private List<Action> actionComplete = Lists.newList();
 
-    private Action actionToPrepare;
+    protected Action actionToPrepare;
 
     protected BaseEntity(EntityId id, EntityType type, int hp, int ep) {
         super();
