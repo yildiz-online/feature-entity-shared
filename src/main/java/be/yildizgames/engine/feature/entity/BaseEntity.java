@@ -66,13 +66,13 @@ public abstract class BaseEntity implements Entity, Target {
     /**
      * Position, shared between this entity and its modules.
      */
-    private final SharedPosition position = new SharedPosition();
+    protected final SharedPosition position = new SharedPosition();
     /**
      * States, shared between this entity and its modules.
      */
-    private final StateHolder states = new StateHolder();
-    private final BoundedValue energy = new BoundedValue();
-    private final BoundedValue hp = new BoundedValue();
+    protected final StateHolder states = new StateHolder();
+    protected final BoundedValue energy = new BoundedValue();
+    protected final BoundedValue hp = new BoundedValue();
 
     private final EntityType type;
 
@@ -80,9 +80,9 @@ public abstract class BaseEntity implements Entity, Target {
 
     private PlayerId owner;
 
-    private List<Action> actionRunning = Lists.newList();
+    protected List<Action> actionRunning = Lists.newList();
 
-    private List<Action> actionComplete = Lists.newList();
+    protected List<Action> actionComplete = Lists.newList();
 
     protected Action actionToPrepare;
 
