@@ -32,7 +32,7 @@ import be.yildizgames.engine.feature.entity.data.EntityType;
  * it contains the type, and the unique build index.
  * @author Grégory Van den Borre
  */
-public class EntityRepresentation {
+public class EntityConstructionStatus {
 
     /**
      * Type of the entity to build.
@@ -49,7 +49,7 @@ public class EntityRepresentation {
      */
     private Time timeLeft;
 
-    public EntityRepresentation(EntityType type,  int index, Time timeLeft) {
+    public EntityConstructionStatus(EntityType type, int index, Time timeLeft) {
         super();
         this.type = type;
         this.index = index;
@@ -92,7 +92,7 @@ public class EntityRepresentation {
             return false;
         }
 
-        EntityRepresentation that = (EntityRepresentation) o;
+        EntityConstructionStatus that = (EntityConstructionStatus) o;
 
         return index == that.index && type.equals(that.type) && timeLeft.equals(that.timeLeft);
     }
