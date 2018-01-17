@@ -24,8 +24,8 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildiz.common.collections.Lists;
-import be.yildiz.common.framelistener.EndFrameListener;
+import be.yildizgames.common.collection.Lists;
+import be.yildizgames.common.frame.EndFrameListener;
 import be.yildizgames.engine.feature.entity.action.Action;
 import be.yildizgames.engine.feature.entity.action.ActionListener;
 

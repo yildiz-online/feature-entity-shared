@@ -24,7 +24,7 @@
 
 package be.yildizgames.engine.feature.entity.data;
 
-import be.yildiz.common.util.Time;
+import java.time.Duration;
 
 /**
  * Simple wrapper class to represent time between 2 attacks.
@@ -37,24 +37,24 @@ public final class AttackTime {
     /**
      * Constant for no attack time.
      */
-    public static final AttackTime ZERO = new AttackTime(Time.ZERO);
+    public static final AttackTime ZERO = new AttackTime(Duration.ZERO);
 
     /**
      * Time.
      */
-    private final Time time;
+    private final Duration time;
 
     /**
      * Create a new AttackTime from a time.
      *
      * @param t Time.
      */
-    public AttackTime(final Time t) {
+    public AttackTime(final Duration t) {
         super();
         this.time = t;
     }
 
-    public Time getTime() {
+    public Duration getTime() {
         return time;
     }
 }

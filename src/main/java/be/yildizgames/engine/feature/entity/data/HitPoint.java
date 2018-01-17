@@ -24,7 +24,7 @@
 
 package be.yildizgames.engine.feature.entity.data;
 
-import be.yildiz.common.util.Checker;
+import be.yildizgames.common.util.Checker;
 
 /**
  * Simple wrapper class to represent hit points.

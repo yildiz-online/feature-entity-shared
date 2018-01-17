@@ -24,9 +24,9 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildiz.common.id.ActionId;
 import be.yildizgames.common.mapping.MappingException;
 import be.yildizgames.common.mapping.ObjectMapper;
+import be.yildizgames.common.model.ActionId;
 
 /**
  * @author Grégory Van den Borre

@@ -23,7 +23,7 @@
 
 package be.yildizgames.engine.feature.entity.fields;
 
-import be.yildiz.common.util.Checker;
+import be.yildizgames.common.util.Checker;
 
 /**
  * @author Grégory Van den Borre

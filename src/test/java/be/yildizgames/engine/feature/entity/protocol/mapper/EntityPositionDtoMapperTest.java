@@ -24,10 +24,10 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.vector.Point3D;
-import be.yildizgames.engine.feature.entity.protocol.EntityPositionDto;
+import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.mapping.BaseMapperTest;
+import be.yildizgames.common.model.EntityId;
+import be.yildizgames.engine.feature.entity.protocol.EntityPositionDto;
 
 /**
  * @author Grégory Van den Borre

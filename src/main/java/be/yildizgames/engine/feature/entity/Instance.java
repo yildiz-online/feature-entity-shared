@@ -24,7 +24,7 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildiz.common.util.Checker;
+import be.yildizgames.common.util.Checker;
 
 /**
  * Maximum number of instances for a given entity.

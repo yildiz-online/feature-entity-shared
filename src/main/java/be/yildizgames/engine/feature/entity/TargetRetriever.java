@@ -24,8 +24,8 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildiz.common.collections.Sets;
-import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.collection.Sets;
+import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.engine.feature.entity.fields.Target;
 
 import java.util.Set;

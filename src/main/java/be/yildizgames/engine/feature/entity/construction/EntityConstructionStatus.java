@@ -24,8 +24,9 @@
 
 package be.yildizgames.engine.feature.entity.construction;
 
-import be.yildiz.common.util.Time;
 import be.yildizgames.engine.feature.entity.data.EntityType;
+
+import java.time.Duration;
 
 /**
  *  An entity representation construction is the state of the build of an entity,
@@ -47,9 +48,9 @@ public class EntityConstructionStatus {
     /**
      * Time left before the construction is complete.
      */
-    private Time timeLeft;
+    private Duration timeLeft;
 
-    public EntityConstructionStatus(EntityType type, int index, Time timeLeft) {
+    public EntityConstructionStatus(EntityType type, int index, Duration timeLeft) {
         super();
         this.type = type;
         this.index = index;
@@ -60,7 +61,7 @@ public class EntityConstructionStatus {
      * @return The time before construction completion in milliseconds.
      */
     public long getTime() {
-        return this.timeLeft.timeInMs;
+        return this.timeLeft.toMillis();
     }
 
     /**
@@ -69,18 +70,18 @@ public class EntityConstructionStatus {
      * @param timeToRemove Time spent since the last update.
      */
     public void reduceTimeLeft(final long timeToRemove) {
-        long t = timeLeft.subtractMs(timeToRemove);
+        long t = timeLeft.toMillis() - timeToRemove;
         if (t < 0) {
             t = 0;
         }
-        this.timeLeft = Time.milliSeconds(t);
+        this.timeLeft = Duration.ofMillis(t);
     }
 
     /**
      * @return True if the time required to build the entity is elapsed.
      */
     public boolean isTimeElapsed() {
-        return this.timeLeft.timeInMs <= 0;
+        return this.timeLeft.toMillis() <= 0;
     }
 
     @Override

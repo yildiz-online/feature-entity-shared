@@ -23,9 +23,9 @@
 
 package be.yildizgames.engine.feature.entity.action;
 
-import be.yildiz.common.id.ActionId;
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.util.ElapsedTimeComputer;
+import be.yildizgames.common.model.ActionId;
+import be.yildizgames.common.model.EntityId;
+import be.yildizgames.common.time.ElapsedTimeComputer;
 import be.yildizgames.engine.feature.entity.data.AttackDamage;
 import be.yildizgames.engine.feature.entity.data.AttackRange;
 import be.yildizgames.engine.feature.entity.data.AttackTime;
@@ -85,6 +85,6 @@ public abstract class AbstractAttack extends Action {
     }
 
     public void setAttackTime(final AttackTime time) {
-        this.timer = new ElapsedTimeComputer(time.getTime());
+        this.timer = new ElapsedTimeComputer(time.getTime().toMillis());
     }
 }

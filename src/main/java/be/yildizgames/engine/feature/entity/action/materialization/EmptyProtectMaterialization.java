@@ -23,10 +23,10 @@
 
 package be.yildizgames.engine.feature.entity.action.materialization;
 
-import be.yildiz.common.gameobject.GameMaterialization;
-import be.yildiz.common.gameobject.Movable;
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.gameobject.GameMaterialization;
+import be.yildizgames.common.gameobject.Movable;
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.EntityId;
 
 /**
  * @author Grégory Van den Borre

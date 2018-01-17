@@ -24,9 +24,9 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.id.PlayerId;
-import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.EntityId;
+import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.engine.feature.entity.data.EntityType;
 
 /**
@@ -72,7 +72,7 @@ public class DefaultEntityInConstruction {
      * @param direction World direction of the entity to build.
      * @throws NullPointerException If any parameter is null.
      */
-    public DefaultEntityInConstruction(EntityType type, EntityId id, PlayerId owner,  Point3D position, Point3D direction) {
+    public DefaultEntityInConstruction(EntityType type, EntityId id, PlayerId owner, Point3D position, Point3D direction) {
         super();
         assert type != null;
         assert id != null;

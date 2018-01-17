@@ -23,7 +23,7 @@
 
 package be.yildizgames.engine.feature.entity.fields;
 
-import be.yildiz.common.BoundedValue;
+import be.yildizgames.common.util.BoundedValue;
 
 /**
  * @author Grégory Van den Borre

@@ -23,7 +23,7 @@
 
 package be.yildizgames.engine.feature.entity.fields;
 
-import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.geometry.Point3D;
 
 /**
  * @author Grégory Van den Borre

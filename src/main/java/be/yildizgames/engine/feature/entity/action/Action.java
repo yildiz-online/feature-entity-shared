@@ -23,10 +23,10 @@
 
 package be.yildizgames.engine.feature.entity.action;
 
-import be.yildiz.common.BoundedValue;
-import be.yildiz.common.id.ActionId;
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.ActionId;
+import be.yildizgames.common.model.EntityId;
+import be.yildizgames.common.util.BoundedValue;
 import be.yildizgames.engine.feature.entity.fields.PositionData;
 import be.yildizgames.engine.feature.entity.fields.SharedPosition;
 import be.yildizgames.engine.feature.entity.fields.StateHolder;

@@ -24,10 +24,9 @@
 
 package be.yildizgames.engine.feature.entity.protocol;
 
-import be.yildiz.common.id.ActionId;
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.vector.Point3D;
-import be.yildizgames.common.shared.test.BaseTest;
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.ActionId;
+import be.yildizgames.common.model.EntityId;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -46,12 +45,12 @@ class ActionDtoTest {
             ActionDto base = new ActionDto(ActionId.valueOf(5), EntityId.valueOf(12L), Point3D.valueOf(4), EntityId.valueOf(7));
             ActionDto same = new ActionDto(ActionId.valueOf(5), EntityId.valueOf(12L), Point3D.valueOf(4), EntityId.valueOf(7));
             ActionDto different = new ActionDto(ActionId.valueOf(6), EntityId.valueOf(12L), Point3D.valueOf(4), EntityId.valueOf(7));
-            BaseTest<ActionDto> baseTest = new BaseTest<>(base, same, different);
+            /*BaseTest<ActionDto> baseTest = new BaseTest<>(base, same, different);
             baseTest.equalsSame();
             baseTest.equalsDifferent();
             baseTest.equalsDifferentType();
             baseTest.equalsSameInstance();
-            baseTest.equalsNull();
+            baseTest.equalsNull();*/
         }
     }
 }

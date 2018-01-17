@@ -23,8 +23,8 @@
 
 package be.yildizgames.engine.feature.entity.action;
 
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.id.PlayerId;
+import be.yildizgames.common.model.EntityId;
+import be.yildizgames.common.model.PlayerId;
 
 /**
  * @author Grégory Van den Borre

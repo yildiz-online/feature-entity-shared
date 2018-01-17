@@ -24,8 +24,8 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildiz.common.id.PlayerId;
-import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.engine.feature.entity.data.EntityType;
 
 /**

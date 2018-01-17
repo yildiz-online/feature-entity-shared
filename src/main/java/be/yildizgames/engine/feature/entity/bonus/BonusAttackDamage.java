@@ -23,7 +23,7 @@
 
 package be.yildizgames.engine.feature.entity.bonus;
 
-import be.yildiz.common.id.ActionId;
+import be.yildizgames.common.model.ActionId;
 
 /**
  * Bonus for damages.

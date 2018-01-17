@@ -23,7 +23,7 @@
 
 package be.yildizgames.engine.feature.entity.fields;
 
-import be.yildiz.common.collections.Sets;
+import be.yildizgames.common.collection.Sets;
 import be.yildizgames.engine.feature.entity.data.State;
 
 import java.util.Set;

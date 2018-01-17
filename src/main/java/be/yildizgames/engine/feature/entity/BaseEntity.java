@@ -24,13 +24,13 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildiz.common.BoundedValue;
-import be.yildiz.common.collections.Lists;
-import be.yildiz.common.collections.Sets;
-import be.yildiz.common.id.ActionId;
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.id.PlayerId;
-import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.collection.Lists;
+import be.yildizgames.common.collection.Sets;
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.ActionId;
+import be.yildizgames.common.model.EntityId;
+import be.yildizgames.common.model.PlayerId;
+import be.yildizgames.common.util.BoundedValue;
 import be.yildizgames.engine.feature.entity.action.Action;
 import be.yildizgames.engine.feature.entity.action.NoAction;
 import be.yildizgames.engine.feature.entity.data.EntityType;

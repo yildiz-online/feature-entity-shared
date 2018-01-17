@@ -23,8 +23,8 @@
 
 package be.yildizgames.engine.feature.entity.bonus;
 
-import be.yildiz.common.collections.Sets;
-import be.yildiz.common.id.ActionId;
+import be.yildizgames.common.collection.Sets;
+import be.yildizgames.common.model.ActionId;
 
 import java.util.Arrays;
 import java.util.Set;

@@ -23,8 +23,8 @@
 
 package be.yildizgames.engine.feature.entity.action;
 
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.EntityId;
 import be.yildizgames.engine.feature.entity.fields.Target;
 
 import java.util.Optional;

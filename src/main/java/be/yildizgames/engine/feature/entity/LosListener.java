@@ -24,7 +24,7 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildiz.common.id.PlayerId;
+import be.yildizgames.common.model.PlayerId;
 
 /**
  * Listener to notify when an Entity visibility state change for an other Entity.

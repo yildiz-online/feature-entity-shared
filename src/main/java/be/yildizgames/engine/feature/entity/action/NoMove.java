@@ -23,8 +23,8 @@
 
 package be.yildizgames.engine.feature.entity.action;
 
-import be.yildiz.common.id.ActionId;
-import be.yildiz.common.id.EntityId;
+import be.yildizgames.common.model.ActionId;
+import be.yildizgames.common.model.EntityId;
 
 /**
  * action for entities unable to move.

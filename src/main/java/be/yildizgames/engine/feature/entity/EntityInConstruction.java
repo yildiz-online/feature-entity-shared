@@ -24,10 +24,10 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.id.PlayerId;
-import be.yildiz.common.util.Checker;
-import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.EntityId;
+import be.yildizgames.common.model.PlayerId;
+import be.yildizgames.common.util.Checker;
 import be.yildizgames.engine.feature.entity.data.EntityType;
 
 /**

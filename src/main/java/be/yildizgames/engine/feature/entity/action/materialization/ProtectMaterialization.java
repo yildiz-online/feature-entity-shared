@@ -23,7 +23,7 @@
 
 package be.yildizgames.engine.feature.entity.action.materialization;
 
-import be.yildiz.common.gameobject.GameMaterialization;
+import be.yildizgames.common.gameobject.GameMaterialization;
 
 /**
  * Materialization for the protect action.

@@ -24,9 +24,9 @@
 
 package be.yildizgames.engine.feature.entity.action;
 
-import be.yildiz.common.id.ActionId;
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.ActionId;
+import be.yildizgames.common.model.EntityId;
 import be.yildizgames.engine.feature.entity.fields.Target;
 import org.junit.jupiter.api.Test;
 
@@ -179,9 +179,6 @@ class ActionTest {
     void testInit() {
     }
 
-    /**
-     * Test method for {@link be.yildizgames.engine.feature.entity.action.Action#setDestination(be.yildiz.common.vector.Point3D)} .
-     */
     @Test
     void testSetDestination() {
     }
