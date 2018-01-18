@@ -24,8 +24,6 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildizgames.common.model.PlayerId;
-
 /**
  * Listener to notify when an Entity visibility state change for an other Entity.
  *
@@ -50,23 +48,4 @@ public interface LosListener<T extends Entity> {
      */
     default void noLongerSee(T viewer, T viewed) {
     }
-
-    /**
-     * Called when an entity become visible to a player(excepted for the entity owner).
-     *
-     * @param player Player seeing the entity.
-     * @param viewed Entity now visible for that player.
-     */
-    default void playerSee(PlayerId player, T viewed) {
-    }
-
-    /**
-     * Called when an entity is no longer visible to a player.
-     *
-     * @param player Player no longer seeing the entity.
-     * @param viewed Entity now invisible for that player.
-     */
-    default void playerNoLongerSee(PlayerId player, T viewed) {
-    }
-
 }
