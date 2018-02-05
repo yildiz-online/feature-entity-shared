@@ -1,7 +1,7 @@
 /*
  * This file is part of the Yildiz-Engine project, licenced under the MIT License  (MIT)
  *
- *  Copyright (c) 2017 Grégory Van den Borre
+ *  Copyright (c) 2018 Grégory Van den Borre
  *
  *  More infos available: https://www.yildiz-games.be
  *
@@ -24,8 +24,12 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
+import be.yildizgames.common.mapping.EntityIdMapper;
+import be.yildizgames.common.mapping.MappingException;
+import be.yildizgames.common.mapping.ObjectMapper;
+import be.yildizgames.common.mapping.PlayerIdMapper;
+import be.yildizgames.common.mapping.Separator;
 import be.yildizgames.engine.feature.entity.protocol.ChangeOwnerDto;
-import be.yildizgames.common.mapping.*;
 
 /**
  * @author Grégory Van den Borre
