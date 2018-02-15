@@ -24,11 +24,11 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildizgames.common.mapping.EntityIdMapper;
 import be.yildizgames.common.mapping.MappingException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.common.mapping.Point3DMapper;
 import be.yildizgames.common.mapping.Separator;
+import be.yildizgames.common.model.EntityIdMapper;
 import be.yildizgames.engine.feature.entity.protocol.EntityPositionDto;
 
 /**
