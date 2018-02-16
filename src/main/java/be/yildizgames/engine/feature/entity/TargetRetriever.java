@@ -24,11 +24,11 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildizgames.common.collection.Sets;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.engine.feature.entity.fields.Target;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Retrieve the Entity in a given zone.
@@ -54,8 +54,9 @@ public final class TargetRetriever<T extends Entity> {
      * @return All entities in a given zone.
      */
     public Set<Target> retrieve(final Point3D pos, final int damageZone) {
-        Set<Target> result = Sets.newSet();
-        this.manager.getEntities().stream().filter(e -> Point3D.squaredDistance(e.getPosition(), pos) < damageZone * damageZone).forEach(result::add);
-        return result;
+        return this.manager.getEntities()
+                .stream()
+                .filter(e -> Point3D.squaredDistance(e.getPosition(), pos) < damageZone * damageZone)
+                .collect(Collectors.toSet());
     }
 }

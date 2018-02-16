@@ -22,36 +22,14 @@
  *
  */
 
-package be.yildizgames.engine.feature.entity.fields;
-
-import be.yildizgames.engine.feature.entity.data.State;
-
-import java.util.HashSet;
-import java.util.Set;
-
-/**
- * @author Grégory Van den Borre
- */
-public class StateHolder {
-
-    /**
-     * List of states for this holder.
-     */
-    private final Set<State> states = new HashSet<>();
-
-    public void removeState(final State state) {
-        assert state != null;
-        this.states.remove(state);
-    }
-
-    public void addState(final State state) {
-        assert state != null;
-        this.states.add(state);
-    }
-
-    public boolean hasState(State state) {
-        assert state != null;
-        return this.states.contains(state);
-    }
-
+module be.yildizgames.feature.entity.shared {
+    requires be.yildizgames.common.frame;
+    requires be.yildizgames.common.model;
+    requires be.yildizgames.common.util;
+    requires be.yildizgames.common.geometry;
+    requires be.yildizgames.common.gameobject;
+    requires be.yildizgames.common.time;
+    requires be.yildizgames.common.mapping;
+    requires be.yildizgames.common.mapping.model;
+    requires be.yildizgames.common.mapping.geometry;
 }

@@ -24,18 +24,19 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildizgames.common.collection.CollectionUtil;
-import be.yildizgames.common.collection.Lists;
-import be.yildizgames.common.collection.Maps;
 import be.yildizgames.common.model.EntityId;
 import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.engine.feature.entity.bonus.EntityBonus;
 import be.yildizgames.engine.feature.entity.data.EntityType;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Manage all entities.
@@ -47,17 +48,17 @@ public class EntityManager<T extends Entity> {
     /**
      * List of all entities by Player.
      */
-    private final Map<PlayerId, Set<T>> entityList = Maps.newMap();
+    private final Map<PlayerId, Set<T>> entityList = new HashMap<>();
 
     /**
      * List of all Entity, by Id.
      */
-    private final Map<EntityId, T> entities = Maps.newMap();
+    private final Map<EntityId, T> entities = new HashMap<>();
 
     /**
      * List of all entity bonus associated to a player.
      */
-    private final Map<PlayerId, Set<EntityBonus>> bonusList = Maps.newMap();
+    private final Map<PlayerId, Set<EntityBonus>> bonusList = new HashMap<>();
 
     private final T world;
 
@@ -99,7 +100,7 @@ public class EntityManager<T extends Entity> {
     public final void addEntity(final T entity) {
         this.entities.put(entity.getId(), entity);
         PlayerId p = entity.getOwner();
-        Set<T> list = CollectionUtil.getOrCreateSetFromMap(this.entityList, p);
+        Set<T> list = this.entityList.computeIfAbsent(p, (PlayerId) -> new HashSet<>());
         list.add(entity);
         //Set<EntityBonus> boni = CollectionUtil.getOrCreateSetFromMap(this.bonusList, p);
         //for (EntityBonus b : boni) {
@@ -141,7 +142,7 @@ public class EntityManager<T extends Entity> {
      * @param bonus Bonus to add.
      */
     public final void addBonus(final PlayerId p, final EntityBonus bonus) {
-        CollectionUtil.getOrCreateSetFromMap(this.bonusList, p).add(bonus);
+        this.bonusList.computeIfAbsent(p, (PlayerId) -> new HashSet<>()).add(bonus);
         //Set<Entity> list = CollectionUtil.getOrCreateSetFromMap(this.entityList, p);
         // for (EntityType be.yildizgames.engine.feature.entity.data : bonus.getTypes()) {
         // for (Entity e : list) {
@@ -182,7 +183,7 @@ public class EntityManager<T extends Entity> {
     }
 
     public final List<T> getEntities() {
-        return Lists.newList(this.entities.values());
+        return new ArrayList<>(this.entities.values());
     }
 
     /**
@@ -190,11 +191,9 @@ public class EntityManager<T extends Entity> {
      * @return The entities matching the provided list of id.
      */
     public final List<T> getById(final List<EntityId> ids) {
-        List<T> result = Lists.newList(ids.size());
-        ids.stream()
+        return ids.stream()
                 .map(this::findById)
-                .forEach(result::add);
-        return result;
+                .collect(Collectors.toList());
     }
 
 }

@@ -24,8 +24,6 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildizgames.common.collection.Lists;
-import be.yildizgames.common.collection.Sets;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.ActionId;
 import be.yildizgames.common.model.EntityId;
@@ -39,6 +37,8 @@ import be.yildizgames.engine.feature.entity.fields.SharedPosition;
 import be.yildizgames.engine.feature.entity.fields.StateHolder;
 import be.yildizgames.engine.feature.entity.fields.Target;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -55,9 +55,9 @@ public abstract class BaseEntity implements Entity, Target {
     /**
      * List of all entity visible by this one.
      */
-    private final Set<Entity> visibleEntities = Sets.newSet();
+    private final Set<Entity> visibleEntities = new HashSet<>();
 
-    private final Set<PlayerId> seenBy = Sets.newSet();
+    private final Set<PlayerId> seenBy = new HashSet<>();
 
     /**
      * Entity unique Id, this value is used as an identifier for equals method.
@@ -80,9 +80,9 @@ public abstract class BaseEntity implements Entity, Target {
 
     private PlayerId owner;
 
-    protected List<Action> actionRunning = Lists.newList();
+    protected List<Action> actionRunning = new ArrayList<>();
 
-    protected List<Action> actionComplete = Lists.newList();
+    protected List<Action> actionComplete = new ArrayList<>();
 
     protected Action actionToPrepare;
 

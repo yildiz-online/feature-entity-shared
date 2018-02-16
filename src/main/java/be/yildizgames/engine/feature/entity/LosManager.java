@@ -24,10 +24,10 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildizgames.common.collection.Lists;
 import be.yildizgames.common.gameobject.CollisionListener;
 import be.yildizgames.common.gameobject.CollisionResult;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,7 +40,7 @@ public class LosManager<T extends Entity> implements CollisionListener {
     /**
      * Listeners to notify about los events changes.
      */
-    private final List<LosListener<T>> listenerList = Lists.newList();
+    private final List<LosListener<T>> listenerList = new ArrayList<>();
 
     private final EntityManager<T> manager;
 

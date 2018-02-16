@@ -27,8 +27,8 @@ package be.yildizgames.engine.feature.entity.protocol.mapper;
 import be.yildizgames.common.mapping.MappingException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.common.mapping.Separator;
-import be.yildizgames.common.model.EntityIdMapper;
-import be.yildizgames.common.model.PlayerIdMapper;
+import be.yildizgames.common.mapping.model.EntityIdMapper;
+import be.yildizgames.common.mapping.model.PlayerIdMapper;
 import be.yildizgames.engine.feature.entity.protocol.ChangeOwnerDto;
 
 /**

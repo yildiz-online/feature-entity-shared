@@ -24,8 +24,7 @@
 
 package be.yildizgames.engine.feature.entity.data;
 
-import be.yildizgames.common.collection.Maps;
-
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -44,7 +43,7 @@ public final class EntityType {
     /**
      * Map the type to its index value.
      */
-    private static final Map<Integer, EntityType> MAP = Maps.newMap();
+    private static final Map<Integer, EntityType> MAP = new HashMap<>();
 
     /**
      * Constant for the world type.

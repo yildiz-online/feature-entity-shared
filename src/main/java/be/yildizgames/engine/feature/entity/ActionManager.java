@@ -24,11 +24,11 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildizgames.common.collection.Lists;
 import be.yildizgames.common.frame.EndFrameListener;
 import be.yildizgames.engine.feature.entity.action.Action;
 import be.yildizgames.engine.feature.entity.action.ActionListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,12 +42,12 @@ public class ActionManager<T extends Entity> extends EndFrameListener {
     /**
      * Listeners to notify when an action is created, has run or is complete.
      */
-    private final List<ActionListener> listeners = Lists.newList();
+    private final List<ActionListener> listeners = new ArrayList<>();
 
     /**
      * Listeners to notify when an entity is destroyed.
      */
-    private final List<DestructionListener<T>> destructionListeners = Lists.newList();
+    private final List<DestructionListener<T>> destructionListeners = new ArrayList<>();
 
 
     /**
@@ -55,7 +55,7 @@ public class ActionManager<T extends Entity> extends EndFrameListener {
      */
     private final EntityManager<T> entityManager;
 
-    private final List<ActionListener> listenerToRemove = Lists.newList();
+    private final List<ActionListener> listenerToRemove = new ArrayList<>();
 
     public ActionManager(final EntityManager<T> em) {
         super();

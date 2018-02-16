@@ -24,10 +24,10 @@
 
 package be.yildizgames.engine.feature.entity.bonus;
 
-import be.yildizgames.common.collection.Sets;
 import be.yildizgames.common.model.ActionId;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -41,15 +41,17 @@ public class EntityBonus {
      * Value associated to this bonus.
      */
     public final double value;
+
     /**
      * If <code>true</code>, this flag will return as equals 2 different instances of the child class, no matter its internal value. If <code>false</code>, equality will be based on bonus values. 2
      * equal bonus cannot be added, the last, will replace the oldest.
      */
     private final boolean oneInstance;
+
     /**
      * Only module with those ids are affected by the bonus.
      */
-    private final Set<ActionId> moduleIds = Sets.newSet();
+    private final Set<ActionId> moduleIds = new HashSet<>();
 
     /**
      * Full constructor.
