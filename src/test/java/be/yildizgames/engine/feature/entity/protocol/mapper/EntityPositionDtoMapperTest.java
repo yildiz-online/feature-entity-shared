@@ -25,7 +25,6 @@
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
 import be.yildizgames.common.geometry.Point3D;
-import be.yildizgames.common.mapping.BaseMapperTest;
 import be.yildizgames.common.model.EntityId;
 import be.yildizgames.engine.feature.entity.protocol.EntityPositionDto;
 

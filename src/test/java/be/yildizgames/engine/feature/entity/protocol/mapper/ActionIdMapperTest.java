@@ -24,7 +24,6 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildizgames.common.mapping.BaseMapperTest;
 import be.yildizgames.common.model.ActionId;
 
 /**

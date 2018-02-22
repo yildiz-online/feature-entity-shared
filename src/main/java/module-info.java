@@ -32,4 +32,15 @@ module be.yildizgames.feature.entity.shared {
     requires be.yildizgames.common.mapping;
     requires be.yildizgames.common.mapping.model;
     requires be.yildizgames.common.mapping.geometry;
+    requires be.yildizgames.feature.resource.shared;
+
+    exports be.yildizgames.engine.feature.entity;
+    exports be.yildizgames.engine.feature.entity.protocol;
+    exports be.yildizgames.engine.feature.entity.protocol.mapper;
+    exports be.yildizgames.engine.feature.entity.action;
+    exports be.yildizgames.engine.feature.entity.action.materialization;
+    exports be.yildizgames.engine.feature.entity.bonus;
+    exports be.yildizgames.engine.feature.entity.construction;
+    exports be.yildizgames.engine.feature.entity.data;
+    exports be.yildizgames.engine.feature.entity.fields;
 }
