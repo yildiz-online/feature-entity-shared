@@ -26,13 +26,14 @@ package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
 import be.yildizgames.common.model.EntityId;
+import be.yildizgames.engine.feature.entity.Entity;
 
 /**
  * @author Grégory Van den Borre
  */
 public class NoEnergy extends ProduceEnergy {
 
-    public NoEnergy(EntityId e, ActionId id) {
+    public NoEnergy(Entity e, ActionId id) {
         super(e, id);
     }
 

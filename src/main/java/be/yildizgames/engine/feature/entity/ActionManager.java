@@ -25,7 +25,6 @@
 package be.yildizgames.engine.feature.entity;
 
 import be.yildizgames.common.frame.EndFrameListener;
-import be.yildizgames.engine.feature.entity.action.Action;
 import be.yildizgames.engine.feature.entity.action.ActionListener;
 
 import java.util.ArrayList;
@@ -49,6 +48,8 @@ public class ActionManager<T extends Entity> extends EndFrameListener {
      */
     private final List<DestructionListener<T>> destructionListeners = new ArrayList<>();
 
+    private final List<Action> actionToRun = new ArrayList<>();
+
 
     /**
      * To get the list of active entities.
@@ -70,10 +71,10 @@ public class ActionManager<T extends Entity> extends EndFrameListener {
      */
     @Override
     public boolean frameEnded(final long time) {
+        this.actionToRun.forEach(a -> a.run(time));
         List<T> entities = this.entityManager.getEntities();
         this.listenerToRemove.forEach(this.listeners::remove);
-        for (int i = 0; i < entities.size(); i++) {
-            T e = entities.get(i);
+        for (T e : entities) {
             e.doActions(time);
             e.getActionRunning().forEach(a -> this.listeners.forEach(l -> l.execute(e.getId(), e.getOwner(), a)));
             e.getActionDone().forEach(a -> this.listeners.forEach(l -> l.complete(e.getId(), e.getOwner(), a)));
@@ -84,6 +85,11 @@ public class ActionManager<T extends Entity> extends EndFrameListener {
             }
         }
         return true;
+    }
+
+    public void registerAction(Action a) {
+        a.init();
+        this.actionToRun.add(a);
     }
 
     /**

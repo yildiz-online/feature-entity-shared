@@ -24,11 +24,8 @@
 
 package be.yildizgames.engine.feature.entity.action;
 
-import be.yildizgames.common.geometry.Point3D;
-import be.yildizgames.common.model.EntityId;
-import be.yildizgames.engine.feature.entity.fields.Target;
-
-import java.util.Optional;
+import be.yildizgames.engine.feature.entity.Action;
+import be.yildizgames.engine.feature.entity.Entity;
 
 /**
  * @author Grégory Van den Borre
@@ -36,8 +33,6 @@ import java.util.Optional;
 public final class Follow extends Action {
 
     private final Move move;
-
-    private Target target;
 
     private float distance;
 
@@ -47,46 +42,26 @@ public final class Follow extends Action {
      * @param move   Move action used to follow a target.
      * @param entity Entity doing this action.
      */
-    public Follow(final Move move, final EntityId entity) {
+    public Follow(final Move move, final Entity entity) {
         super(move.id, entity, false);
         this.move = move;
     }
 
     @Override
     public boolean checkPrerequisite() {
-        return this.target != null && !this.target.isZeroHp();
+        return this.entity.hasTarget();
     }
 
     @Override
     public void runImpl(final long time) {
-        Optional.ofNullable(this.target).ifPresent(t -> {
-            this.move.setDestination(t.getPosition());
+        this.entity.getTarget().ifPresent(t -> {
+            this.entity.setDestination(t.getPosition());
             this.move.run(time);
         });
     }
 
-    @Override
-    public void setTarget(final Target target) {
-        this.target = target;
-    }
-
     public void setDistance(float distance) {
         this.distance = distance;
-    }
-
-    @Override
-    public Point3D getDestination() {
-        return Optional.ofNullable(this.target).orElseThrow(IllegalArgumentException::new).getPosition();
-    }
-
-    @Override
-    public void setDestination(final Point3D destination) {
-        // Unused.
-    }
-
-    @Override
-    public EntityId getTargetId() {
-        return Optional.ofNullable(this.target).orElseThrow(IllegalArgumentException::new).getId();
     }
 
     @Override

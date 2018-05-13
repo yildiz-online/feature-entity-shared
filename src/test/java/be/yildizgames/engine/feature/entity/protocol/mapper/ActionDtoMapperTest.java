@@ -24,7 +24,6 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.ActionId;
 import be.yildizgames.common.model.EntityId;
 import be.yildizgames.engine.feature.entity.protocol.ActionDto;
@@ -35,6 +34,6 @@ import be.yildizgames.engine.feature.entity.protocol.ActionDto;
 public class ActionDtoMapperTest extends BaseMapperTest<ActionDto> {
 
     public ActionDtoMapperTest() {
-        super(ActionDtoMapper.getInstance(), new ActionDto(ActionId.valueOf(2), EntityId.valueOf(7), Point3D.valueOf(5), EntityId.valueOf(9)));
+        super(ActionDtoMapper.getInstance(), new ActionDto(ActionId.valueOf(2), EntityId.valueOf(7)));
     }
 }

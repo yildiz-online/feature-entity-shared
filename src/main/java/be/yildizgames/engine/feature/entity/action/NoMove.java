@@ -26,6 +26,7 @@ package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
 import be.yildizgames.common.model.EntityId;
+import be.yildizgames.engine.feature.entity.Entity;
 
 /**
  * action for entities unable to move.
@@ -40,7 +41,7 @@ public final class NoMove extends Move {
      * @param e Associated entity.
      * @param id Action id of the associated module.
      */
-    public NoMove(final EntityId e, ActionId id) {
+    public NoMove(final Entity e, ActionId id) {
         super(id, e);
     }
 

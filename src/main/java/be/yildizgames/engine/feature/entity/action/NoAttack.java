@@ -24,10 +24,8 @@
 
 package be.yildizgames.engine.feature.entity.action;
 
-import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
-import be.yildizgames.engine.feature.entity.fields.Target;
+import be.yildizgames.engine.feature.entity.Entity;
 
 /**
  * Attack implementation with no attack behavior.
@@ -42,7 +40,7 @@ public class NoAttack extends AbstractAttack {
      * @param attacker Associated entity.
      * @param id Action id of the associated module.
      */
-    public NoAttack(final EntityId attacker, ActionId id) {
+    public NoAttack(final Entity attacker, ActionId id) {
         super(attacker, id);
     }
 
@@ -68,42 +66,6 @@ public class NoAttack extends AbstractAttack {
     @Override
     public boolean checkPrerequisite() {
         return false;
-    }
-
-    /**
-     * Does nothing.
-     *
-     * @param target Unused.
-     */
-    @Override
-    public void setTarget(final Target target) {
-        //does nothing
-    }
-
-    /**
-     * @return The associated entity position.
-     */
-    @Override
-    public Point3D getDestination() {
-        return this.position.getPosition();
-    }
-
-    /**
-     * Does nothing.
-     *
-     * @param destination Unused.
-     */
-    @Override
-    public void setDestination(final Point3D destination) {
-        //does nothing
-    }
-
-    /**
-     * @return EntityId.WORLD.
-     */
-    @Override
-    public EntityId getTargetId() {
-        return EntityId.WORLD;
     }
 
     /**

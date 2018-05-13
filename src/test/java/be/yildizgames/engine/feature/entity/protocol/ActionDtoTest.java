@@ -42,10 +42,10 @@ class ActionDtoTest {
         @Disabled
         @Test
         void test() {
-            ActionDto base = new ActionDto(ActionId.valueOf(5), EntityId.valueOf(12L), Point3D.valueOf(4), EntityId.valueOf(7));
+            /*ActionDto base = new ActionDto(ActionId.valueOf(5), EntityId.valueOf(12L), Point3D.valueOf(4), EntityId.valueOf(7));
             ActionDto same = new ActionDto(ActionId.valueOf(5), EntityId.valueOf(12L), Point3D.valueOf(4), EntityId.valueOf(7));
             ActionDto different = new ActionDto(ActionId.valueOf(6), EntityId.valueOf(12L), Point3D.valueOf(4), EntityId.valueOf(7));
-            /*BaseTest<ActionDto> baseTest = new BaseTest<>(base, same, different);
+            BaseTest<ActionDto> baseTest = new BaseTest<>(base, same, different);
             baseTest.equalsSame();
             baseTest.equalsDifferent();
             baseTest.equalsDifferentType();

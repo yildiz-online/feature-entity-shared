@@ -25,14 +25,14 @@
 package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
+import be.yildizgames.engine.feature.entity.Entity;
 
 /**
  * @author Grégory Van den Borre
  */
 public abstract class ProduceEnergy extends AbstractNoInteractionAction {
 
-    protected ProduceEnergy(EntityId e, ActionId id) {
+    protected ProduceEnergy(Entity e, ActionId id) {
         super(id, e, true);
     }
 
@@ -50,7 +50,9 @@ public abstract class ProduceEnergy extends AbstractNoInteractionAction {
      */
     @Override
     public boolean checkPrerequisite() {
-        return this.energy.getValue() < this.energy.getMax();
+        //FIXME fix prerequisite
+        return true;
+        //return this.entity.getEnergyPoints() < this.entity.getModule(this.id).getMax();
     }
 
     @Override

@@ -26,7 +26,6 @@ package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
 import be.yildizgames.engine.feature.entity.Entity;
 import be.yildizgames.engine.feature.entity.TargetRetriever;
 import be.yildizgames.engine.feature.entity.fields.Target;
@@ -68,7 +67,7 @@ public abstract class AbstractAttackZone<T extends Entity> extends AbstractAttac
      * @param attacker   Entity using the action.
      * @param retriever  Logic to compute the entities to find in the zone.
      */
-    public AbstractAttackZone(ActionId id, final EntityId attacker, final TargetRetriever<T> retriever) {
+    public AbstractAttackZone(ActionId id, final Entity attacker, final TargetRetriever<T> retriever) {
         super(attacker, id);
         //FIXME implements
         this.damageZone = 0;
@@ -77,21 +76,5 @@ public abstract class AbstractAttackZone<T extends Entity> extends AbstractAttac
 
     protected final Set<Target> retrieveTarget() {
         return this.targetRetriever.retrieve(this.targetPosition, damageZone);
-    }
-
-    @Override
-    public void setTarget(final Target target) {
-        this.setDestination(target.getPosition());
-    }
-
-    @Override
-    public Point3D getDestination() {
-        return this.targetPosition;
-    }
-
-    @Override
-    public void setDestination(Point3D destination) {
-        this.targetPosition = destination;
-        this.materializer.setTargetPosition(destination);
     }
 }

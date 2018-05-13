@@ -59,7 +59,7 @@ final class InstanceTest {
     @Test
     void testHashCode() {
         Instance d1 = new Instance(5);
-        Instance d2 = new Instance(new Integer(5));
+        Instance d2 = new Instance( Integer.valueOf(5));
         assertEquals(d2.hashCode(), d1.hashCode());
     }
 
@@ -70,7 +70,7 @@ final class InstanceTest {
         Instance d3 = new Instance(6);
         assertEquals(d1, d1);
         assertEquals(d1, d2);
-        assertEquals(d1, new Instance(new Integer(5)));
+        assertEquals(d1, new Instance(Integer.valueOf(5)));
         Assertions.assertNotEquals(d1, new Object());
         Assertions.assertNotEquals(d1, d3);
     }

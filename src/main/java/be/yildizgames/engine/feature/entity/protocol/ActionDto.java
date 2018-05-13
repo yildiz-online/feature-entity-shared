@@ -24,10 +24,9 @@
 
 package be.yildizgames.engine.feature.entity.protocol;
 
-import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.ActionId;
 import be.yildizgames.common.model.EntityId;
-import be.yildizgames.engine.feature.entity.action.Action;
+import be.yildizgames.engine.feature.entity.Action;
 
 /**
  * @author Grégory Van den Borre
@@ -38,24 +37,16 @@ public class ActionDto {
 
     public final EntityId entity;
 
-    public final Point3D destination;
-
-    public final EntityId target;
-
-    public ActionDto(ActionId id, EntityId entity, Point3D destination, EntityId target) {
+    public ActionDto(ActionId id, EntityId entity) {
         super();
         assert id != null;
         assert entity != null;
-        assert destination != null;
-        assert target != null;
         this.id = id;
         this.entity = entity;
-        this.destination = destination;
-        this.target = target;
     }
 
     public ActionDto(Action a) {
-        this(a.id, a.getEntity(), a.getDestination(), a.getTargetId());
+        this(a.id, a.getEntity());
     }
 
     @Override
@@ -69,15 +60,13 @@ public class ActionDto {
 
         ActionDto actionDto = (ActionDto) o;
 
-        return id.equals(actionDto.id) && entity.equals(actionDto.entity) && destination.equals(actionDto.destination) && target.equals(actionDto.target);
+        return id.equals(actionDto.id) && entity.equals(actionDto.entity);
     }
 
     @Override
     public int hashCode() {
         int result = id.hashCode();
         result = 31 * result + entity.hashCode();
-        result = 31 * result + destination.hashCode();
-        result = 31 * result + target.hashCode();
         return result;
     }
 }

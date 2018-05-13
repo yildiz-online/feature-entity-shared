@@ -22,16 +22,10 @@
  *
  */
 
-package be.yildizgames.engine.feature.entity.action;
+package be.yildizgames.engine.feature.entity;
 
-import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.ActionId;
 import be.yildizgames.common.model.EntityId;
-import be.yildizgames.common.util.BoundedValue;
-import be.yildizgames.engine.feature.entity.fields.PositionData;
-import be.yildizgames.engine.feature.entity.fields.SharedPosition;
-import be.yildizgames.engine.feature.entity.fields.StateHolder;
-import be.yildizgames.engine.feature.entity.fields.Target;
 
 /**
  * An action can be done by an Entity, an Entity can do only one action at a time. 2 actions are considered equals if they share the same Entity. An action can have different states, defined by the
@@ -48,7 +42,8 @@ public abstract class Action {
     /**
      * Entity using this action.
      */
-    private final EntityId entity;
+    protected final Entity entity;
+
     /**
      * Passive action will run all the time, and will not notify listeners.
      */
@@ -61,10 +56,7 @@ public abstract class Action {
      * action type, defined by the class.
      */
     public final ActionId id;
-    protected SharedPosition position;
-    protected StateHolder states;
-    protected BoundedValue energy;
-    protected BoundedValue hp;
+
     /**
      * <code>true</code> if the action is currently running.
      */
@@ -74,33 +66,17 @@ public abstract class Action {
      */
     private boolean toRun;
 
-    protected Action(final ActionId id, final EntityId e, final boolean passive) {
+    protected Action(final ActionId id, final Entity e, final boolean passive) {
         this(id, e, passive, false);
     }
 
-    protected Action(final ActionId id, final EntityId e, final boolean passive, final boolean self) {
+    protected Action(final ActionId id, final Entity e, final boolean passive, final boolean self) {
         super();
         assert e != null;
         this.entity = e;
         this.passive = passive;
         this.self = self;
         this.id = id;
-    }
-
-    public final void setSharedPosition(SharedPosition position) {
-        this.position = position;
-    }
-
-    public final void setStates(final StateHolder states) {
-        this.states = states;
-    }
-
-    public final void setEnergy(final BoundedValue energy) {
-        this.energy = energy;
-    }
-
-    public final void setHp(final BoundedValue hp) {
-        this.hp = hp;
     }
 
     public final boolean isSelf() {
@@ -112,7 +88,7 @@ public abstract class Action {
     }
 
     public EntityId getEntity() {
-        return this.entity;
+        return this.entity.getId();
     }
 
     /**
@@ -210,30 +186,6 @@ public abstract class Action {
     protected abstract void initImpl();
 
     /**
-     * @return The action destination.
-     */
-    public abstract Point3D getDestination();
-
-    /**
-     * Set the action destination this can also be use to target a specific zone.
-     *
-     * @param destination Destination to set.
-     */
-    public abstract void setDestination(Point3D destination);
-
-    /**
-     * Set a target for this action to apply on.
-     *
-     * @param entity Entity to target.
-     */
-    public abstract void setTarget(Target entity);
-
-    /**
-     * @return The action target.
-     */
-    public abstract EntityId getTargetId();
-
-    /**
      * Stop the action.
      */
     public final void stop() {
@@ -245,8 +197,4 @@ public abstract class Action {
     protected abstract void stopImpl();
 
     public abstract void delete();
-
-    public final PositionData getPosition() {
-        return position;
-    }
 }

@@ -26,7 +26,7 @@ package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
+import be.yildizgames.engine.feature.entity.Entity;
 import be.yildizgames.engine.feature.entity.fields.Target;
 
 /**
@@ -36,9 +36,7 @@ public abstract class AbstractAttackEntity extends AbstractAttack {
 
     private final Follow follow;
 
-    protected Target target;
-
-    public AbstractAttackEntity(final ActionId id, final EntityId attacker, final Move move) {
+    public AbstractAttackEntity(final ActionId id, final Entity attacker, final Move move) {
         super(attacker, id);
         this.follow = new Follow(move, attacker);
         //FIXME distance hardcoded
@@ -51,25 +49,20 @@ public abstract class AbstractAttackEntity extends AbstractAttack {
     }
 
     @Override
-    public final Point3D getDestination() {
-        return this.follow.getDestination();
-    }
-
-    @Override
-    public final void setDestination(final Point3D destination) {
-    }
-
-    @Override
     protected final void runImpl(final long time) {
-        if (this.target.isZeroHp()) {
+        if (!this.entity.hasTarget()) {
             this.stop();
         }
         this.follow.run(time);
-        if (this.position.squaredDistance(this.target.getPosition()) - 1 <= this.range.distance * this.range.distance
-                && this.position.getDirection().equals(this.target.getPosition().subtract(this.position.getPosition()))) {
+        this.entity.getTarget().ifPresent(this::handleTarget);
+    }
+
+    private void handleTarget(Target target) {
+        if (Point3D.squaredDistance(this.entity.getPosition(), target.getPosition()) - 1 <= this.range.distance * this.range.distance
+                && this.entity.getDirection().equals(target.getPosition().subtract(this.entity.getPosition()))) {
             this.fire();
             if (this.timer.isTimeElapsed()) {
-                this.target.hit(this.attackHit);
+                target.hit(this.attackHit);
             }
         } else {
             this.stopFire();
@@ -77,19 +70,8 @@ public abstract class AbstractAttackEntity extends AbstractAttack {
     }
 
     @Override
-    public final void setTarget(final Target target) {
-        this.target = target;
-        this.follow.setTarget(target);
-    }
-
-    @Override
     protected final void stopImpl() {
         this.follow.stop();
         this.stopFire();
-    }
-
-    @Override
-    public EntityId getTargetId() {
-        return this.target.getId();
     }
 }

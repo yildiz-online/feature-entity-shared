@@ -22,42 +22,49 @@
  *
  */
 
-package be.yildizgames.engine.feature.entity.action;
+package be.yildizgames.engine.feature.entity.module;
 
-import be.yildizgames.common.model.ActionId;
-import be.yildizgames.engine.feature.entity.Entity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
+ * Hold the modules.
+ *
  * @author Grégory Van den Borre
  */
-public class NoAction extends AbstractNoInteractionAction{
+public final class ModuleGroup {
 
-    public NoAction(Entity e, ActionId id) {
-        super(id, e, true);
+    private final List<Module> modules;
+
+
+    /**
+     * Build a modules from ids.
+     *
+     * @throws NullPointerException if any parameter is null.
+     */
+    public ModuleGroup(List<Module> modules) {
+        super();
+        this.modules = new ArrayList<Module>(modules);
     }
 
-    @Override
-    protected void runImpl(long time) {
-        //does nothing
-    }
 
     @Override
-    public boolean checkPrerequisite() {
-        return false;
-    }
+    public int hashCode() {
+        return this.modules.hashCode();}
 
     @Override
-    protected void initImpl() {
-        //does nothing
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof ModuleGroup)) {
+            return false;
+        }
+        ModuleGroup that = (ModuleGroup) obj;
+        return this.modules.equals(that.modules);
     }
 
-    @Override
-    protected void stopImpl() {
-        //does nothing
-    }
-
-    @Override
-    public void delete() {
-        //does nothing
+    public List<Module> getAll() {
+        return this.modules;
     }
 }

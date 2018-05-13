@@ -25,8 +25,9 @@
 package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
 import be.yildizgames.common.time.ElapsedTimeComputer;
+import be.yildizgames.engine.feature.entity.Action;
+import be.yildizgames.engine.feature.entity.Entity;
 import be.yildizgames.engine.feature.entity.data.AttackDamage;
 import be.yildizgames.engine.feature.entity.data.AttackRange;
 import be.yildizgames.engine.feature.entity.data.AttackTime;
@@ -62,7 +63,7 @@ public abstract class AbstractAttack extends Action {
      * @param id Action id of the associated module.
      * @param attacker Entity attacking.
      */
-    protected AbstractAttack(final EntityId attacker, ActionId id) {
+    protected AbstractAttack(final Entity attacker, ActionId id) {
         super(id, attacker, false);
     }
 

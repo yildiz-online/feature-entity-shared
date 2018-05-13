@@ -24,10 +24,9 @@
 
 package be.yildizgames.engine.feature.entity.action;
 
-import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
-import be.yildizgames.engine.feature.entity.fields.Target;
+import be.yildizgames.engine.feature.entity.Action;
+import be.yildizgames.engine.feature.entity.Entity;
 
 /**
  * Base class for actions without interactions.
@@ -43,35 +42,11 @@ public abstract class AbstractNoInteractionAction extends Action {
      * @param id      entity unique Id.
      * @param passive Is the action passive or active?
      */
-    protected AbstractNoInteractionAction(final ActionId action, final EntityId id, final boolean passive) {
+    protected AbstractNoInteractionAction(final ActionId action, final Entity id, final boolean passive) {
         super(action, id, passive);
     }
 
-    protected AbstractNoInteractionAction(final ActionId action, final EntityId e, final boolean passive, boolean self) {
+    protected AbstractNoInteractionAction(final ActionId action, final Entity e, final boolean passive, boolean self) {
         super(action, e, passive, self);
-    }
-
-    /**
-     * @return World id.
-     */
-    @Override
-    public final EntityId getTargetId() {
-        return EntityId.WORLD;
-    }
-
-    /**
-     * @return This entity position.
-     */
-    @Override
-    public final Point3D getDestination() {
-        return this.position.getPosition();
-    }
-
-    @Override
-    public final void setDestination(final Point3D destination) {
-    }
-
-    @Override
-    public final void setTarget(final Target target) {
     }
 }

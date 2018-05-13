@@ -25,7 +25,7 @@
 package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
+import be.yildizgames.engine.feature.entity.Entity;
 import be.yildizgames.engine.feature.entity.action.materialization.ProtectMaterialization;
 import be.yildizgames.engine.feature.entity.fields.AttackHitResult;
 
@@ -44,7 +44,7 @@ public final class ProtectInvincible extends Protect {
      */
     //@requires entity != null
     //@requires id != null
-    public ProtectInvincible(final EntityId entity, ActionId id, ProtectMaterialization mat) {
+    public ProtectInvincible(final Entity entity, ActionId id, ProtectMaterialization mat) {
         super(id, entity, mat);
     }
 

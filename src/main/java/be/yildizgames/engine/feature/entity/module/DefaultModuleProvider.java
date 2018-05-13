@@ -22,42 +22,13 @@
  *
  */
 
-package be.yildizgames.engine.feature.entity.action;
-
-import be.yildizgames.common.model.ActionId;
-import be.yildizgames.engine.feature.entity.Entity;
+package be.yildizgames.engine.feature.entity.module;
 
 /**
  * @author Grégory Van den Borre
  */
-public class NoAction extends AbstractNoInteractionAction{
+@FunctionalInterface
+public interface DefaultModuleProvider {
 
-    public NoAction(Entity e, ActionId id) {
-        super(id, e, true);
-    }
-
-    @Override
-    protected void runImpl(long time) {
-        //does nothing
-    }
-
-    @Override
-    public boolean checkPrerequisite() {
-        return false;
-    }
-
-    @Override
-    protected void initImpl() {
-        //does nothing
-    }
-
-    @Override
-    protected void stopImpl() {
-        //does nothing
-    }
-
-    @Override
-    public void delete() {
-        //does nothing
-    }
+    ModuleGroup getModules();
 }

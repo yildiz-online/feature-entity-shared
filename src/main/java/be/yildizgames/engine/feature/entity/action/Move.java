@@ -27,6 +27,8 @@ package be.yildizgames.engine.feature.entity.action;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.ActionId;
 import be.yildizgames.common.model.EntityId;
+import be.yildizgames.engine.feature.entity.Action;
+import be.yildizgames.engine.feature.entity.Entity;
 import be.yildizgames.engine.feature.entity.fields.MutableSpeed;
 import be.yildizgames.engine.feature.entity.fields.Target;
 
@@ -54,10 +56,7 @@ public abstract class Move extends Action {
      * Move maximum speed.
      */
     protected float maxSpeed;
-    /**
-     * Destination to reach.
-     */
-    private Point3D destination = Point3D.ZERO;
+
 
     /**
      * Create a new Move action.
@@ -65,7 +64,7 @@ public abstract class Move extends Action {
      * @param e Entity executing the action.
      * @param id Action id of the associated module.
      */
-    protected Move(final ActionId id, final EntityId e) {
+    protected Move(final ActionId id, final Entity e) {
         super(id, e, false);
     }
 
@@ -77,40 +76,8 @@ public abstract class Move extends Action {
         this.distance = 0;
     }
 
-    /**
-     * Set the destination being the current target position.
-     *
-     * @param target Target to retrieve position.
-     */
-    @Override
-    public final void setTarget(final Target target) {
-        this.setDestination(target.getPosition());
-    }
-
-    @Override
-    public final EntityId getTargetId() {
-        return EntityId.WORLD;
-    }
-
-    @Override
-    public Point3D getDestination() {
-        return destination;
-    }
-
     public void setDistance(float distance) {
         this.distance = distance;
-    }
-
-    /**
-     * Set a new destination.
-     *
-     * @param d New destination coordinates.
-     * @throws AssertionError if the destination is null.
-     */
-    @Override
-    public final void setDestination( final Point3D d) {
-        assert d != null;
-        this.destination = d;
     }
 
     public void setAcceleration(float acceleration) {

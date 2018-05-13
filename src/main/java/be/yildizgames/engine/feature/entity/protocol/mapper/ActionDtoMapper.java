@@ -27,7 +27,6 @@ package be.yildizgames.engine.feature.entity.protocol.mapper;
 import be.yildizgames.common.mapping.MappingException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.common.mapping.Separator;
-import be.yildizgames.common.mapping.geometry.Point3DMapper;
 import be.yildizgames.common.mapping.model.EntityIdMapper;
 import be.yildizgames.engine.feature.entity.protocol.ActionDto;
 
@@ -51,7 +50,7 @@ public class ActionDtoMapper implements ObjectMapper<ActionDto> {
         assert s != null;
         String[] v = s.split(Separator.OBJECTS_SEPARATOR);
         try {
-            return new ActionDto(ActionIdMapper.getInstance().from(v[0]), EntityIdMapper.getInstance().from(v[1]), Point3DMapper.getInstance().from(v[2]), EntityIdMapper.getInstance().from(v[3]));
+            return new ActionDto(ActionIdMapper.getInstance().from(v[0]), EntityIdMapper.getInstance().from(v[1]));
         } catch (IndexOutOfBoundsException e) {
             throw new MappingException(e);
         }
@@ -62,10 +61,6 @@ public class ActionDtoMapper implements ObjectMapper<ActionDto> {
         assert action != null;
         return ActionIdMapper.getInstance().to(action.id)
                 + Separator.OBJECTS_SEPARATOR
-                + EntityIdMapper.getInstance().to(action.entity)
-                + Separator.OBJECTS_SEPARATOR
-                + Point3DMapper.getInstance().to(action.destination)
-                + Separator.OBJECTS_SEPARATOR
-                + EntityIdMapper.getInstance().to(action.target);
+                + EntityIdMapper.getInstance().to(action.entity);
     }
 }

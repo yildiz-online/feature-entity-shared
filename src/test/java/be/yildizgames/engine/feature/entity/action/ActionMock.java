@@ -24,10 +24,9 @@
 
 package be.yildizgames.engine.feature.entity.action;
 
-import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
-import be.yildizgames.engine.feature.entity.fields.Target;
+import be.yildizgames.engine.feature.entity.Action;
+import be.yildizgames.engine.feature.entity.Entity;
 
 /**
  * @author Grégory Van den Borre
@@ -35,17 +34,10 @@ import be.yildizgames.engine.feature.entity.fields.Target;
 public final class ActionMock extends Action {
 
     /**
-     * @param entityId id
+     * @param entity entity
      */
-    public ActionMock(EntityId entityId) {
-        super(ActionId.WORLD, entityId, false);
-    }
-
-    /**
-     *
-     */
-    public ActionMock() {
-        super(ActionId.WORLD, EntityId.valueOf(5), false);
+    public ActionMock(Entity entity) {
+        super(ActionId.WORLD, entity, false);
     }
 
     @Override
@@ -58,24 +50,6 @@ public final class ActionMock extends Action {
 
     }
 
-    @Override
-    public Point3D getDestination() {
-        return Point3D.ZERO;
-    }
-
-    @Override
-    public void setDestination(Point3D destination) {
-
-    }
-
-    @Override
-    public void setTarget(Target target) {
-    }
-
-    @Override
-    public EntityId getTargetId() {
-        return EntityId.valueOf(5L);
-    }
 
     @Override
     public void initImpl() {

@@ -22,42 +22,28 @@
  *
  */
 
-package be.yildizgames.engine.feature.entity.action;
+package be.yildizgames.engine.feature.entity.module;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.engine.feature.entity.Entity;
 
 /**
+ * A module is a part of an Entity, it contains its specific action.
+ *
  * @author Grégory Van den Borre
  */
-public class NoAction extends AbstractNoInteractionAction{
+public class Module {
 
-    public NoAction(Entity e, ActionId id) {
-        super(id, e, true);
+    private final ActionId id;
+
+    protected Module(ActionId id) {
+        super();
+        this.id = id;
     }
 
-    @Override
-    protected void runImpl(long time) {
-        //does nothing
-    }
-
-    @Override
-    public boolean checkPrerequisite() {
-        return false;
-    }
-
-    @Override
-    protected void initImpl() {
-        //does nothing
-    }
-
-    @Override
-    protected void stopImpl() {
-        //does nothing
-    }
-
-    @Override
-    public void delete() {
-        //does nothing
+    /**
+     * @return The module associated Id.
+     */
+    public final ActionId getId() {
+        return this.id;
     }
 }

@@ -25,7 +25,7 @@
 package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
+import be.yildizgames.engine.feature.entity.Entity;
 import be.yildizgames.engine.feature.entity.action.materialization.ProtectMaterialization;
 import be.yildizgames.engine.feature.entity.fields.AttackHitResult;
 
@@ -36,7 +36,7 @@ public abstract class Protect extends AbstractNoInteractionAction {
 
     private final ProtectMaterialization materialization;
 
-    protected Protect(final ActionId id, final EntityId e, ProtectMaterialization mat) {
+    protected Protect(final ActionId id, final Entity e, ProtectMaterialization mat) {
         super(id, e, true);
         this.materialization = mat;
     }

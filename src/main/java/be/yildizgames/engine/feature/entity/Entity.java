@@ -29,12 +29,13 @@ import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.ActionId;
 import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.engine.feature.entity.action.AbstractAttack;
-import be.yildizgames.engine.feature.entity.action.Action;
 import be.yildizgames.engine.feature.entity.data.EntityType;
 import be.yildizgames.engine.feature.entity.data.State;
 import be.yildizgames.engine.feature.entity.data.ViewDistance;
 import be.yildizgames.engine.feature.entity.fields.Target;
+import be.yildizgames.engine.feature.entity.module.Module;
 
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -261,4 +262,12 @@ public interface Entity extends Target {
     void startPreparedAction();
 
     Action getPreparedAction();
+
+    boolean hasTarget();
+
+    Optional<Target> getTarget();
+
+    Module getModule(ActionId id);
+
+    List<Module> getModules();
 }

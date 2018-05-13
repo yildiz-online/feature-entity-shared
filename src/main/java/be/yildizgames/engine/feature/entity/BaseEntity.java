@@ -29,13 +29,12 @@ import be.yildizgames.common.model.ActionId;
 import be.yildizgames.common.model.EntityId;
 import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.common.util.BoundedValue;
-import be.yildizgames.engine.feature.entity.action.Action;
 import be.yildizgames.engine.feature.entity.action.NoAction;
 import be.yildizgames.engine.feature.entity.data.EntityType;
 import be.yildizgames.engine.feature.entity.data.State;
-import be.yildizgames.engine.feature.entity.fields.SharedPosition;
 import be.yildizgames.engine.feature.entity.fields.StateHolder;
 import be.yildizgames.engine.feature.entity.fields.Target;
+import be.yildizgames.engine.feature.entity.module.Module;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -66,12 +65,21 @@ public abstract class BaseEntity implements Entity, Target {
     /**
      * Position, shared between this entity and its modules.
      */
-    protected final SharedPosition position = new SharedPosition();
+    private Point3D position = Point3D.ZERO;
+
+    private Point3D direction = Point3D.BASE_DIRECTION;
+
+    private Point3D destination = Point3D.ZERO;
+
+    private Target target = null;
+
     /**
      * States, shared between this entity and its modules.
      */
     protected final StateHolder states = new StateHolder();
+
     protected final BoundedValue energy = new BoundedValue();
+
     protected final BoundedValue hp = new BoundedValue();
 
     private final EntityType type;
@@ -86,11 +94,13 @@ public abstract class BaseEntity implements Entity, Target {
 
     protected Action actionToPrepare;
 
+    private final List<Module> modules = new ArrayList<>();
+
     protected BaseEntity(EntityId id, EntityType type, int hp, int ep) {
         super();
         this.id = id;
         this.type = type;
-        this.actionToPrepare = new NoAction(this.id, ActionId.WORLD);
+        this.actionToPrepare = new NoAction(this, ActionId.WORLD);
         this.hp.setValue(hp);
         this.energy.setValue(ep);
     }
@@ -99,9 +109,13 @@ public abstract class BaseEntity implements Entity, Target {
         super();
         this.id = e.getId();
         this.type = e.getType();
-        this.actionToPrepare = new NoAction(this.id, ActionId.WORLD);
+        this.actionToPrepare = new NoAction(this, ActionId.WORLD);
         this.hp.setValue(e.getHp());
         this.energy.setValue(e.getEnergy());
+    }
+
+    public void registerModule(Module m) {
+        this.modules.add(m);
     }
 
     @Override
@@ -124,7 +138,7 @@ public abstract class BaseEntity implements Entity, Target {
 
     @Override
     public void lookAt(final Point3D destination) {
-        this.position.lookAt(destination);
+        /*this.position.lookAt(destination);*/
     }
 
     @Override
@@ -183,24 +197,24 @@ public abstract class BaseEntity implements Entity, Target {
 
     @Override
     public Point3D getPosition() {
-        return this.position.getPosition();
+        return this.position;
     }
 
     @Override
     public void setPosition(Point3D position) {
         //FIXME use the module to set the position instead, to avoid to be able to set the position even if the module cannot move.
         assert position != null;
-        this.position.setPosition(position);
+        this.position = position;
     }
 
     @Override
     public Point3D getDirection() {
-        return this.position.getDirection();
+        return this.direction;
     }
 
     @Override
     public void setDirection(Point3D direction) {
-        this.position.setDirection(direction);
+        this.direction = direction;
     }
 
     @Override
@@ -266,7 +280,7 @@ public abstract class BaseEntity implements Entity, Target {
 
     @Override
     public void prepareAction(Optional<ActionId> action) {
-        this.actionToPrepare = action.map(this::getAction).orElse(new NoAction(this.id, ActionId.WORLD));
+        this.actionToPrepare = action.map(this::getAction).orElse(new NoAction(this, ActionId.WORLD));
     }
 
     @Override
@@ -278,6 +292,16 @@ public abstract class BaseEntity implements Entity, Target {
     @Override
     public void startPreparedAction() {
         this.startAction(this.actionToPrepare);
+    }
+
+    @Override
+    public boolean hasTarget() {
+        return this.target != null && !this.target.isZeroHp();
+    }
+
+    @Override
+    public Optional<Target> getTarget() {
+        return Optional.ofNullable(this.target);
     }
 
     public Set<Entity> getVisibleEntities() {

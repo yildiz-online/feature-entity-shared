@@ -25,14 +25,14 @@
 package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
+import be.yildizgames.engine.feature.entity.Entity;
 
 /**
  * @author Grégory Van den Borre
  */
 public class NoDetect extends Detect{
 
-    public NoDetect(EntityId e, ActionId id) {
+    public NoDetect(Entity e, ActionId id) {
         super(id, e);
     }
 
