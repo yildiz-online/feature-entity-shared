@@ -25,7 +25,6 @@
 package be.yildizgames.engine.feature.entity;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
 
 /**
  * An action can be done by an Entity, an Entity can do only one action at a time. 2 actions are considered equals if they share the same Entity. An action can have different states, defined by the
@@ -87,8 +86,8 @@ public abstract class Action {
         return this.id;
     }
 
-    public EntityId getEntity() {
-        return this.entity.getId();
+    public Entity getEntity() {
+        return this.entity;
     }
 
     /**
