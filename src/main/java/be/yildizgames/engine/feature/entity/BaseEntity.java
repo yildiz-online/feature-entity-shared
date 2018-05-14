@@ -345,4 +345,9 @@ public abstract class BaseEntity implements Entity, Target {
     protected final void addRunningAction(final Action a) {
         this.actionRunning.add(a);
     }
+
+    @Override
+    public final Point3D getDestination() {
+        return this.destination;
+    }
 }

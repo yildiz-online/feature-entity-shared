@@ -35,7 +35,6 @@ import be.yildizgames.engine.feature.entity.data.ViewDistance;
 import be.yildizgames.engine.feature.entity.fields.Target;
 import be.yildizgames.engine.feature.entity.module.Module;
 
-import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -117,6 +116,8 @@ public interface Entity extends Target {
     void setHitPoints(int hitPoint);
 
     int getMaxHitPoints();
+
+    Point3D getDestination();
 
     /**
      * Provide an action matching its id.
