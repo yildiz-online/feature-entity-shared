@@ -114,12 +114,12 @@ public abstract class BaseEntity implements Entity, Target {
         this.energy.setValue(e.getEnergy());
     }
 
-    public void registerModule(Module m) {
+    public final void registerModule(Module m) {
         this.modules.add(m);
     }
 
     @Override
-    public void doActions(final long time) {
+    public final void doActions(final long time) {
         this.actionComplete.clear();
         if(!this.actionRunning.isEmpty()) {
             for (Action a : this.actionRunning) {
@@ -137,27 +137,27 @@ public abstract class BaseEntity implements Entity, Target {
     }
 
     @Override
-    public void lookAt(final Point3D destination) {
+    public final void lookAt(final Point3D destination) {
         /*this.position.lookAt(destination);*/
     }
 
     @Override
-    public void addState(final State state) {
+    public final void addState(final State state) {
         this.states.addState(state);
     }
 
     @Override
-    public void removeState(final State state) {
+    public final void removeState(final State state) {
         this.states.removeState(state);
     }
 
     @Override
-    public boolean hasState(final State state) {
+    public final boolean hasState(final State state) {
         return this.states.hasState(state);
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return this.id.hashCode();
     }
 
@@ -167,12 +167,12 @@ public abstract class BaseEntity implements Entity, Target {
     }
 
     @Override
-    public boolean isSeeing(final Entity e) {
+    public final boolean isSeeing(final Entity e) {
         return this.visibleEntities.contains(e);
     }
 
     @Override
-    public boolean see(final Entity e) {
+    public final boolean see(final Entity e) {
         return this.visibleEntities.add(e);
     }
 
@@ -181,130 +181,130 @@ public abstract class BaseEntity implements Entity, Target {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return "Entity:" + this.getId() + " -- " + this.getType();
     }
 
     @Override
-    public boolean isDeleted() {
+    public final boolean isDeleted() {
         return this.hasState(destroyed);
     }
 
     @Override
-    public EntityType getType() {
+    public final EntityType getType() {
         return this.type;
     }
 
     @Override
-    public Point3D getPosition() {
+    public final Point3D getPosition() {
         return this.position;
     }
 
     @Override
-    public void setPosition(Point3D position) {
+    public final void setPosition(Point3D position) {
         //FIXME use the module to set the position instead, to avoid to be able to set the position even if the module cannot move.
         assert position != null;
         this.position = position;
     }
 
     @Override
-    public Point3D getDirection() {
+    public final Point3D getDirection() {
         return this.direction;
     }
 
     @Override
-    public void setDirection(Point3D direction) {
+    public final void setDirection(Point3D direction) {
         this.direction = direction;
     }
 
     @Override
-    public List<Action> getActionDone() {
+    public final List<Action> getActionDone() {
         return this.actionComplete;
     }
 
     @Override
-    public boolean isZeroHp() {
+    public final boolean isZeroHp() {
         return this.hp.getValue() == 0;
     }
 
     @Override
-    public int getHitPoints() {
+    public final  int getHitPoints() {
         return this.hp.getValue();
     }
 
     @Override
-    public void setHitPoints(int hitPoint) {
+    public final void setHitPoints(int hitPoint) {
         this.hp.setValue(hitPoint);
 
     }
 
     @Override
-    public int getMaxHitPoints() {
+    public final int getMaxHitPoints() {
         return this.hp.getMax();
     }
 
     @Override
-    public int getEnergyPoints() {
+    public final int getEnergyPoints() {
         return this.energy.getValue();
     }
 
     @Override
-    public void setEnergyPoints(int energy) {
+    public final void setEnergyPoints(int energy) {
         this.energy.setValue(energy);
     }
 
     @Override
-    public int getMaxEnergyPoints() {
+    public final int getMaxEnergyPoints() {
         return this.energy.getMax();
     }
 
     @Override
-    public List<Action> getActions() {
+    public final List<Action> getActions() {
         return this.actionRunning;
     }
 
     @Override
-    public float getHitPointsRatio() {
+    public final float getHitPointsRatio() {
         return this.hp.getRatio();
     }
 
     @Override
-    public float getEnergyPointsRatio() {
+    public final float getEnergyPointsRatio() {
         return this.energy.getRatio();
     }
 
     @Override
-    public boolean hasSameOwnerAs(final Entity e) {
+    public final boolean hasSameOwnerAs(final Entity e) {
         return this.owner.equals(e.getOwner());
     }
 
     @Override
-    public void prepareAction(Optional<ActionId> action) {
+    public final void prepareAction(Optional<ActionId> action) {
         this.actionToPrepare = action.map(this::getAction).orElse(new NoAction(this, ActionId.WORLD));
     }
 
     @Override
-    public void setOwner(PlayerId ownerId) {
+    public final void setOwner(PlayerId ownerId) {
         assert ownerId != null;
         this.owner = ownerId;
     }
 
     @Override
-    public void startPreparedAction() {
+    public final void startPreparedAction() {
         this.startAction(this.actionToPrepare);
     }
 
     @Override
-    public boolean hasTarget() {
+    public final  boolean hasTarget() {
         return this.target != null && !this.target.isZeroHp();
     }
 
     @Override
-    public Optional<Target> getTarget() {
+    public final Optional<Target> getTarget() {
         return Optional.ofNullable(this.target);
     }
 
-    public Set<Entity> getVisibleEntities() {
+    public final  Set<Entity> getVisibleEntities() {
         return visibleEntities;
     }
 

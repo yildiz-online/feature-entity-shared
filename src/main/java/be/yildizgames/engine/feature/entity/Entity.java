@@ -182,7 +182,7 @@ public interface Entity extends Target {
 
     List<Action> getActionDone();
 
-    void startAction(ActionId action, Target target, Point3D pos);
+    void startAction(ActionId action);
 
     /**
      * Request this entity to do a move action.
