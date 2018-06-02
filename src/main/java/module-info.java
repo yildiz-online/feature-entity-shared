@@ -43,4 +43,5 @@ module be.yildizgames.feature.entity.shared {
     exports be.yildizgames.engine.feature.entity.construction;
     exports be.yildizgames.engine.feature.entity.data;
     exports be.yildizgames.engine.feature.entity.fields;
+    exports be.yildizgames.engine.feature.entity.module;
 }

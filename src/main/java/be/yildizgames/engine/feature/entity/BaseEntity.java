@@ -34,7 +34,7 @@ import be.yildizgames.engine.feature.entity.data.EntityType;
 import be.yildizgames.engine.feature.entity.data.State;
 import be.yildizgames.engine.feature.entity.fields.StateHolder;
 import be.yildizgames.engine.feature.entity.fields.Target;
-import be.yildizgames.engine.feature.entity.module.Module;
+import be.yildizgames.engine.feature.entity.module.EntityModule;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -94,7 +94,7 @@ public abstract class BaseEntity implements Entity, Target {
 
     protected Action actionToPrepare;
 
-    private final List<Module> modules = new ArrayList<>();
+    private final List<EntityModule> modules = new ArrayList<>();
 
     protected BaseEntity(EntityId id, EntityType type, int hp, int ep) {
         super();
@@ -114,7 +114,7 @@ public abstract class BaseEntity implements Entity, Target {
         this.energy.setValue(e.getEnergy());
     }
 
-    public final void registerModule(Module m) {
+    public final void registerModule(EntityModule m) {
         this.modules.add(m);
     }
 

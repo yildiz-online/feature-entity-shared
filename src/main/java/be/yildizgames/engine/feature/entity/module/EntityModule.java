@@ -31,11 +31,11 @@ import be.yildizgames.common.model.ActionId;
  *
  * @author Grégory Van den Borre
  */
-public class Module {
+public class EntityModule {
 
     private final ActionId id;
 
-    protected Module(ActionId id) {
+    protected EntityModule(ActionId id) {
         super();
         this.id = id;
     }

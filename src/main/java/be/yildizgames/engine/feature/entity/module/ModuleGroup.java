@@ -34,7 +34,7 @@ import java.util.List;
  */
 public final class ModuleGroup {
 
-    private final List<Module> modules;
+    private final List<EntityModule> modules;
 
 
     /**
@@ -42,9 +42,9 @@ public final class ModuleGroup {
      *
      * @throws NullPointerException if any parameter is null.
      */
-    public ModuleGroup(List<Module> modules) {
+    public ModuleGroup(List<EntityModule> modules) {
         super();
-        this.modules = new ArrayList<Module>(modules);
+        this.modules = new ArrayList<EntityModule>(modules);
     }
 
 
@@ -64,7 +64,7 @@ public final class ModuleGroup {
         return this.modules.equals(that.modules);
     }
 
-    public List<Module> getAll() {
+    public List<EntityModule> getAll() {
         return this.modules;
     }
 }

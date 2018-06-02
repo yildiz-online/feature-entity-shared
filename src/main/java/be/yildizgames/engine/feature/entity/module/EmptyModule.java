@@ -25,13 +25,12 @@
 package be.yildizgames.engine.feature.entity.module;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.engine.feature.entity.action.NoAction;
 
 /**
  * This module will do nothing, it is associated with the NoAction action.
  * @author Grégory Van den Borre
  */
-public class EmptyModule extends Module {
+public class EmptyModule extends EntityModule {
 
     /**
      * Module unique id.

@@ -33,7 +33,7 @@ import be.yildizgames.engine.feature.entity.data.EntityType;
 import be.yildizgames.engine.feature.entity.data.State;
 import be.yildizgames.engine.feature.entity.data.ViewDistance;
 import be.yildizgames.engine.feature.entity.fields.Target;
-import be.yildizgames.engine.feature.entity.module.Module;
+import be.yildizgames.engine.feature.entity.module.EntityModule;
 
 import java.util.List;
 import java.util.Optional;
@@ -268,7 +268,7 @@ public interface Entity extends Target {
 
     Optional<Target> getTarget();
 
-    Module getModule(ActionId id);
+    EntityModule getModule(ActionId id);
 
-    List<Module> getModules();
+    List<EntityModule> getModules();
 }
