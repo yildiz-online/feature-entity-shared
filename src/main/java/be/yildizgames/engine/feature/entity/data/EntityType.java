@@ -86,11 +86,10 @@ public final class EntityType {
      *
      * @param index Entity index value.
      * @return The Type matching the index value.
-     * @throws NullPointerException if there is no value matching the index.
      */
     public static EntityType valueOf(final int index) {
         assert EntityType.MAP.containsKey(index) : "Entity type " + index + " not registered";
-        return EntityType.MAP.get(index);
+        return EntityType.MAP.getOrDefault(index, WORLD);
     }
 
     @Override
