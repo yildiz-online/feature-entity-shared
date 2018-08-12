@@ -25,7 +25,6 @@
 package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
 import be.yildizgames.engine.feature.entity.Entity;
 
 /**
@@ -33,12 +32,12 @@ import be.yildizgames.engine.feature.entity.Entity;
  */
 public class NoEnergy extends ProduceEnergy {
 
-    public NoEnergy(Entity e, ActionId id) {
-        super(e, id);
+    public NoEnergy(ActionId id) {
+        super(id);
     }
 
     @Override
-    protected final void energyReplenishStrategy(final long time) {
+    protected final void energyReplenishStrategy(final long time, Entity e) {
         //does nothing
     }
 

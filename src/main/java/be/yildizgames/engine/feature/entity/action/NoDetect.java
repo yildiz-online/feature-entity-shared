@@ -32,27 +32,27 @@ import be.yildizgames.engine.feature.entity.Entity;
  */
 public class NoDetect extends Detect{
 
-    public NoDetect(Entity e, ActionId id) {
-        super(id, e);
+    public NoDetect(ActionId id) {
+        super(id);
     }
 
     @Override
-    protected void runImpl(long time) {
+    protected void runImpl(long time, Entity e) {
         //does nothing
     }
 
     @Override
-    public boolean checkPrerequisite() {
+    public boolean checkPrerequisite(Entity e) {
         return false;
     }
 
     @Override
-    protected void initImpl() {
+    protected void initImpl(Entity e) {
         //does nothing
     }
 
     @Override
-    protected void stopImpl() {
+    protected void stopImpl(Entity e) {
         //does nothing
     }
 

@@ -37,18 +37,17 @@ public class NoAttack extends AbstractAttack {
     /**
      * Create a new NoAttack action.
      *
-     * @param attacker Associated entity.
      * @param id Action id of the associated module.
      */
-    public NoAttack(final Entity attacker, ActionId id) {
-        super(attacker, id);
+    public NoAttack(ActionId id) {
+        super(id);
     }
 
     /**
      * Does nothing.
      */
     @Override
-    protected void fire() {
+    protected void fire(Entity e) {
         //does nothing
     }
 
@@ -56,7 +55,7 @@ public class NoAttack extends AbstractAttack {
      * Does nothing.
      */
     @Override
-    protected void stopFire() {
+    protected void stopFire(Entity e) {
         //does nothing
     }
 
@@ -64,7 +63,7 @@ public class NoAttack extends AbstractAttack {
      * @return <code>false</code>
      */
     @Override
-    public boolean checkPrerequisite() {
+    public boolean checkPrerequisite(Entity e) {
         return false;
     }
 
@@ -72,7 +71,7 @@ public class NoAttack extends AbstractAttack {
      * Does nothing.
      */
     @Override
-    public void stopImpl() {
+    public void stopImpl(Entity e) {
         //does nothing
     }
 
@@ -80,7 +79,7 @@ public class NoAttack extends AbstractAttack {
      * Does nothing.
      */
     @Override
-    public void initImpl() {
+    public void initImpl(Entity e) {
         //does nothing
     }
 
@@ -90,7 +89,7 @@ public class NoAttack extends AbstractAttack {
      * @param time Unused.
      */
     @Override
-    protected void runImpl(final long time) {
+    protected void runImpl(final long time, Entity e) {
         //does nothing
     }
 

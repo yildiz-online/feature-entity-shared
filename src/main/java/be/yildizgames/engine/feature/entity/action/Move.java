@@ -24,13 +24,10 @@
 
 package be.yildizgames.engine.feature.entity.action;
 
-import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
 import be.yildizgames.engine.feature.entity.Action;
 import be.yildizgames.engine.feature.entity.Entity;
 import be.yildizgames.engine.feature.entity.fields.MutableSpeed;
-import be.yildizgames.engine.feature.entity.fields.Target;
 
 /**
  * action to move an entity to a different place.
@@ -60,19 +57,17 @@ public abstract class Move extends Action {
 
     /**
      * Create a new Move action.
-     *
-     * @param e Entity executing the action.
      * @param id Action id of the associated module.
      */
-    protected Move(final ActionId id, final Entity e) {
-        super(id, e, false);
+    protected Move(final ActionId id) {
+        super(id, false);
     }
 
     /**
      * Reinitialize the distance to avoid shared value with a previous move.
      */
     @Override
-    protected final void initImpl() {
+    protected final void initImpl(Entity e) {
         this.distance = 0;
     }
 

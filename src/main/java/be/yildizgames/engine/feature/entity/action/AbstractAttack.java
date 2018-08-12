@@ -61,21 +61,20 @@ public abstract class AbstractAttack extends Action {
     /**
      * Create a new Attack action.
      * @param id Action id of the associated module.
-     * @param attacker Entity attacking.
      */
-    protected AbstractAttack(final Entity attacker, ActionId id) {
-        super(id, attacker, false);
+    protected AbstractAttack (ActionId id) {
+        super(id, false);
     }
 
     /**
      * this method will mostly contains call to materialization, if any.
      */
-    protected abstract void fire();
+    protected abstract void fire(Entity e);
 
     /**
      * Stop running the fire method.
      */
-    protected abstract void stopFire();
+    protected abstract void stopFire(Entity e);
 
     public void setDamage(final AttackDamage damage) {
         this.damage = damage;

@@ -36,18 +36,18 @@ public abstract class Protect extends AbstractNoInteractionAction {
 
     private final ProtectMaterialization materialization;
 
-    protected Protect(final ActionId id, final Entity e, ProtectMaterialization mat) {
-        super(id, e, true);
+    protected Protect(final ActionId id, ProtectMaterialization mat) {
+        super(id, true);
         this.materialization = mat;
     }
 
     public abstract void addHitResult(AttackHitResult r);
 
     @Override
-    protected final void runImpl(final long time) {
-        this.updateHp(time);
-        this.updateIfDestroyed(time);
-        this.hpReplenishStrategy(time);
+    protected final void runImpl(final long time, Entity e) {
+        this.updateHp(time, e);
+        this.updateIfDestroyed(time, e);
+        this.hpReplenishStrategy(time, e);
     }
 
     /**
@@ -55,18 +55,18 @@ public abstract class Protect extends AbstractNoInteractionAction {
      *
      * @param time Time since last call.
      */
-    protected abstract void updateHp(long time);
+    protected abstract void updateHp(long time, Entity e);
 
-    protected abstract void updateIfDestroyed(long time);
+    protected abstract void updateIfDestroyed(long time, Entity e);
 
-    protected abstract void hpReplenishStrategy(long time);
+    protected abstract void hpReplenishStrategy(long time, Entity e);
 
     @Override
-    protected final void stopImpl() {
+    protected final void stopImpl(Entity e) {
     }
 
     @Override
-    protected final void initImpl() {
+    protected final void initImpl(Entity e) {
     }
 
     public final ProtectMaterialization getMaterialization() {

@@ -48,8 +48,6 @@ public class ActionManager<T extends Entity> extends EndFrameListener {
      */
     private final List<DestructionListener<T>> destructionListeners = new ArrayList<>();
 
-    private final List<Action> actionToRun = new ArrayList<>();
-
 
     /**
      * To get the list of active entities.
@@ -71,7 +69,6 @@ public class ActionManager<T extends Entity> extends EndFrameListener {
      */
     @Override
     public boolean frameEnded(final long time) {
-        this.actionToRun.forEach(a -> a.run(time));
         List<T> entities = this.entityManager.getEntities();
         this.listenerToRemove.forEach(this.listeners::remove);
         for (T e : entities) {
@@ -85,11 +82,6 @@ public class ActionManager<T extends Entity> extends EndFrameListener {
             }
         }
         return true;
-    }
-
-    public void registerAction(Action a) {
-        a.init();
-        this.actionToRun.add(a);
     }
 
     /**

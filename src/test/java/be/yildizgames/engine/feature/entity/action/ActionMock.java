@@ -32,31 +32,28 @@ import be.yildizgames.engine.feature.entity.Entity;
  * @author Grégory Van den Borre
  */
 public final class ActionMock extends Action {
-
-    /**
-     * @param entity entity
-     */
-    public ActionMock(Entity entity) {
-        super(ActionId.WORLD, entity, false);
+    
+    public ActionMock() {
+        super(ActionId.WORLD, false);
     }
 
     @Override
-    public boolean checkPrerequisite() {
+    public boolean checkPrerequisite(Entity e) {
         return true;
     }
 
     @Override
-    public void runImpl(long time) {
+    public void runImpl(long time, Entity e) {
 
     }
 
 
     @Override
-    public void initImpl() {
+    public void initImpl(Entity e) {
     }
 
     @Override
-    public void stopImpl() {
+    public void stopImpl(Entity e) {
     }
 
     @Override

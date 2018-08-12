@@ -40,23 +40,22 @@ public final class Follow extends Action {
      * Create a new Follow action.
      *
      * @param move   Move action used to follow a target.
-     * @param entity Entity doing this action.
      */
-    public Follow(final Move move, final Entity entity) {
-        super(move.id, entity, false);
+    public Follow(final Move move) {
+        super(move.id, false);
         this.move = move;
     }
 
     @Override
-    public boolean checkPrerequisite() {
-        return this.entity.hasTarget();
+    public boolean checkPrerequisite(Entity e) {
+        return e.hasTarget();
     }
 
     @Override
-    public void runImpl(final long time) {
-        this.entity.getTarget().ifPresent(t -> {
-            this.entity.setDestination(t.getPosition());
-            this.move.run(time);
+    public void runImpl(final long time, Entity e) {
+        e.getTarget().ifPresent(t -> {
+            e.setDestination(t.getPosition());
+            this.move.run(time, e);
         });
     }
 
@@ -65,13 +64,13 @@ public final class Follow extends Action {
     }
 
     @Override
-    public void stopImpl() {
-        this.move.stop();
+    public void stopImpl(Entity e) {
+        this.move.stop(e);
     }
 
     @Override
-    public void initImpl() {
-        this.move.init();
+    public void initImpl(Entity e) {
+        this.move.init(e);
         this.move.setDistance(this.distance);
     }
 

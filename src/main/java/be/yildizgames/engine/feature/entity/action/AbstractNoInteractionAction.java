@@ -26,7 +26,6 @@ package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
 import be.yildizgames.engine.feature.entity.Action;
-import be.yildizgames.engine.feature.entity.Entity;
 
 /**
  * Base class for actions without interactions.
@@ -39,14 +38,13 @@ public abstract class AbstractNoInteractionAction extends Action {
      * Build a new no interaction action.
      *
      * @param action Action id of the associated module.
-     * @param id      entity unique Id.
      * @param passive Is the action passive or active?
      */
-    protected AbstractNoInteractionAction(final ActionId action, final Entity id, final boolean passive) {
-        super(action, id, passive);
+    protected AbstractNoInteractionAction(final ActionId action, final boolean passive) {
+        super(action,  passive);
     }
 
-    protected AbstractNoInteractionAction(final ActionId action, final Entity e, final boolean passive, boolean self) {
-        super(action, e, passive, self);
+    protected AbstractNoInteractionAction(final ActionId action,  final boolean passive, boolean self) {
+        super(action, passive, self);
     }
 }

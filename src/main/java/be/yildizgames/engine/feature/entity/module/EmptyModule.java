@@ -25,6 +25,7 @@
 package be.yildizgames.engine.feature.entity.module;
 
 import be.yildizgames.common.model.ActionId;
+import be.yildizgames.engine.feature.entity.action.NoAction;
 
 /**
  * This module will do nothing, it is associated with the NoAction action.
@@ -42,6 +43,6 @@ public class EmptyModule extends EntityModule {
      * @throws NullPointerException If id is null.
      */
     public EmptyModule() {
-        super(MODULE);
+        super(new NoAction(MODULE));
     }
 }

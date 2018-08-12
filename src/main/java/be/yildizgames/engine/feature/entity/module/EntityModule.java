@@ -25,25 +25,30 @@
 package be.yildizgames.engine.feature.entity.module;
 
 import be.yildizgames.common.model.ActionId;
+import be.yildizgames.engine.feature.entity.Action;
 
 /**
  * A module is a part of an Entity, it contains its specific action.
  *
  * @author Grégory Van den Borre
  */
-public class EntityModule {
+public class EntityModule <T extends Action> {
 
-    private final ActionId id;
+    private final T action;
 
-    protected EntityModule(ActionId id) {
+    protected EntityModule(T action) {
         super();
-        this.id = id;
+        this.action = action;
     }
 
     /**
      * @return The module associated Id.
      */
     public final ActionId getId() {
-        return this.id;
+        return this.action.id;
+    }
+
+    public T getAction() {
+        return this.action;
     }
 }

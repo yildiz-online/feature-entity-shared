@@ -38,33 +38,30 @@ public final class ProtectInvincible extends Protect {
 
     /**
      * Create the action.
-     *
-     * @param entity Associated entity.
      * @param id Action id of the associated module.
      */
-    //@requires entity != null
     //@requires id != null
-    public ProtectInvincible(final Entity entity, ActionId id, ProtectMaterialization mat) {
-        super(id, entity, mat);
+    public ProtectInvincible(ActionId id, ProtectMaterialization mat) {
+        super(id, mat);
     }
 
     @Override
-    protected void updateHp(long timeToAdd) {
+    protected void updateHp(long timeToAdd, Entity e) {
         //does nothing
     }
 
     @Override
-    protected void updateIfDestroyed(long timeToAdd) {
+    protected void updateIfDestroyed(long timeToAdd, Entity e) {
         //does nothing
     }
 
     @Override
-    protected void hpReplenishStrategy(long timeToAdd) {
+    protected void hpReplenishStrategy(long timeToAdd, Entity e) {
         //does nothing
     }
 
     @Override
-    public boolean checkPrerequisite() {
+    public boolean checkPrerequisite(Entity e) {
         return true;
     }
 

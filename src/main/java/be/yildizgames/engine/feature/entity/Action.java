@@ -39,11 +39,6 @@ import be.yildizgames.common.model.ActionId;
 public abstract class Action {
 
     /**
-     * Entity using this action.
-     */
-    protected final Entity entity;
-
-    /**
      * Passive action will run all the time, and will not notify listeners.
      */
     private final boolean passive;
@@ -65,14 +60,12 @@ public abstract class Action {
      */
     private boolean toRun;
 
-    protected Action(final ActionId id, final Entity e, final boolean passive) {
-        this(id, e, passive, false);
+    protected Action(final ActionId id, final boolean passive) {
+        this(id, passive, false);
     }
 
-    protected Action(final ActionId id, final Entity e, final boolean passive, final boolean self) {
+    protected Action(final ActionId id, final boolean passive, final boolean self) {
         super();
-        assert e != null;
-        this.entity = e;
         this.passive = passive;
         this.self = self;
         this.id = id;
@@ -86,16 +79,12 @@ public abstract class Action {
         return this.id;
     }
 
-    public Entity getEntity() {
-        return this.entity;
-    }
-
     /**
      * @return The used Entity hashCode.
      */
     @Override
     public final int hashCode() {
-        return this.entity.hashCode();
+        return this.id.hashCode();
     }
 
     /**
@@ -106,7 +95,7 @@ public abstract class Action {
      */
     @Override
     public final boolean equals(final Object o) {
-        return o instanceof Action && this.entity.equals(((Action) o).entity);
+        return o instanceof Action && this.id.equals(((Action) o).id);
     }
 
     /**
@@ -126,17 +115,18 @@ public abstract class Action {
      * @param time Time since the last call.
      * @return <code>true</code> if the action must continue.
      */
-    public final boolean run(final long time) {
-        if (this.passive && this.checkPrerequisite()) {
+    public final boolean run(final long time, Entity e) {
+        System.out.println(this + " run");
+        if (this.passive && this.checkPrerequisite(e)) {
             this.running = true;
-            this.runImpl(time);
+            this.runImpl(time, e);
             return true;
-        } else if (!this.toRun || !this.checkPrerequisite()) {
+        } else if (!this.toRun || !this.checkPrerequisite(e)) {
             this.running = false;
             return false;
         } else {
             this.running = true;
-            this.runImpl(time);
+            this.runImpl(time, e);
             return true;
         }
     }
@@ -144,9 +134,9 @@ public abstract class Action {
     /**
      * Initialize the action before running it.
      */
-    public final void init() {
+    public final void init(Entity e) {
         this.toRun = true;
-        this.initImpl();
+        this.initImpl(e);
     }
 
     /**
@@ -170,30 +160,30 @@ public abstract class Action {
      *
      * @param time Time since the last call.
      */
-    protected abstract void runImpl(long time);
+    protected abstract void runImpl(long time, Entity e);
 
     /**
      * Check if the prerequisite to start or continue the action is filled.
      *
      * @return <code>true</code> if the action can start or continue.
      */
-    public abstract boolean checkPrerequisite();
+    public abstract boolean checkPrerequisite(Entity e);
 
     /**
      * Initialize the action before running it.
      */
-    protected abstract void initImpl();
+    protected abstract void initImpl(Entity e);
 
     /**
      * Stop the action.
      */
-    public final void stop() {
+    public final void stop(Entity e) {
         this.toRun = false;
         this.running = false;
-        this.stopImpl();
+        this.stopImpl(e);
     }
 
-    protected abstract void stopImpl();
+    protected abstract void stopImpl(Entity e);
 
     public abstract void delete();
 }

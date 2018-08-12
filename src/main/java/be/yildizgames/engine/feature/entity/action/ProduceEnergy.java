@@ -32,16 +32,16 @@ import be.yildizgames.engine.feature.entity.Entity;
  */
 public abstract class ProduceEnergy extends AbstractNoInteractionAction {
 
-    protected ProduceEnergy(Entity e, ActionId id) {
-        super(id, e, true);
+    protected ProduceEnergy(ActionId id) {
+        super(id, true);
     }
 
     @Override
-    public final void runImpl(final long time) {
-        this.energyReplenishStrategy(time);
+    public final void runImpl(final long time, Entity e) {
+        this.energyReplenishStrategy(time, e);
     }
 
-    protected abstract void energyReplenishStrategy(long time);
+    protected abstract void energyReplenishStrategy(long time, Entity e);
 
     /**
      * Only run if energy is not at max (and thus if energy.max is smaller than 0).
@@ -49,18 +49,16 @@ public abstract class ProduceEnergy extends AbstractNoInteractionAction {
      * @return <code>true</code> if the energy is not at max.
      */
     @Override
-    public boolean checkPrerequisite() {
-        //FIXME fix prerequisite
-        return true;
-        //return this.entity.getEnergyPoints() < this.entity.getModule(this.id).getMax();
+    public boolean checkPrerequisite(Entity e) {
+        return e.getEnergyPoints() < e.getMaxEnergyPoints();
     }
 
     @Override
-    protected void initImpl() {
+    protected void initImpl(Entity e) {
     }
 
     @Override
-    protected void stopImpl() {
+    protected void stopImpl(Entity e) {
     }
 
     /**

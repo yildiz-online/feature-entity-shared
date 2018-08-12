@@ -36,42 +36,42 @@ public abstract class AbstractAttackEntity extends AbstractAttack {
 
     private final Follow follow;
 
-    public AbstractAttackEntity(final ActionId id, final Entity attacker, final Move move) {
-        super(attacker, id);
-        this.follow = new Follow(move, attacker);
+    public AbstractAttackEntity(final ActionId id, final Move move) {
+        super( id);
+        this.follow = new Follow(move);
         //FIXME distance hardcoded
         this.follow.setDistance(200);
     }
 
     @Override
-    protected final void initImpl() {
-        this.follow.init();
+    protected final void initImpl(Entity e) {
+        this.follow.init(e);
     }
 
     @Override
-    protected final void runImpl(final long time) {
-        if (!this.entity.hasTarget()) {
-            this.stop();
+    protected final void runImpl(final long time, Entity e) {
+        if (!e.hasTarget()) {
+            this.stop(e);
         }
-        this.follow.run(time);
-        this.entity.getTarget().ifPresent(this::handleTarget);
+        this.follow.run(time, e);
+        e.getTarget().ifPresent(t -> this.handleTarget(t,e));
     }
 
-    private void handleTarget(Target target) {
-        if (Point3D.squaredDistance(this.entity.getPosition(), target.getPosition()) - 1 <= this.range.distance * this.range.distance
-                && this.entity.getDirection().equals(target.getPosition().subtract(this.entity.getPosition()))) {
-            this.fire();
+    private void handleTarget(Target target, Entity e) {
+        if (Point3D.squaredDistance(e.getPosition(), target.getPosition()) - 1 <= this.range.distance * this.range.distance
+                && e.getDirection().equals(target.getPosition().subtract(e.getPosition()))) {
+            this.fire(e);
             if (this.timer.isTimeElapsed()) {
                 target.hit(this.attackHit);
             }
         } else {
-            this.stopFire();
+            this.stopFire(e);
         }
     }
 
     @Override
-    protected final void stopImpl() {
-        this.follow.stop();
-        this.stopFire();
+    protected final void stopImpl(Entity e) {
+        this.follow.stop(e);
+        this.stopFire(e);
     }
 }

@@ -45,8 +45,8 @@ public class ActionDto {
         this.entity = entity;
     }
 
-    public ActionDto(Action a) {
-        this(a.id, a.getEntity().getId());
+    public ActionDto(Action a, EntityId id) {
+        this(a.id, id);
     }
 
     @Override

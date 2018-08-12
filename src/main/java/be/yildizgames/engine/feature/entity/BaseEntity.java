@@ -34,6 +34,7 @@ import be.yildizgames.engine.feature.entity.data.EntityType;
 import be.yildizgames.engine.feature.entity.data.State;
 import be.yildizgames.engine.feature.entity.fields.StateHolder;
 import be.yildizgames.engine.feature.entity.fields.Target;
+import be.yildizgames.engine.feature.entity.module.EmptyModule;
 import be.yildizgames.engine.feature.entity.module.EntityModule;
 
 import java.util.ArrayList;
@@ -92,7 +93,7 @@ public abstract class BaseEntity implements Entity, Target {
 
     protected List<Action> actionComplete = new ArrayList<>();
 
-    protected Action actionToPrepare;
+    protected Action actionToPrepare = new NoAction(EmptyModule.MODULE);
 
     private final List<EntityModule> modules = new ArrayList<>();
 
@@ -100,7 +101,6 @@ public abstract class BaseEntity implements Entity, Target {
         super();
         this.id = id;
         this.type = type;
-        this.actionToPrepare = new NoAction(this, ActionId.WORLD);
         this.hp.setValue(hp);
         this.energy.setValue(ep);
     }
@@ -109,30 +109,26 @@ public abstract class BaseEntity implements Entity, Target {
         super();
         this.id = e.getId();
         this.type = e.getType();
-        this.actionToPrepare = new NoAction(this, ActionId.WORLD);
         this.hp.setValue(e.getHp());
         this.energy.setValue(e.getEnergy());
     }
 
-    public final void registerModule(EntityModule m) {
+    protected final void registerModule(EntityModule m) {
         this.modules.add(m);
     }
 
     @Override
     public final void doActions(final long time) {
         this.actionComplete.clear();
-        if(!this.actionRunning.isEmpty()) {
-            for (Action a : this.actionRunning) {
-                if (!a.checkPrerequisite()) {
-                    this.actionComplete.add(a);
-                } else {
-                    boolean running = a.run(time);
-                    if (!running) {
-                        this.actionComplete.add(a);
-                    }
-                }
+        for (Action a : this.actionRunning) {
+            if (!a.checkPrerequisite(this)) {
+                this.actionComplete.add(a);
+                this.actionRunning.remove(a);
+            } else {
+                boolean running = a.run(time, this);
+                if (!running) {
+                    this.actionComplete.add(a); }
             }
-            this.actionRunning.removeAll(this.actionComplete);
         }
     }
 
@@ -280,7 +276,7 @@ public abstract class BaseEntity implements Entity, Target {
 
     @Override
     public final void prepareAction(Optional<ActionId> action) {
-        this.actionToPrepare = action.map(this::getAction).orElse(new NoAction(this, ActionId.WORLD));
+        this.actionToPrepare = action.map(this::getAction).orElse(new NoAction(EmptyModule.MODULE));
     }
 
     @Override
@@ -340,10 +336,6 @@ public abstract class BaseEntity implements Entity, Target {
     @Override
     public final void setName(String name) {
         this.name = name;
-    }
-
-    protected final void addRunningAction(final Action a) {
-        this.actionRunning.add(a);
     }
 
     @Override

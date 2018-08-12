@@ -25,7 +25,6 @@
 package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
 import be.yildizgames.engine.feature.entity.Entity;
 
 /**
@@ -36,20 +35,18 @@ import be.yildizgames.engine.feature.entity.Entity;
 public final class NoMove extends Move {
 
     /**
-     * Create a new action.
-     *
-     * @param e Associated entity.
+     * Create a new action
      * @param id Action id of the associated module.
      */
-    public NoMove(final Entity e, ActionId id) {
-        super(id, e);
+    public NoMove(ActionId id) {
+        super(id);
     }
 
     /**
      * @return Always <code>false</code>
      */
     @Override
-    public boolean checkPrerequisite() {
+    public boolean checkPrerequisite(Entity e) {
         return false;
     }
 
@@ -59,15 +56,15 @@ public final class NoMove extends Move {
      * @param time Unused.
      */
     @Override
-    public void runImpl(final long time) {
-        this.stop();
+    public void runImpl(final long time, Entity e) {
+        this.stop(e);
     }
 
     /**
      * Never run, so nothing to stop.
      */
     @Override
-    public void stopImpl() {
+    public void stopImpl(Entity e) {
         //does nothing
     }
 

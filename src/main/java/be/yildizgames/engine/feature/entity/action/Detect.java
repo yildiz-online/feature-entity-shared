@@ -25,15 +25,14 @@
 package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.engine.feature.entity.Entity;
 
 /**
  * @author Grégory Van den Borre
  */
 public abstract class Detect extends AbstractNoInteractionAction {
 
-    protected Detect(ActionId id, Entity e) {
-        super(id, e, true);
+    protected Detect(ActionId id) {
+        super(id, true);
     }
 
 }

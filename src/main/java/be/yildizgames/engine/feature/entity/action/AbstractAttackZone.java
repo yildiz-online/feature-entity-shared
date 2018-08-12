@@ -64,11 +64,10 @@ public abstract class AbstractAttackZone<T extends Entity> extends AbstractAttac
      * Build the Attack Zone.
      *
      * @param id Action id of the associated module.
-     * @param attacker   Entity using the action.
      * @param retriever  Logic to compute the entities to find in the zone.
      */
-    public AbstractAttackZone(ActionId id, final Entity attacker, final TargetRetriever<T> retriever) {
-        super(attacker, id);
+    public AbstractAttackZone(ActionId id, final TargetRetriever<T> retriever) {
+        super(id);
         //FIXME implements
         this.damageZone = 0;
         this.targetRetriever = retriever;
