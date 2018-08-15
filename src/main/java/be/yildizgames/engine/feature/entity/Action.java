@@ -116,7 +116,6 @@ public abstract class Action {
      * @return <code>true</code> if the action must continue.
      */
     public final boolean run(final long time, Entity e) {
-        System.out.println(this + " run");
         if (this.passive && this.checkPrerequisite(e)) {
             this.running = true;
             this.runImpl(time, e);
