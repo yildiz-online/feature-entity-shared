@@ -138,6 +138,11 @@ public abstract class BaseEntity implements Entity, Target {
     }
 
     @Override
+    public final void setDestination(Point3D destination) {
+        this.destination = destination;
+    }
+
+    @Override
     public final void addState(final State state) {
         this.states.addState(state);
     }
