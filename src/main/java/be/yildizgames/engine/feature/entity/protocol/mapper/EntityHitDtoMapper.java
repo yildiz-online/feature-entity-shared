@@ -24,8 +24,8 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
+import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.IntegerMapper;
-import be.yildizgames.common.mapping.MappingException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.common.mapping.Separator;
 import be.yildizgames.common.mapping.model.EntityIdMapper;
@@ -47,20 +47,20 @@ public class EntityHitDtoMapper implements ObjectMapper<EntityHitDto> {
     }
 
     @Override
-    public EntityHitDto from(String s) throws MappingException {
-        assert s != null;
+    public EntityHitDto from(String s) {
+        ImplementationException.throwForNull(s);
         String[] v = s.split(Separator.OBJECTS_SEPARATOR);
         try {
             return new EntityHitDto(EntityIdMapper.getInstance().from(v[0]),
                     IntegerMapper.getInstance().from(v[1]));
         } catch(IndexOutOfBoundsException e) {
-            throw new MappingException(e);
+            throw new EntityMappingException(e);
         }
     }
 
     @Override
     public String to(EntityHitDto dto) {
-        assert dto != null;
+        ImplementationException.throwForNull(dto);
         return EntityIdMapper.getInstance().to(dto.entity)
                 + Separator.OBJECTS_SEPARATOR
                 + IntegerMapper.getInstance().to(dto.hitPoint);

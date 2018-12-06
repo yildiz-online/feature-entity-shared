@@ -44,7 +44,7 @@ public class EntityInConstruction extends DefaultEntityInConstruction {
             PlayerId.WORLD,
             "World",
             Point3D.ZERO,
-            Point3D.INVERT_Z,
+            Point3D.Z_NEGATIVE,
             0,
             0);
 

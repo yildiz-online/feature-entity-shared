@@ -24,7 +24,7 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildizgames.common.mapping.MappingException;
+import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.common.model.ActionId;
 
@@ -44,18 +44,18 @@ public class ActionIdMapper implements ObjectMapper<ActionId> {
     }
 
     @Override
-    public ActionId from(String s) throws MappingException {
-        assert s != null;
+    public ActionId from(String s) {
+        ImplementationException.throwForNull(s);
         try {
             return ActionId.valueOf(Integer.parseInt(s));
         } catch (final NumberFormatException nfe) {
-            throw new MappingException(nfe);
+            throw new EntityMappingException(nfe);
         }
     }
 
     @Override
     public String to(ActionId actionId) {
-        assert actionId != null;
+        ImplementationException.throwForNull(actionId);
         return String.valueOf(actionId.value);
     }
 }

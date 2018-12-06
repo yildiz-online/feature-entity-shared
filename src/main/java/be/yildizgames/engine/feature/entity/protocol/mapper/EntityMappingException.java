@@ -24,34 +24,18 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
-import be.yildizgames.common.mapping.IntegerMapper;
-import be.yildizgames.common.mapping.ObjectMapper;
-import be.yildizgames.engine.feature.entity.data.EntityType;
+import be.yildizgames.common.exception.business.BusinessException;
 
-/**
- * @author Grégory Van den Borre
- */
-public class EntityTypeMapper implements ObjectMapper<EntityType> {
-
-    private static final EntityTypeMapper INSTANCE = new EntityTypeMapper();
-
-    private EntityTypeMapper() {
-        super();
+public class EntityMappingException extends BusinessException {
+    EntityMappingException(String message) {
+        super(message);
     }
 
-    public static EntityTypeMapper getInstance() {
-        return INSTANCE;
+    EntityMappingException(Exception cause) {
+        super(cause);
     }
 
-    @Override
-    public EntityType from(String s) {
-        return EntityType.valueOf(IntegerMapper.getInstance().from(s));
-    }
-
-    @Override
-    public String to(EntityType type) {
-        ImplementationException.throwForNull(type);
-        return String.valueOf(type.type);
+    EntityMappingException(String message, Exception cause) {
+        super(message, cause);
     }
 }

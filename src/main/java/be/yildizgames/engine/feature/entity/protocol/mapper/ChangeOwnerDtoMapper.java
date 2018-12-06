@@ -24,7 +24,7 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildizgames.common.mapping.MappingException;
+import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.common.mapping.Separator;
 import be.yildizgames.common.mapping.model.EntityIdMapper;
@@ -48,19 +48,19 @@ public class ChangeOwnerDtoMapper implements ObjectMapper<ChangeOwnerDto> {
 
 
     @Override
-    public ChangeOwnerDto from(String s) throws MappingException {
-        assert s != null;
+    public ChangeOwnerDto from(String s) {
+        ImplementationException.throwForNull(s);
         String[] v = s.split(Separator.OBJECTS_SEPARATOR);
         try {
             return new ChangeOwnerDto(EntityIdMapper.getInstance().from(v[0]), PlayerIdMapper.getInstance().from(v[1]));
         } catch (IndexOutOfBoundsException e) {
-            throw new MappingException(e);
+            throw new EntityMappingException(e);
         }
     }
 
     @Override
     public String to(ChangeOwnerDto dto) {
-        assert dto != null;
+        ImplementationException.throwForNull(dto);
         return EntityIdMapper.getInstance().to(dto.entity)
                 + Separator.OBJECTS_SEPARATOR
                 + PlayerIdMapper.getInstance().to(dto.newOwnerId);

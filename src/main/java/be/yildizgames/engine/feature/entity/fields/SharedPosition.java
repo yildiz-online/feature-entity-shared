@@ -33,7 +33,7 @@ public class SharedPosition implements PositionData {
 
     private Point3D position = Point3D.ZERO;
 
-    private Point3D direction = Point3D.INVERT_Z;
+    private Point3D direction = Point3D.Z_NEGATIVE;
 
     public void lookAt(final Point3D destination) {
         this.setDirection(destination.subtract(this.position));
