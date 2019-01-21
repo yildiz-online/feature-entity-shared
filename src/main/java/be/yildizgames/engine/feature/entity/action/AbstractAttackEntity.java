@@ -36,15 +36,14 @@ public abstract class AbstractAttackEntity extends AbstractAttack {
 
     private final Follow follow;
 
-    public AbstractAttackEntity(final ActionId id, final Move move) {
+    public AbstractAttackEntity(final ActionId id, final Move move, final int distance) {
         super( id);
         this.follow = new Follow(move);
-        //FIXME distance hardcoded
-        this.follow.setDistance(200);
+        this.follow.setDistance(distance);
     }
 
     @Override
-    protected final void initImpl(Entity e) {
+    protected final void initImpl(final Entity e) {
         this.follow.init(e);
     }
 
