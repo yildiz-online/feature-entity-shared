@@ -33,28 +33,28 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-class ViewDistanceTest {
+public class ViewDistanceTest {
 
 
     @SuppressWarnings({"null", "boxing"})
     @Test
-    void testEnergy() {
+    public void testEnergy() {
         ViewDistance d = new ViewDistance(10);
         assertEquals(10, d.distance, 0.000001f);
     }
 
     @Test
-    void testEnergy2() {
+    public void testEnergy2() {
         assertThrows(AssertionError.class, () -> new ViewDistance(-10));
     }
 
     @Test
-    void testEnergy3() {
+    public void testEnergy3() {
         assertThrows(AssertionError.class, () -> new ViewDistance(0));
     }
 
     @Test
-    void testHashCode() {
+    public void testHashCode() {
         ViewDistance d1 = new ViewDistance(5);
         ViewDistance d2 = new ViewDistance(5);
         assertEquals(d2.hashCode(), d1.hashCode());
@@ -62,7 +62,7 @@ class ViewDistanceTest {
 
     @SuppressWarnings("boxing")
     @Test
-    void testEquals() {
+    public void testEquals() {
         ViewDistance d1 = new ViewDistance(5);
         ViewDistance d2 = new ViewDistance(5);
         ViewDistance d3 = new ViewDistance(6);

@@ -34,11 +34,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * @author Grégory Van den Borre
  */
 @SuppressWarnings("boxing")
-final class HitPointTest {
+public final class HitPointTest {
 
     @SuppressWarnings("null")
     @Test
-    void testHitPoint() {
+    public void testHitPoint() {
         HitPoint d = new HitPoint(10);
         assertEquals(10, d.points, 0.000001f);
         d = HitPoint.ZERO;
@@ -46,20 +46,20 @@ final class HitPointTest {
     }
 
     @Test
-    void testHitPoint2() {
+    public void testHitPoint2() {
         assertThrows(AssertionError.class, () -> new HitPoint(-10));
 
     }
 
     @Test
-    void testHashCode() {
+    public void testHashCode() {
         HitPoint d1 = new HitPoint(5);
         HitPoint d2 = new HitPoint(5);
         assertEquals(d2.hashCode(), d1.hashCode());
     }
 
     @Test
-    void testEquals() {
+    public void testEquals() {
         HitPoint d1 = new HitPoint(5);
         HitPoint d2 = new HitPoint(5);
         HitPoint d3 = new HitPoint(6);

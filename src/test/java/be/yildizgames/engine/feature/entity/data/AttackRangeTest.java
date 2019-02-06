@@ -34,17 +34,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * @author Grégory Van den Borre
  */
 @SuppressWarnings({"null", "boxing"})
-final class AttackRangeTest {
+public final class AttackRangeTest {
 
     @Test
-    void testHashCode() {
+    public void testHashCode() {
         AttackRange d1 = new AttackRange(5);
         AttackRange d2 = new AttackRange(new Integer(5));
         assertEquals(d2.hashCode(), d1.hashCode());
     }
 
     @Test
-    void testAttackRange() {
+    public void testAttackRange() {
         AttackRange d = new AttackRange(10);
         assertEquals(10, d.distance, 0.000001f);
         d = AttackRange.ZERO;
@@ -53,12 +53,12 @@ final class AttackRangeTest {
     }
 
     @Test
-    void testAttackRange2() {
+    public void testAttackRange2() {
         assertThrows(AssertionError.class, () -> new AttackRange(-10));
     }
 
     @Test
-    void testEqualsObject() {
+    public void testEqualsObject() {
         AttackRange d1 = new AttackRange(5);
         AttackRange d2 = new AttackRange(5);
         AttackRange d3 = new AttackRange(6);

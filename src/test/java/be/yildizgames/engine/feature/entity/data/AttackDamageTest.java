@@ -33,11 +33,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-final class AttackDamageTest {
+public final class AttackDamageTest {
 
     @SuppressWarnings({"null", "boxing"})
     @Test
-    void testAttackDamage() {
+    public void testAttackDamage() {
         AttackDamage d = new AttackDamage(10);
         assertEquals(10, d.points, 0.000001f);
         d = new AttackDamage(-10);
@@ -48,7 +48,7 @@ final class AttackDamageTest {
     }
 
     @Test
-    void testHashCode() {
+    public void testHashCode() {
         AttackDamage d1 = new AttackDamage(5);
         AttackDamage d2 = new AttackDamage(5);
         assertEquals(d2.hashCode(), d1.hashCode());
@@ -56,7 +56,7 @@ final class AttackDamageTest {
 
     @SuppressWarnings("boxing")
     @Test
-    void testEquals() {
+    public void testEquals() {
         AttackDamage d1 = new AttackDamage(5);
         AttackDamage d2 = new AttackDamage(5);
         AttackDamage d3 = new AttackDamage(6);

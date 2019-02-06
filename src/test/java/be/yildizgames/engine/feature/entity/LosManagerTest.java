@@ -31,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author Grégory Van den Borre
  */
-final class LosManagerTest {
+public final class LosManagerTest {
 
    /* @Test
     void newCollisionTest() {

@@ -34,12 +34,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-class EnergyTest {
+public class EnergyTest {
 
 
     @SuppressWarnings({"null", "boxing"})
     @Test
-    void testEnergy() {
+    public void testEnergy() {
         Energy d = new Energy(10);
         assertEquals(10, d.points, 0.000001f);
         d = Energy.ZERO;
@@ -47,13 +47,13 @@ class EnergyTest {
     }
 
     @Test
-    void testEnergy2() {
+    public void testEnergy2() {
         assertThrows(AssertionError.class, () -> new Energy(-10));
 
     }
 
     @Test
-    void testHashCode() {
+    public void testHashCode() {
         Energy d1 = new Energy(5);
         @SuppressWarnings("boxing")
         Energy d2 = new Energy(5);
@@ -62,7 +62,7 @@ class EnergyTest {
 
     @SuppressWarnings("boxing")
     @Test
-    void testEquals() {
+    public void testEquals() {
         Energy d1 = new Energy(5);
         Energy d2 = new Energy(5);
         Energy d3 = new Energy(6);

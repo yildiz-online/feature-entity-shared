@@ -34,51 +34,51 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * @author Grégory Van den Borre
  */
 @SuppressWarnings({"null", "boxing"})
-final class EntityTypeTest {
+public final class EntityTypeTest {
 
     public static final EntityType TYPE_OK = new EntityType(4, "test");
 
     @BeforeEach
-    void enableAssert() {
+    public void enableAssert() {
         EntityType.class.getClassLoader().setClassAssertionStatus(EntityType.class.getCanonicalName(), true);
     }
 
     @Test
-    void testEntityType() {
+    public void testEntityType() {
         EntityType t1 = new EntityType(6, "test");
         assertEquals(6, t1.type);
         assertEquals("test", t1.name);
     }
 
     @Test
-    void testEntityTypeNameNull() {
+    public void testEntityTypeNameNull() {
         assertThrows(AssertionError.class, () -> new EntityType(2, null));
     }
 
     @Test
-    void testEntityTypeNegative() {
+    public void testEntityTypeNegative() {
         assertThrows(AssertionError.class, () -> new EntityType(-1, "test"));
     }
 
     @Test
-    void testEntityTypeDuplicate() {
+    public void testEntityTypeDuplicate() {
         EntityType e = TYPE_OK;
         assertThrows(AssertionError.class, () -> new EntityType(4, "test2"));
     }
 
     @Test
-    void testGet() {
+    public void testGet() {
         EntityType t1 = new EntityType(12, "test");
         assertEquals(t1, EntityType.valueOf(12));
     }
 
     @Test
-    void testGetUnexistingType() {
+    public void testGetUnexistingType() {
         assertThrows(AssertionError.class, () -> EntityType.valueOf(1));
     }
 
     @Test
-    void testToString() {
+    public void testToString() {
         EntityType t1 = new EntityType(7, "test--");
         assertEquals("test--", t1.toString());
     }

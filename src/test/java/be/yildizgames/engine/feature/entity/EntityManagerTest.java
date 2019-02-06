@@ -29,10 +29,10 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Grégory Van den Borre
  */
-class EntityManagerTest {
+public class EntityManagerTest {
 
     @Test
-    void testEntityManager() {
+    public void testEntityManager() {
     }
 
     /*@Test
@@ -56,39 +56,39 @@ class EntityManagerTest {
     }*/
 
     @Test
-    void testAddVisibleUnit() {
+    public void testAddVisibleUnit() {
     }
 
     @Test
-    void testRemoveVisibleUnit() {
+    public void testRemoveVisibleUnit() {
     }
 
     @Test
-    void testSee() {
+    public void testSee() {
     }
 
     @Test
-    void testGetNumberOfEntities() {
+    public void testGetNumberOfEntities() {
     }
 
     @Test
-    void testGetEntities() {
+    public void testGetEntities() {
     }
 
     @Test
-    void testAddEntity() {
+    public void testAddEntity() {
     }
 
     @Test
-    void testAddCity() {
+    public void testAddCity() {
     }
 
     @Test
-    void testAddBonus() {
+    public void testAddBonus() {
     }
 
     @Test
-    void testSetOwnerEntityPlayer() {
+    public void testSetOwnerEntityPlayer() {
     }
 
 

@@ -31,11 +31,11 @@ import org.junit.jupiter.api.Test;
  * @author Grégory Van den Borre
  */
 @SuppressWarnings("boxing")
-final class LevelTest {
+public final class LevelTest {
 
     @SuppressWarnings("null")
     @Test
-    void testEnergy() {
+    public void testEnergy() {
         Level d = Level.valueOf(10);
         Assertions.assertEquals(10, d.value, 0.000001f);
         d = Level.ZERO;
@@ -43,7 +43,7 @@ final class LevelTest {
     }
 
     @Test
-    void testEnergy2() {
+    public void testEnergy2() {
         Assertions.assertThrows(AssertionError.class, () -> Level.valueOf(-10));
     }
 
@@ -55,7 +55,7 @@ final class LevelTest {
     }
 
     @Test
-    void testEquals() {
+    public void testEquals() {
         Level d1 = Level.valueOf(5);
         Level d2 = Level.valueOf(5);
         Level d3 = Level.valueOf(6);

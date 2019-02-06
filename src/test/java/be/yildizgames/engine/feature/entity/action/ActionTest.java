@@ -29,10 +29,10 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Grégory Van den Borre
  */
-class ActionTest {
+public class ActionTest {
 
     @Test
-    void testHashCode() {
+    public void testHashCode() {
     }
 
   /*  @Test

@@ -33,10 +33,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author Grégory Van den Borre
  */
 @SuppressWarnings({"null", "boxing"})
-final class InstanceTest {
+public final class InstanceTest {
     
     @Test
-    void testInstance() {
+    public void testInstance() {
         Instance d = new Instance(10);
         assertEquals(10, d.number, 0.000001f);
         d = Instance.UNIQUE;
@@ -47,24 +47,24 @@ final class InstanceTest {
     }
 
     @Test
-    void testInstance2() {
+    public void testInstance2() {
         Assertions.assertThrows(AssertionError.class, () -> new Instance(-10));
     }
 
     @Test
-    void testInstance3() {
+    public void testInstance3() {
         Assertions.assertThrows(AssertionError.class, () -> new Instance(0));
     }
 
     @Test
-    void testHashCode() {
+    public void testHashCode() {
         Instance d1 = new Instance(5);
         Instance d2 = new Instance( Integer.valueOf(5));
         assertEquals(d2.hashCode(), d1.hashCode());
     }
 
     @Test
-    void testEquals() {
+    public void testEquals() {
         Instance d1 = new Instance(5);
         Instance d2 = new Instance(5);
         Instance d3 = new Instance(6);
