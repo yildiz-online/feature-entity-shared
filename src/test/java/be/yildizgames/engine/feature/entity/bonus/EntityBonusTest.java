@@ -30,13 +30,13 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Grégory Van den Borre
  */
-class EntityBonusTest {
+public class EntityBonusTest {
 
     @Nested
-    class Equals {
+    public class Equals {
 
         @Test
-        void isEqual() {
+        public void isEqual() {
 
         }
     }
