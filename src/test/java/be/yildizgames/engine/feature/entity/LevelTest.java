@@ -48,7 +48,7 @@ public final class LevelTest {
     }
 
     @Test
-    void testHashCode() {
+    public void testHashCode() {
         Level d1 = Level.valueOf(5);
         Level d2 = Level.valueOf(5);
         Assertions.assertEquals(d2.hashCode(), d1.hashCode());
