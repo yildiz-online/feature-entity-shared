@@ -100,7 +100,7 @@ public class EntityManager<T extends Entity> {
     public final void addEntity(final T entity) {
         this.entities.put(entity.getId(), entity);
         PlayerId p = entity.getOwner();
-        Set<T> list = this.entityList.computeIfAbsent(p, (PlayerId) -> new HashSet<>());
+        Set<T> list = this.entityList.computeIfAbsent(p, PlayerId -> new HashSet<>());
         list.add(entity);
         //Set<EntityBonus> boni = CollectionUtil.getOrCreateSetFromMap(this.bonusList, p);
         //for (EntityBonus b : boni) {
@@ -142,7 +142,7 @@ public class EntityManager<T extends Entity> {
      * @param bonus Bonus to add.
      */
     public final void addBonus(final PlayerId p, final EntityBonus bonus) {
-        this.bonusList.computeIfAbsent(p, (PlayerId) -> new HashSet<>()).add(bonus);
+        this.bonusList.computeIfAbsent(p, PlayerId -> new HashSet<>()).add(bonus);
         //Set<Entity> list = CollectionUtil.getOrCreateSetFromMap(this.entityList, p);
         // for (EntityType be.yildizgames.engine.feature.entity.data : bonus.getTypes()) {
         // for (Entity e : list) {

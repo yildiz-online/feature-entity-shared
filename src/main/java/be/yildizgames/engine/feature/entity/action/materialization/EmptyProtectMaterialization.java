@@ -91,7 +91,7 @@ public class EmptyProtectMaterialization implements ProtectMaterialization{
 
             @Override
             public void removeChild(Movable child) {
-
+                //does nothing
             }
 
             @Override
@@ -106,7 +106,7 @@ public class EmptyProtectMaterialization implements ProtectMaterialization{
 
             @Override
             public void detachFromParent() {
-
+                //does nothing
             }
 
             @Override
@@ -141,17 +141,17 @@ public class EmptyProtectMaterialization implements ProtectMaterialization{
 
             @Override
             public void setPosition(float posX, float posY, float posZ) {
-
+                //does nothing
             }
 
             @Override
             public void setDirection(float dirX, float dirY, float dirZ) {
-
+                //does nothing
             }
 
             @Override
             public void addOptionalChild(Movable child) {
-
+                //does nothing
             }
         };
     }

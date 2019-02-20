@@ -44,7 +44,7 @@ public final class ModuleGroup {
      */
     public ModuleGroup(List<EntityModule> modules) {
         super();
-        this.modules = new ArrayList<EntityModule>(modules);
+        this.modules = new ArrayList<>(modules);
     }
 
 
