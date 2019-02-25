@@ -24,13 +24,13 @@
 
 package be.yildizgames.engine.feature.entity.action;
 
-import be.yildizgames.engine.feature.entity.Action;
+import be.yildizgames.engine.feature.entity.BaseAction;
 import be.yildizgames.engine.feature.entity.Entity;
 
 /**
  * @author Grégory Van den Borre
  */
-public final class Follow extends Action {
+public final class Follow extends BaseAction {
 
     private final Move move;
 

@@ -25,14 +25,14 @@
 package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.engine.feature.entity.Action;
+import be.yildizgames.engine.feature.entity.BaseAction;
 
 /**
  * Base class for actions without interactions.
  *
  * @author Grégory Van den Borre
  */
-public abstract class AbstractNoInteractionAction extends Action {
+public abstract class AbstractNoInteractionAction extends BaseAction {
 
     /**
      * Build a new no interaction action.

@@ -26,7 +26,7 @@ package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
 import be.yildizgames.common.time.ElapsedTimeComputer;
-import be.yildizgames.engine.feature.entity.Action;
+import be.yildizgames.engine.feature.entity.BaseAction;
 import be.yildizgames.engine.feature.entity.Entity;
 import be.yildizgames.engine.feature.entity.data.AttackDamage;
 import be.yildizgames.engine.feature.entity.data.AttackRange;
@@ -36,7 +36,7 @@ import be.yildizgames.engine.feature.entity.fields.AttackHitResult;
 /**
  * @author Grégory Van den Borre
  */
-public abstract class AbstractAttack extends Action {
+public abstract class AbstractAttack extends BaseAction {
 
     /**
      * Damages to inflict to the target.

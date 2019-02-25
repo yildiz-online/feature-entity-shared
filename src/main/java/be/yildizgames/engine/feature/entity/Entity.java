@@ -128,9 +128,9 @@ public interface Entity extends Target {
      */
     //@Requires actionId != null.
     //@Ensures result.id == actionId
-    Action getAction(ActionId actionId);
+    BaseAction getAction(ActionId actionId);
 
-    List<Action> getActions();
+    List<? extends Action> getActions();
 
     boolean isSeeing(Entity unseen);
 
@@ -178,9 +178,9 @@ public interface Entity extends Target {
 
     boolean isDeleted();
 
-    List<Action> getActionRunning();
+    List<? extends Action> getActionRunning();
 
-    List<Action> getActionDone();
+    List<? extends Action> getActionDone();
 
     void startAction(ActionId action);
 
@@ -190,11 +190,11 @@ public interface Entity extends Target {
      * @param destination Destination to reach to complete the move.
      * @return The running action.
      */
-    Action move(Point3D destination);
+    BaseAction move(Point3D destination);
 
-    Action attack(Target target);
+    BaseAction attack(Target target);
 
-    void startAction(Action a);
+    void startAction(BaseAction a);
 
     void stopAttack();
 
@@ -214,9 +214,9 @@ public interface Entity extends Target {
 
     AbstractAttack getAttackAction();
 
-    Action getProtectAction();
+    BaseAction getProtectAction();
 
-    Action getGenerateEnergyAction();
+    BaseAction getGenerateEnergyAction();
 
     Set<PlayerId> getSeenBy();
 
@@ -262,7 +262,7 @@ public interface Entity extends Target {
 
     void startPreparedAction();
 
-    Action getPreparedAction();
+    BaseAction getPreparedAction();
 
     boolean hasTarget();
 

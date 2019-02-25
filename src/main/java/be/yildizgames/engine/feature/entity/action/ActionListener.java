@@ -34,14 +34,11 @@ import be.yildizgames.engine.feature.entity.Action;
 @FunctionalInterface
 public interface ActionListener {
 
-    //FIXME DO NOT expose action object complete, make it implement interface exposing only safe(read only) methods
     default void create(EntityId id, PlayerId owner, Action a) {
     }
 
-    //FIXME DO NOT expose action object complete, make it implement interface exposing only safe(read only) methods
     void execute(EntityId id, PlayerId owner, Action a);
 
-    //FIXME DO NOT expose action object complete, make it implement interface exposing only safe(read only) methods
     default void complete(EntityId id, PlayerId owner, Action a) {
     }
 

@@ -25,7 +25,7 @@
 package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.engine.feature.entity.Action;
+import be.yildizgames.engine.feature.entity.BaseAction;
 import be.yildizgames.engine.feature.entity.Entity;
 import be.yildizgames.engine.feature.entity.fields.MutableSpeed;
 
@@ -34,7 +34,7 @@ import be.yildizgames.engine.feature.entity.fields.MutableSpeed;
  *
  * @author Grégory Van den Borre
  */
-public abstract class Move extends Action {
+public abstract class Move extends BaseAction {
 
     /**
      * Move current speed.

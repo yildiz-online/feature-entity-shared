@@ -89,11 +89,11 @@ public abstract class BaseEntity implements Entity, Target {
 
     private PlayerId owner;
 
-    protected List<Action> actionRunning = new ArrayList<>();
+    protected List<BaseAction> actionRunning = new ArrayList<>();
 
     protected List<Action> actionComplete = new ArrayList<>();
 
-    protected Action actionToPrepare = new NoAction(EmptyModule.MODULE);
+    protected BaseAction actionToPrepare = new NoAction(EmptyModule.MODULE);
 
     private final List<EntityModule> modules = new ArrayList<>();
 
@@ -120,7 +120,7 @@ public abstract class BaseEntity implements Entity, Target {
     @Override
     public final void doActions(final long time) {
         this.actionComplete.clear();
-        for (Action a : this.actionRunning) {
+        for (BaseAction a : this.actionRunning) {
             if (!a.checkPrerequisite(this)) {
                 this.actionComplete.add(a);
                 this.actionRunning.remove(a);
@@ -219,7 +219,7 @@ public abstract class BaseEntity implements Entity, Target {
     }
 
     @Override
-    public final List<Action> getActionDone() {
+    public final List<? extends Action> getActionDone() {
         return this.actionComplete;
     }
 
@@ -236,7 +236,6 @@ public abstract class BaseEntity implements Entity, Target {
     @Override
     public final void setHitPoints(int hitPoint) {
         this.hp.setValue(hitPoint);
-
     }
 
     @Override
@@ -260,7 +259,7 @@ public abstract class BaseEntity implements Entity, Target {
     }
 
     @Override
-    public final List<Action> getActions() {
+    public final List<? extends Action> getActions() {
         return this.actionRunning;
     }
 
@@ -320,11 +319,11 @@ public abstract class BaseEntity implements Entity, Target {
     }
 
     @Override
-    public final List<Action> getActionRunning() {
+    public final List<? extends Action> getActionRunning() {
         return actionRunning;
     }
 
-    public final List<Action> getActionComplete() {
+    public final List<? extends Action> getActionComplete() {
         return actionComplete;
     }
 

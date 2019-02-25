@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The action manager will loop over {@link Action} to run them, if the action is active, it will notify the listeners when an it is created, run, and completed. If the action is passive, the
+ * The action manager will loop over Action to run them, if the action is active, it will notify the listeners when an it is created, run, and completed. If the action is passive, the
  * listeners will never be notified about it.
  *
  * @author Grégory Van den Borre

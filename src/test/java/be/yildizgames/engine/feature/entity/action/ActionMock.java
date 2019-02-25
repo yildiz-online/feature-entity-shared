@@ -25,13 +25,13 @@
 package be.yildizgames.engine.feature.entity.action;
 
 import be.yildizgames.common.model.ActionId;
-import be.yildizgames.engine.feature.entity.Action;
+import be.yildizgames.engine.feature.entity.BaseAction;
 import be.yildizgames.engine.feature.entity.Entity;
 
 /**
  * @author Grégory Van den Borre
  */
-public final class ActionMock extends Action {
+public final class ActionMock extends BaseAction {
     
     public ActionMock() {
         super(ActionId.WORLD, false);
