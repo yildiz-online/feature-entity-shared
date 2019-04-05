@@ -76,17 +76,17 @@
     <dependency>
       <groupId>be.yildiz-games</groupId>
       <artifactId>common-frame</artifactId>
-      <version>1.0.4-SNAPSHOT</version>
+      <version>1.0.4</version>
     </dependency>
     <dependency>
       <groupId>be.yildiz-games</groupId>
       <artifactId>common-mapping-geometry</artifactId>
-      <version>1.0.2-SNAPSHOT</version>
+      <version>1.0.2</version>
     </dependency>
     <dependency>
       <groupId>be.yildiz-games</groupId>
       <artifactId>common-gameobject</artifactId>
-      <version>1.0.5-SNAPSHOT</version>
+      <version>1.0.5</version>
     </dependency>
 
     <dependency>
