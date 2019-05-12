@@ -76,16 +76,16 @@ public abstract class AbstractAttack extends BaseAction {
      */
     protected abstract void stopFire(Entity e);
 
-    public void setDamage(final AttackDamage damage) {
+    public final void setDamage(final AttackDamage damage) {
         this.damage = damage;
         this.attackHit = new AttackHitResult(this.damage.points, 0);
     }
 
-    public void setRange(final AttackRange range) {
+    public final void setRange(final AttackRange range) {
         this.range = range;
     }
 
-    public void setAttackTime(final AttackTime time) {
+    public final void setAttackTime(final AttackTime time) {
         this.timer = new ElapsedTimeComputer(time.getTime().toMillis());
     }
 }

@@ -73,6 +73,10 @@ public abstract class AbstractAttackZone<T extends Entity> extends AbstractAttac
         this.targetRetriever = retriever;
     }
 
+    /**
+     * Use the target retriever to get the current target.
+     * @return The targets.
+     */
     protected final Set<Target> retrieveTarget() {
         return this.targetRetriever.retrieve(this.targetPosition, damageZone);
     }

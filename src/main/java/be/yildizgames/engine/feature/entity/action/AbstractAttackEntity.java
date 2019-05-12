@@ -56,6 +56,12 @@ public abstract class AbstractAttackEntity extends AbstractAttack {
         e.getTarget().ifPresent(t -> this.handleTarget(t,e));
     }
 
+    @Override
+    protected final void stopImpl(Entity e) {
+        this.follow.stop(e);
+        this.stopFire(e);
+    }
+
     private void handleTarget(Target target, Entity e) {
         if (Point3D.squaredDistance(e.getPosition(), target.getPosition()) - 1 <= this.range.distance * this.range.distance
                 && e.getDirection().equals(target.getPosition().subtract(e.getPosition()))) {
@@ -66,11 +72,5 @@ public abstract class AbstractAttackEntity extends AbstractAttack {
         } else {
             this.stopFire(e);
         }
-    }
-
-    @Override
-    protected final void stopImpl(Entity e) {
-        this.follow.stop(e);
-        this.stopFire(e);
     }
 }
