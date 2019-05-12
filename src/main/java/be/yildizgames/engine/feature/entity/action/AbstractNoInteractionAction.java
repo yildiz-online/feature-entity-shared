@@ -44,6 +44,12 @@ public abstract class AbstractNoInteractionAction extends BaseAction {
         super(action,  passive);
     }
 
+    /**
+     * Build a new no interaction action.
+     * @param action Action id of the associated module.
+     * @param passive Is the action passive or active?
+     * @param self Is the action on self entity.
+     */
     protected AbstractNoInteractionAction(final ActionId action,  final boolean passive, boolean self) {
         super(action, passive, self);
     }
