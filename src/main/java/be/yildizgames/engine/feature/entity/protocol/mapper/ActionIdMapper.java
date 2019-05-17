@@ -44,7 +44,7 @@ public class ActionIdMapper implements ObjectMapper<ActionId> {
     }
 
     @Override
-    public ActionId from(String s) {
+    public final ActionId from(String s) {
         ImplementationException.throwForNull(s);
         try {
             return ActionId.valueOf(Integer.parseInt(s));
@@ -54,7 +54,7 @@ public class ActionIdMapper implements ObjectMapper<ActionId> {
     }
 
     @Override
-    public String to(ActionId actionId) {
+    public final String to(ActionId actionId) {
         ImplementationException.throwForNull(actionId);
         return String.valueOf(actionId.value);
     }

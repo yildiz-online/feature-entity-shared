@@ -34,4 +34,5 @@ public class ActionIdMapperTest extends BaseMapperTest<ActionId> {
     public ActionIdMapperTest() {
         super(ActionIdMapper.getInstance(), ActionId.valueOf(5));
     }
+
 }

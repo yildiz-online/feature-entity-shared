@@ -44,21 +44,22 @@ public final class ActionMock extends BaseAction {
 
     @Override
     public void runImpl(long time, Entity e) {
-
+        // Does nothing.
     }
 
 
     @Override
     public void initImpl(Entity e) {
+        // Does nothing.
     }
 
     @Override
     public void stopImpl(Entity e) {
+        // Does nothing.
     }
 
     @Override
     public void delete() {
-        // TODO Auto-generated method stub
-
+        // Does nothing.
     }
 }

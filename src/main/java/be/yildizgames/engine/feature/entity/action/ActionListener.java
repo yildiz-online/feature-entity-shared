@@ -41,5 +41,4 @@ public interface ActionListener {
 
     default void complete(EntityId id, PlayerId owner, Action a) {
     }
-
 }
