@@ -28,6 +28,9 @@ package be.yildizgames.engine.feature.entity;
 
 import be.yildizgames.common.model.ActionId;
 
+/**
+ * @author Grégory Van den Borre
+ */
 public interface Action {
 
     /**
@@ -37,5 +40,9 @@ public interface Action {
      */
     boolean checkPrerequisite(Entity e);
 
+    /**
+     * Provide the action id.
+     * @return The id.
+     */
     ActionId getId();
 }

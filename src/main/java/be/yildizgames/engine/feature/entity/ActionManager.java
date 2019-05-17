@@ -68,7 +68,7 @@ public class ActionManager<T extends Entity> extends EndFrameListener {
      * @return true.
      */
     @Override
-    public boolean frameEnded(final long time) {
+    public final boolean frameEnded(final long time) {
         List<T> entities = this.entityManager.getEntities();
         this.listenerToRemove.forEach(this.listeners::remove);
         for (T e : entities) {
@@ -92,17 +92,17 @@ public class ActionManager<T extends Entity> extends EndFrameListener {
      * @throws NullPointerException if l parameter is <code>null</code>
      * post listener.size() == getSize()@pre + 1
      */
-    public void addListener(final ActionListener l) {
+    public final void addListener(final ActionListener l) {
         assert l != null;
         this.listeners.add(l);
     }
 
-    public void removeListener(final ActionListener l) {
+    public final void removeListener(final ActionListener l) {
         assert l != null;
         this.listenerToRemove.add(l);
     }
 
-    public void addDestructionListener(final DestructionListener<T> l) {
+    public final void addDestructionListener(final DestructionListener<T> l) {
         assert l != null;
         this.destructionListeners.add(l);
     }

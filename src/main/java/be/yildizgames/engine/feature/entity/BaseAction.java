@@ -71,8 +71,9 @@ public abstract class BaseAction implements Action {
         this.id = id;
     }
 
+
     public final boolean isSelf() {
-        return self;
+        return this.self;
     }
 
     @Override
