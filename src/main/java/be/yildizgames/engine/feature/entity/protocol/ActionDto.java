@@ -34,6 +34,9 @@ import be.yildizgames.engine.feature.entity.BaseAction;
  */
 public class ActionDto {
 
+    /**
+     * Action unique id.
+     */
     public final ActionId id;
 
     public final EntityId entity;
@@ -51,7 +54,7 @@ public class ActionDto {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -65,7 +68,7 @@ public class ActionDto {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         int result = id.hashCode();
         result = 31 * result + entity.hashCode();
         return result;

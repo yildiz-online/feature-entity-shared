@@ -24,9 +24,6 @@
 
 package be.yildizgames.engine.feature.entity.protocol;
 
-import be.yildizgames.common.geometry.Point3D;
-import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

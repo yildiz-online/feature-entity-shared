@@ -46,7 +46,7 @@ public class ActionDtoMapper implements ObjectMapper<ActionDto> {
     }
 
     @Override
-    public ActionDto from(String s) {
+    public final ActionDto from(String s) {
         ImplementationException.throwForNull(s);
         String[] v = s.split(Separator.OBJECTS_SEPARATOR);
         try {
@@ -57,7 +57,7 @@ public class ActionDtoMapper implements ObjectMapper<ActionDto> {
     }
 
     @Override
-    public String to(ActionDto action) {
+    public final String to(ActionDto action) {
         ImplementationException.throwForNull(action);
         return ActionIdMapper.getInstance().to(action.id)
                 + Separator.OBJECTS_SEPARATOR

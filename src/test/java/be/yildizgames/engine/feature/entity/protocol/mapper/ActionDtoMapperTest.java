@@ -36,4 +36,5 @@ public class ActionDtoMapperTest extends BaseMapperTest<ActionDto> {
     public ActionDtoMapperTest() {
         super(ActionDtoMapper.getInstance(), new ActionDto(ActionId.valueOf(2), EntityId.valueOf(7)));
     }
+
 }
