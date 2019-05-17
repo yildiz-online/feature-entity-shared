@@ -34,6 +34,9 @@ import be.yildizgames.common.model.EntityId;
  */
 public class EmptyProtectMaterialization implements ProtectMaterialization{
 
+    /**
+     * Associated entity id.
+     */
     private final EntityId id;
 
     public EmptyProtectMaterialization(EntityId id) {

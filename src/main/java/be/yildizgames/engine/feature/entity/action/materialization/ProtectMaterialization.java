@@ -39,6 +39,10 @@ public interface ProtectMaterialization {
      */
     void destroy();
 
+    /**
+     * Provide the object.
+     * @return The object.
+     */
     GameMaterialization getObject();
 
 }
