@@ -38,5 +38,4 @@ public interface DestructionListener<T extends Entity> {
      * @param entity Entity destroyed.
      */
     void entityDestroyed(T entity);
-
 }

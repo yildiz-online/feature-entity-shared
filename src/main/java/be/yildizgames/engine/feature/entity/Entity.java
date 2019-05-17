@@ -271,4 +271,5 @@ public interface Entity extends Target {
     EntityModule getModule(ActionId id);
 
     List<EntityModule> getModules();
+
 }

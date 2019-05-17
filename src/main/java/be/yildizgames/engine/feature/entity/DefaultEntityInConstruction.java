@@ -86,23 +86,23 @@ public class DefaultEntityInConstruction {
         this.direction = direction;
     }
 
-    public EntityType getType() {
+    public final EntityType getType() {
         return type;
     }
 
-    public EntityId getId() {
+    public final EntityId getId() {
         return id;
     }
 
-    public PlayerId getOwner() {
+    public final PlayerId getOwner() {
         return owner;
     }
 
-    public Point3D getPosition() {
+    public final Point3D getPosition() {
         return position;
     }
 
-    public Point3D getDirection() {
+    public final Point3D getDirection() {
         return direction;
     }
 }
