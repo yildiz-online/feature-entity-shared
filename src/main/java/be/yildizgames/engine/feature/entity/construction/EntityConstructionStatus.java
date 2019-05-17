@@ -60,7 +60,7 @@ public class EntityConstructionStatus {
     /**
      * @return The time before construction completion in milliseconds.
      */
-    public long getTime() {
+    public final long getTime() {
         return this.timeLeft.toMillis();
     }
 
@@ -69,7 +69,7 @@ public class EntityConstructionStatus {
      *
      * @param timeToRemove Time spent since the last update.
      */
-    public void reduceTimeLeft(final long timeToRemove) {
+    public final void reduceTimeLeft(final long timeToRemove) {
         long t = timeLeft.toMillis() - timeToRemove;
         if (t < 0) {
             t = 0;
@@ -80,12 +80,12 @@ public class EntityConstructionStatus {
     /**
      * @return True if the time required to build the entity is elapsed.
      */
-    public boolean isTimeElapsed() {
+    public final boolean isTimeElapsed() {
         return this.timeLeft.toMillis() <= 0;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -99,7 +99,7 @@ public class EntityConstructionStatus {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         int result = type.hashCode();
         result = 31 * result + index;
         result = 31 * result + timeLeft.hashCode();
@@ -107,7 +107,7 @@ public class EntityConstructionStatus {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return "EntityRepresentationConstruction{" +
                 "type:" + this.type +
                 ", index:" + this.index +
