@@ -43,4 +43,5 @@ public final class BonusAttackDamage extends EntityBonus {
     public BonusAttackDamage(final float damage, final ActionId... moduleIds) {
         super(damage, true, moduleIds);
     }
+
 }

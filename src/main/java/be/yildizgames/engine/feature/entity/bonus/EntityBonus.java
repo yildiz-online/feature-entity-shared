@@ -106,4 +106,5 @@ public class EntityBonus {
         EntityBonus other = (EntityBonus) obj;
         return (Math.abs(this.value - other.value) < 0.001f) && this.moduleIds.equals(other.moduleIds);
     }
+
 }

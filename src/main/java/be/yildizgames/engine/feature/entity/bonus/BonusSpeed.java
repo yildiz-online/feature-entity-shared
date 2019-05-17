@@ -42,4 +42,5 @@ public final class BonusSpeed extends EntityBonus {
     public BonusSpeed(final float value, final ActionId... moduleIds) {
         super(value, true, moduleIds);
     }
+
 }
