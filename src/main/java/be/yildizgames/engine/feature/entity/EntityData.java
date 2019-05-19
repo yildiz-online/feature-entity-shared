@@ -45,4 +45,5 @@ public interface EntityData {
      */
     //@Ensures result > 0.
     int getSize();
+
 }

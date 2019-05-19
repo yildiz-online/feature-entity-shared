@@ -41,4 +41,5 @@ public interface EntityInConstructionFactory {
     default DefaultEntityInConstruction build(EntityId id,  EntityToCreate etc) {
         return this.build(etc.getType(), id, etc.getOwner(), etc.getPosition(), etc.getDirection());
     }
+
 }

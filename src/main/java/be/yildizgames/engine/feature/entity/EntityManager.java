@@ -195,5 +195,4 @@ public class EntityManager<T extends Entity> {
                 .map(this::findById)
                 .collect(Collectors.toList());
     }
-
 }

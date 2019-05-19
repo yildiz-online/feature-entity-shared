@@ -63,4 +63,5 @@ public interface EntityTypeFactory<D extends EntityData> {
     //@Ensures result != null.
     //@Ensures result == this.types.get(type)
    // DataModule getByType(ActionId type);*/
+
 }

@@ -118,5 +118,4 @@ public class GameEntityData implements EntityData {
     public final Level getRequiredLevel() {
         return this.level;
     }
-
 }

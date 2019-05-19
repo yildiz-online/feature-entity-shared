@@ -106,4 +106,5 @@ public class EntityInConstruction extends DefaultEntityInConstruction {
     public int getEnergy() {
         return energy;
     }
+
 }

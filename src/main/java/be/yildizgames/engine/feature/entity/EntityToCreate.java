@@ -63,4 +63,5 @@ public class EntityToCreate {
     public final PlayerId getOwner() {
         return owner;
     }
+
 }

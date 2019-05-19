@@ -43,4 +43,5 @@ public class EntityInConstructionFactorySimple implements EntityInConstructionFa
     public DefaultEntityInConstruction build(EntityType type, EntityId id, PlayerId owner, Point3D pos, Point3D dir) {
         return new DefaultEntityInConstruction(type, id, owner,  pos, dir);
     }
+
 }

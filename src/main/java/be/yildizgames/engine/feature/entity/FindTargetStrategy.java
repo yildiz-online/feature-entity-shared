@@ -41,5 +41,4 @@ public interface FindTargetStrategy<T extends Entity> {
      * @return The best target for the given Entity, if any.
      */
     Optional<T> findBestTarget(T e);
-
 }
