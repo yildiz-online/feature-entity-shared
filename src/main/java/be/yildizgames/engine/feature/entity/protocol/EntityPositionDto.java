@@ -71,4 +71,5 @@ public class EntityPositionDto {
         result = 31 * result + orientation.hashCode();
         return result;
     }
+
 }

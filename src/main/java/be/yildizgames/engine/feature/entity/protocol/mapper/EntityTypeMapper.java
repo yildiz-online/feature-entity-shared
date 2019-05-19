@@ -54,4 +54,5 @@ public class EntityTypeMapper implements ObjectMapper<EntityType> {
         ImplementationException.throwForNull(type);
         return String.valueOf(type.type);
     }
+
 }

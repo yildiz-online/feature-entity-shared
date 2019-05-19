@@ -31,4 +31,5 @@ package be.yildizgames.engine.feature.entity.module;
 public interface DefaultModuleProvider {
 
     ModuleGroup getModules();
+
 }

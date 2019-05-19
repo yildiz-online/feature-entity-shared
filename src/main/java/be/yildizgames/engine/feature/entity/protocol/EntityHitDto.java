@@ -69,4 +69,5 @@ public class EntityHitDto {
         result = 31 * result + hitPoint;
         return result;
     }
+
 }

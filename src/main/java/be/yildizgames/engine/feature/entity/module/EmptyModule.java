@@ -45,4 +45,5 @@ public class EmptyModule extends EntityModule {
     public EmptyModule() {
         super(new NoAction(MODULE));
     }
+
 }

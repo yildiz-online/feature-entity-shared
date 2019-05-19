@@ -34,6 +34,7 @@ import be.yildizgames.common.util.Checker;
  */
 public final class Instance {
 
+
     /**
      * Unique instance, maximum is 1.
      */

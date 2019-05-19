@@ -67,4 +67,5 @@ public final class ModuleGroup {
     public List<EntityModule> getAll() {
         return this.modules;
     }
+
 }

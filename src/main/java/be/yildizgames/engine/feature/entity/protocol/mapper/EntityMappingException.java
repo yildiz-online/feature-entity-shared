@@ -38,4 +38,5 @@ public class EntityMappingException extends BusinessException {
     EntityMappingException(String message, Exception cause) {
         super(message, cause);
     }
+
 }

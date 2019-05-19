@@ -37,6 +37,7 @@ import java.util.stream.Collectors;
  */
 public final class TargetRetriever<T extends Entity> {
 
+
     /**
      * Associated entity manager.
      */

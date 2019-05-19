@@ -44,5 +44,4 @@ public class DataModule {
         this.timeToBuild = time;
         this.price = price;
     }
-
 }

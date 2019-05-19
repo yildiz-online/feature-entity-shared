@@ -35,6 +35,7 @@ import be.yildizgames.common.util.ValueObject;
  */
 public final class Level extends ValueObject {
 
+
     /**
      * Constant for 0.
      */

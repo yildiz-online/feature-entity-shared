@@ -37,6 +37,7 @@ import java.util.List;
  */
 public class LosManager<T extends Entity> implements CollisionListener {
 
+
     /**
      * Listeners to notify about los events changes.
      */

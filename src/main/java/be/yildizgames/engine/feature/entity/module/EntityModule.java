@@ -52,4 +52,5 @@ public class EntityModule <T extends Action> {
     public T getAction() {
         return this.action;
     }
+
 }

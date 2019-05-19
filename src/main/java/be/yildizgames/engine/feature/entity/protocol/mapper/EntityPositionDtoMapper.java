@@ -59,6 +59,7 @@ public class EntityPositionDtoMapper implements ObjectMapper<EntityPositionDto> 
         }
     }
 
+
     @Override
     public String to(EntityPositionDto dto) {
         ImplementationException.throwForNull(dto);

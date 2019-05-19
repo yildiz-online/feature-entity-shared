@@ -48,4 +48,5 @@ public interface LosListener<T extends Entity> {
      */
     default void noLongerSee(T viewer, T viewed) {
     }
+
 }

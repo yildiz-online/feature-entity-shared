@@ -70,4 +70,5 @@ public class ChangeOwnerDto {
         result = 31 * result + newOwnerId.hashCode();
         return result;
     }
+
 }

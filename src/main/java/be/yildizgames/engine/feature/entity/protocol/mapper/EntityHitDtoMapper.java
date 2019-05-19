@@ -46,6 +46,7 @@ public class EntityHitDtoMapper implements ObjectMapper<EntityHitDto> {
         return INSTANCE;
     }
 
+
     @Override
     public EntityHitDto from(String s) {
         ImplementationException.throwForNull(s);

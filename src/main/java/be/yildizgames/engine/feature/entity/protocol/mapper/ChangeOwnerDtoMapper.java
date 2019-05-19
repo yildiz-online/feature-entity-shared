@@ -46,7 +46,6 @@ public class ChangeOwnerDtoMapper implements ObjectMapper<ChangeOwnerDto> {
         return INSTANCE;
     }
 
-
     @Override
     public ChangeOwnerDto from(String s) {
         ImplementationException.throwForNull(s);
