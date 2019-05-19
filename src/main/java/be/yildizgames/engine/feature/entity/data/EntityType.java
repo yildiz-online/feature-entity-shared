@@ -124,4 +124,5 @@ public final class EntityType {
         result = 31 * result + name.hashCode();
         return result;
     }
+
 }

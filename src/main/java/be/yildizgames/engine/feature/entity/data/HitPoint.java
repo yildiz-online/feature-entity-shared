@@ -73,4 +73,5 @@ public final class HitPoint {
     public int hashCode() {
         return points;
     }
+
 }

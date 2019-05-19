@@ -70,4 +70,5 @@ public final class ViewDistance {
     public int hashCode() {
         return (distance != +0.0f ? Float.floatToIntBits(distance) : 0);
     }
+
 }

@@ -73,4 +73,5 @@ public final class Energy {
     public int hashCode() {
         return points;
     }
+
 }

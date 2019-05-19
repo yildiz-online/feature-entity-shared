@@ -57,4 +57,5 @@ public final class AttackTime {
     public Duration getTime() {
         return time;
     }
+
 }

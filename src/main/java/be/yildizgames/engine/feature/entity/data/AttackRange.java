@@ -73,4 +73,5 @@ public final class AttackRange {
     public int hashCode() {
         return (distance != +0.0f ? Float.floatToIntBits(distance) : 0);
     }
+
 }

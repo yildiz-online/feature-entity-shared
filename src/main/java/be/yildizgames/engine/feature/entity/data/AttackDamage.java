@@ -70,4 +70,5 @@ public final class AttackDamage {
     public int hashCode() {
         return (points != +0.0f ? Float.floatToIntBits(points) : 0);
     }
+
 }
