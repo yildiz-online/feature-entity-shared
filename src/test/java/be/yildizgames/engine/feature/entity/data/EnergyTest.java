@@ -71,5 +71,4 @@ public class EnergyTest {
         assertNotEquals(d1, new Object());
         assertNotEquals(d1, d3);
     }
-
 }

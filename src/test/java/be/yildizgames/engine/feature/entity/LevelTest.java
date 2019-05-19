@@ -64,5 +64,4 @@ public final class LevelTest {
         Assertions.assertNotEquals(d1, new Object());
         Assertions.assertNotEquals(d1, d3);
     }
-
 }

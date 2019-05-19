@@ -90,6 +90,4 @@ public class EntityManagerTest {
     @Test
     public void testSetOwnerEntityPlayer() {
     }
-
-
 }

@@ -68,5 +68,4 @@ public final class HitPointTest {
         assertNotEquals(d1, new Object());
         assertNotEquals(d1, d3);
     }
-
 }

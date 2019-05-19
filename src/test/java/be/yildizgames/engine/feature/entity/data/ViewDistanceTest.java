@@ -71,4 +71,5 @@ public class ViewDistanceTest {
         assertNotEquals(d1, new Object());
         assertNotEquals(d1, d3);
     }
+
 }

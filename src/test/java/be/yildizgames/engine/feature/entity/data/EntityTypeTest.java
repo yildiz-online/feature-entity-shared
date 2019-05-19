@@ -82,4 +82,5 @@ public final class EntityTypeTest {
         EntityType t1 = new EntityType(7, "test--");
         assertEquals("test--", t1.toString());
     }
+
 }

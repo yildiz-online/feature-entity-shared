@@ -24,15 +24,6 @@
 
 package be.yildizgames.engine.feature.entity.action;
 
-import be.yildizgames.common.geometry.Point3D;
-import be.yildizgames.common.model.ActionId;
-import be.yildizgames.common.model.EntityId;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 /**
  * @author Grégory Van den Borre
  */

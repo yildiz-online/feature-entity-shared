@@ -74,5 +74,4 @@ public final class InstanceTest {
         Assertions.assertNotEquals(d1, new Object());
         Assertions.assertNotEquals(d1, d3);
     }
-
 }

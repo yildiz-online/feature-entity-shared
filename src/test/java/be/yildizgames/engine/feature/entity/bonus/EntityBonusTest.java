@@ -37,7 +37,6 @@ public class EntityBonusTest {
 
         @Test
         public void isEqual() {
-
         }
     }
 }
