@@ -60,4 +60,5 @@ public class NoAction extends AbstractNoInteractionAction{
     public void delete() {
         //does nothing
     }
+
 }

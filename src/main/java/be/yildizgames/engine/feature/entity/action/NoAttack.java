@@ -97,5 +97,4 @@ public class NoAttack extends AbstractAttack {
     public void delete() {
         //does nothing
     }
-
 }

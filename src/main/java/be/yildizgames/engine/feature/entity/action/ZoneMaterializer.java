@@ -34,5 +34,4 @@ public interface ZoneMaterializer {
     void setPosition(Point3D position);
 
     void setTargetPosition(Point3D position);
-
 }

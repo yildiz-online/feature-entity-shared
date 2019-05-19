@@ -78,4 +78,5 @@ public final class Follow extends BaseAction {
     public void delete() {
         //Unused.
     }
+
 }

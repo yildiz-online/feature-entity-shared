@@ -74,5 +74,4 @@ public final class ProtectInvincible extends Protect {
     public void addHitResult(AttackHitResult r) {
         //does nothing
     }
-
 }

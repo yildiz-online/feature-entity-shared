@@ -67,4 +67,5 @@ public abstract class ProduceEnergy extends AbstractNoInteractionAction {
     @Override
     public void delete() {
     }
+
 }

@@ -82,4 +82,5 @@ public abstract class Move extends BaseAction {
     public void setMaxSpeed(float maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
+
 }

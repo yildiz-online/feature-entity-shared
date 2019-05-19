@@ -60,4 +60,5 @@ public class NoDetect extends Detect{
     public void delete() {
         //does nothing
     }
+
 }

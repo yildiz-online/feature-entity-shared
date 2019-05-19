@@ -75,5 +75,4 @@ public final class NoMove extends Move {
     public void delete() {
         //does nothing
     }
-
 }

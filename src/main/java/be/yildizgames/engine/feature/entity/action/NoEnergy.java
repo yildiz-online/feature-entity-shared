@@ -40,5 +40,4 @@ public class NoEnergy extends ProduceEnergy {
     protected final void energyReplenishStrategy(final long time, Entity e) {
         //does nothing
     }
-
 }

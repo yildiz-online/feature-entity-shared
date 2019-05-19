@@ -72,4 +72,5 @@ public abstract class Protect extends AbstractNoInteractionAction {
     public final ProtectMaterialization getMaterialization() {
         return this.materialization;
     }
+
 }

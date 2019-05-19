@@ -34,5 +34,4 @@ public abstract class Detect extends AbstractNoInteractionAction {
     protected Detect(ActionId id) {
         super(id, true);
     }
-
 }
