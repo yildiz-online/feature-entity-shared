@@ -36,4 +36,5 @@ public interface PositionData {
     Point3D getDirection();
 
     float squaredDistance(Point3D other);
+
 }

@@ -53,4 +53,5 @@ public interface Target {
      */
     //@Ensures result != null
     EntityId getId();
+
 }

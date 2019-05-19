@@ -65,4 +65,5 @@ public class SharedPosition implements PositionData {
     public Point3D getDirection() {
         return this.direction;
     }
+
 }

@@ -53,5 +53,4 @@ public class StateHolder {
         assert state != null;
         return this.states.contains(state);
     }
-
 }

@@ -46,5 +46,4 @@ public class MutableSpeed {
     public float getCurrentSpeed() {
         return this.currentSpeed;
     }
-
 }

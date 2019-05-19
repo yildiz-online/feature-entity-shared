@@ -58,4 +58,5 @@ public class MutableHitPoints {
     public BoundedValue getHp() {
         return hp;
     }
+
 }

@@ -56,4 +56,5 @@ public class SharedEnergy {
     public BoundedValue getEnergy() {
         return energy;
     }
+
 }

@@ -43,4 +43,5 @@ public final class AttackHitResult {
         this.weaponBaseDamage = weaponBaseDamage;
         this.weaponType = weaponType;
     }
+
 }
