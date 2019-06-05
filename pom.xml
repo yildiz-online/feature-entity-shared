@@ -51,7 +51,7 @@
     <dependency>
       <groupId>be.yildiz-games</groupId>
       <artifactId>common-mapping-model</artifactId>
-      <version>1.0.4</version>
+      <version>1.0.5</version>
     </dependency>
     <dependency>
       <groupId>be.yildiz-games</groupId>
@@ -86,7 +86,7 @@
     <dependency>
       <groupId>be.yildiz-games</groupId>
       <artifactId>common-gameobject</artifactId>
-      <version>1.0.5</version>
+      <version>1.0.6</version>
     </dependency>
 
     <dependency>
