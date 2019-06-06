@@ -24,8 +24,6 @@
 
 package be.yildizgames.engine.feature.entity.data;
 
-import be.yildizgames.common.util.Checker;
-
 /**
  * Simple wrapper for view distance.
  * Immutable class.
@@ -47,8 +45,9 @@ public final class ViewDistance {
      */
     public ViewDistance(final float value) {
         super();
-        //FIXME HIGH replace check with annotation(for every be.yildizgames.engine.feature.entity.data classes)
-        Checker.exceptionNotGreaterThanZero(value);
+        if(value <= 0) {
+            throw new IllegalArgumentException("Must be greater than 0");
+        }
         this.distance = value;
     }
 

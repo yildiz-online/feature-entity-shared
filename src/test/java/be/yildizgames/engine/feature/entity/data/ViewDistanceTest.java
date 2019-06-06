@@ -26,9 +26,7 @@ package be.yildizgames.engine.feature.entity.data;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Grégory Van den Borre
@@ -45,12 +43,12 @@ public class ViewDistanceTest {
 
     @Test
     public void testEnergy2() {
-        assertThrows(AssertionError.class, () -> new ViewDistance(-10));
+        assertThrows(IllegalArgumentException.class, () -> new ViewDistance(-10));
     }
 
     @Test
     public void testEnergy3() {
-        assertThrows(AssertionError.class, () -> new ViewDistance(0));
+        assertThrows(IllegalArgumentException.class, () -> new ViewDistance(0));
     }
 
     @Test

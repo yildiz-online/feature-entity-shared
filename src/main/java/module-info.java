@@ -33,7 +33,6 @@ module be.yildizgames.feature.entity.shared {
     requires be.yildizgames.common.mapping.model;
     requires be.yildizgames.common.mapping.geometry;
     requires be.yildizgames.feature.resource.shared;
-    requires be.yildizgames.common.exception;
 
     exports be.yildizgames.engine.feature.entity;
     exports be.yildizgames.engine.feature.entity.protocol;

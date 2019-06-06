@@ -24,7 +24,6 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.common.mapping.Separator;
 import be.yildizgames.common.mapping.geometry.Point3DMapper;
@@ -48,7 +47,6 @@ public class EntityPositionDtoMapper implements ObjectMapper<EntityPositionDto> 
 
     @Override
     public EntityPositionDto from(String s) {
-        ImplementationException.throwForNull(s);
         String[] v = s.split(Separator.OBJECTS_SEPARATOR );
         try {
             return new EntityPositionDto(EntityIdMapper.getInstance().from(v[0]),
@@ -62,7 +60,6 @@ public class EntityPositionDtoMapper implements ObjectMapper<EntityPositionDto> 
 
     @Override
     public String to(EntityPositionDto dto) {
-        ImplementationException.throwForNull(dto);
         return EntityIdMapper.getInstance().to(dto.id)
                 + Separator.OBJECTS_SEPARATOR
                 + Point3DMapper.getInstance().to(dto.position)

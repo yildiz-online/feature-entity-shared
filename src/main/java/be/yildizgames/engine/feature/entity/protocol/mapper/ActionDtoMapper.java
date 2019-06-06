@@ -24,7 +24,6 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.common.mapping.Separator;
 import be.yildizgames.common.mapping.model.EntityIdMapper;
@@ -47,7 +46,6 @@ public class ActionDtoMapper implements ObjectMapper<ActionDto> {
 
     @Override
     public final ActionDto from(String s) {
-        ImplementationException.throwForNull(s);
         String[] v = s.split(Separator.OBJECTS_SEPARATOR);
         try {
             return new ActionDto(ActionIdMapper.getInstance().from(v[0]), EntityIdMapper.getInstance().from(v[1]));
@@ -58,7 +56,6 @@ public class ActionDtoMapper implements ObjectMapper<ActionDto> {
 
     @Override
     public final String to(ActionDto action) {
-        ImplementationException.throwForNull(action);
         return ActionIdMapper.getInstance().to(action.id)
                 + Separator.OBJECTS_SEPARATOR
                 + EntityIdMapper.getInstance().to(action.entity);

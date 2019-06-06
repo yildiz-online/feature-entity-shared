@@ -24,8 +24,6 @@
 
 package be.yildizgames.engine.feature.entity.fields;
 
-import be.yildizgames.common.util.Checker;
-
 /**
  * @author Grégory Van den Borre
  */
@@ -39,7 +37,9 @@ public class MutableSpeed {
     private float currentSpeed;
 
     public final void setCurrentSpeed(final float speed) {
-        Checker.exceptionNotPositive(speed);
+        if(speed < 0) {
+            throw new IllegalArgumentException("Must be greater than 0");
+        }
         this.currentSpeed = speed;
     }
 

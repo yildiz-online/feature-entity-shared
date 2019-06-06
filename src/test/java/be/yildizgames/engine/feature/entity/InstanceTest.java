@@ -48,12 +48,12 @@ public final class InstanceTest {
 
     @Test
     public void testInstance2() {
-        Assertions.assertThrows(AssertionError.class, () -> new Instance(-10));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Instance(-10));
     }
 
     @Test
     public void testInstance3() {
-        Assertions.assertThrows(AssertionError.class, () -> new Instance(0));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Instance(0));
     }
 
     @Test

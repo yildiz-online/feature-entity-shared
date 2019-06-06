@@ -27,7 +27,6 @@ package be.yildizgames.engine.feature.entity.protocol;
 import be.yildizgames.common.model.ActionId;
 import be.yildizgames.common.model.EntityId;
 import be.yildizgames.engine.feature.entity.Action;
-import be.yildizgames.engine.feature.entity.BaseAction;
 
 /**
  * @author Grégory Van den Borre

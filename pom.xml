@@ -51,12 +51,7 @@
     <dependency>
       <groupId>be.yildiz-games</groupId>
       <artifactId>common-mapping-model</artifactId>
-      <version>1.0.5</version>
-    </dependency>
-    <dependency>
-      <groupId>be.yildiz-games</groupId>
-      <artifactId>common-exception</artifactId>
-      <version>1.0.4</version>
+      <version>1.0.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>be.yildiz-games</groupId>
@@ -67,11 +62,6 @@
       <groupId>be.yildiz-games</groupId>
       <artifactId>common-time</artifactId>
       <version>1.0.4</version>
-    </dependency>
-    <dependency>
-      <groupId>be.yildiz-games</groupId>
-      <artifactId>common-util</artifactId>
-      <version>1.0.5</version>
     </dependency>
     <dependency>
       <groupId>be.yildiz-games</groupId>
@@ -86,7 +76,12 @@
     <dependency>
       <groupId>be.yildiz-games</groupId>
       <artifactId>common-gameobject</artifactId>
-      <version>1.0.6</version>
+      <version>1.0.7-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>be.yildiz-games</groupId>
+      <artifactId>common-util</artifactId>
+      <version>1.0.6-SNAPSHOT</version>
     </dependency>
 
     <dependency>

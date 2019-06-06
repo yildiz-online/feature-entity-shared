@@ -24,9 +24,10 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.common.model.ActionId;
+
+import java.util.Objects;
 
 /**
  * @author Grégory Van den Borre
@@ -45,7 +46,7 @@ public class ActionIdMapper implements ObjectMapper<ActionId> {
 
     @Override
     public final ActionId from(String s) {
-        ImplementationException.throwForNull(s);
+        Objects.requireNonNull(s);
         try {
             return ActionId.valueOf(Integer.parseInt(s));
         } catch (final NumberFormatException nfe) {
@@ -55,7 +56,6 @@ public class ActionIdMapper implements ObjectMapper<ActionId> {
 
     @Override
     public final String to(ActionId actionId) {
-        ImplementationException.throwForNull(actionId);
         return String.valueOf(actionId.value);
     }
 }

@@ -24,8 +24,6 @@
 
 package be.yildizgames.engine.feature.entity;
 
-import be.yildizgames.common.util.Checker;
-
 /**
  * Maximum number of instances for a given entity.
  * Immutable class.
@@ -57,7 +55,9 @@ public final class Instance {
      */
     public Instance(final int instanceNumber) {
         super();
-        Checker.exceptionNotGreaterThanZero(instanceNumber);
+        if(instanceNumber <= 0) {
+            throw new IllegalArgumentException("Must be greater than 0");
+        }
         this.number = instanceNumber;
     }
 

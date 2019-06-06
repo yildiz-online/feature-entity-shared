@@ -37,7 +37,11 @@ import be.yildizgames.engine.feature.entity.fields.Target;
 import be.yildizgames.engine.feature.entity.module.EmptyModule;
 import be.yildizgames.engine.feature.entity.module.EntityModule;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 /**
  * The entity is the logical data for every usable game object.

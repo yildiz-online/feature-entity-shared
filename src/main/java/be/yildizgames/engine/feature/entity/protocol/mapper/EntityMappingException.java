@@ -24,9 +24,7 @@
 
 package be.yildizgames.engine.feature.entity.protocol.mapper;
 
-import be.yildizgames.common.exception.business.BusinessException;
-
-public class EntityMappingException extends BusinessException {
+public class EntityMappingException extends IllegalArgumentException {
     EntityMappingException(String message) {
         super(message);
     }

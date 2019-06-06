@@ -26,7 +26,6 @@ package be.yildizgames.engine.feature.entity.module;
 
 import be.yildizgames.common.model.ActionId;
 import be.yildizgames.engine.feature.entity.Action;
-import be.yildizgames.engine.feature.entity.BaseAction;
 
 /**
  * A module is a part of an Entity, it contains its specific action.

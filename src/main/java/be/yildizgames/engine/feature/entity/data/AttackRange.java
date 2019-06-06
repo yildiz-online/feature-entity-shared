@@ -24,8 +24,6 @@
 
 package be.yildizgames.engine.feature.entity.data;
 
-import be.yildizgames.common.util.Checker;
-
 /**
  * Simple wrapper class to represent attack range.
  * Immutable class.
@@ -51,7 +49,9 @@ public final class AttackRange {
      */
     public AttackRange(final int distance) {
         super();
-        Checker.exceptionNotPositive(distance);
+        if(distance < 0) {
+            throw new IllegalArgumentException("Must be greater or equal to 0:" + distance);
+        }
         this.distance = distance;
     }
 

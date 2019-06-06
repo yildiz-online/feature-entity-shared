@@ -43,8 +43,9 @@ public final class AttackRangeTest {
 
     @Test
     public void testAttackRange() {
-        AttackRange d = new AttackRange(10);
-        assertEquals(10, d.distance, 0.000001f);
+        int distance = 10;
+        AttackRange d = new AttackRange(distance);
+        assertEquals(distance, d.distance, 0.000001f);
         d = AttackRange.ZERO;
         assertEquals(0, d.distance, 0.000001f);
         assertThrows(NullPointerException.class, () -> new AttackRange((Integer)null));
@@ -52,7 +53,7 @@ public final class AttackRangeTest {
 
     @Test
     public void testAttackRange2() {
-        assertThrows(AssertionError.class, () -> new AttackRange(-10));
+        assertThrows(IllegalArgumentException.class, () -> new AttackRange(-10));
     }
 
     @Test
