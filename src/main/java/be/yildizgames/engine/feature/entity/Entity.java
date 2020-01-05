@@ -128,7 +128,7 @@ public interface Entity extends Target {
      */
     //@Requires actionId != null.
     //@Ensures result.id == actionId
-    BaseAction getAction(ActionId actionId);
+    Action getAction(ActionId actionId);
 
     List<? extends Action> getActions();
 
@@ -190,11 +190,11 @@ public interface Entity extends Target {
      * @param destination Destination to reach to complete the move.
      * @return The running action.
      */
-    BaseAction move(Point3D destination);
+    Action move(Point3D destination);
 
-    BaseAction attack(Target target);
+    Action attack(Target target);
 
-    void startAction(BaseAction a);
+    void startAction(Action a);
 
     void stopAttack();
 
