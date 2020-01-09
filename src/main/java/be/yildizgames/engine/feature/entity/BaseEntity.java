@@ -93,7 +93,7 @@ public abstract class BaseEntity implements Entity, Target {
 
     protected List<Action> actionComplete = new ArrayList<>();
 
-    protected BaseAction actionToPrepare = new NoAction(EmptyModule.MODULE);
+    protected Action actionToPrepare = new NoAction(EmptyModule.MODULE);
 
     private final List<EntityModule> modules = new ArrayList<>();
 
